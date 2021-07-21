@@ -9,6 +9,6 @@ class FieldExpertise extends Model
     protected $table = "fields_expertises";
     protected $fillable = [
 
-        'expertise',
+        'expertise_name',
     ];
 }

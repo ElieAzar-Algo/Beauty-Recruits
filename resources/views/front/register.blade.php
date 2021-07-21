@@ -98,8 +98,10 @@
 											<label>Expertise</label>
 											<br>
 											<select required name="expertise_id">
-												<option value="1">Expertise 1</option>
-												<option value="2">Expertise 2</option>
+												<option value="">Choose an expertise</option>
+												@foreach ($data as $expertise)
+												<option value={{$expertise->id}}>{{$expertise->expertise_name}}</option>
+												@endforeach
 											</select>
 										</div>
 									</div>
@@ -205,8 +207,10 @@
 											<label>Expertise</label>
 											<br>
 											<select required name="expertise_id">
-												<option value="1">Expertise 1</option>
-												<option value="2">Expertise 2</option>
+												<option value="">Choose an expertise</option>
+												@foreach ($data as $expertise)
+												<option value={{$expertise->id}}>{{$expertise->expertise_name}}</option>
+												@endforeach
 											</select>
 										</div>
 									</div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Company;
+use Mail;
 
 class CompanyController extends Controller
 {
@@ -34,9 +35,18 @@ class CompanyController extends Controller
         }
     }
 
+    
+
     public function register(Request $request)
     {
 
+        $token = openssl_random_pseudo_bytes(16);
+
+        //Convert the binary data into hexadecimal representation.
+        //Cryptographic Token 
+        $token = bin2hex($token);
+
+        if($token){
         $company = new Company();
         $company->fill([
 
@@ -51,10 +61,26 @@ class CompanyController extends Controller
             'expertise_id'=>$request->expertise_id,
             
          ]);
+         $company->token = $token;
 
          if($company->save())
          {
-             return redirect()->route('waiting.verification');
+            $mailData = array(
+                'message' => 'Verification Email Beauty Recruits',
+                'name' => $company->full_name,
+                'token' => $token ,
+                'id' => $company->id,
+                'email' => $company->email
+            );
+    
+            Mail::send('mail.company-verificationEmail', ["data" => $mailData], function($message) use ($request)
+            {
+                $message->from(config('mail.from_email'),'Beauty-Recruits');
+                $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
+            });
+
+
+             return redirect()->route('waiting-verification');
          }
          else
          {
@@ -62,4 +88,5 @@ class CompanyController extends Controller
             return view('register', compact('message'));
          }
     }
+}
 }

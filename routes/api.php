@@ -19,5 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/token-verification-applicant/{id}/email/{email}/token/{token}','VerificationController@indexApplicant');
+Route::get('/token-verification-company/{id}/email/{email}/token/{token}','VerificationController@indexCompany');
 
 

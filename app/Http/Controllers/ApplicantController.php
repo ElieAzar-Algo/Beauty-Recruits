@@ -37,6 +37,8 @@ class ApplicantController extends Controller
         }
     }
 
+    
+
     public function register(Request $request)
     {
 
