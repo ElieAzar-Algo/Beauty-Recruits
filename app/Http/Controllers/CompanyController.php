@@ -87,6 +87,19 @@ class CompanyController extends Controller
             $message = "Operation Failed";
             return view('register', compact('message'));
          }
+        }
     }
-}
+
+
+    public function show()
+    {
+
+        $id = auth()->guard('company')->id();
+        
+        $company = Company::where('id', $id)->with('field_expertise')->first();
+
+        return view('front.companyProfile', compact('company'));
+    }
+
+    
 }

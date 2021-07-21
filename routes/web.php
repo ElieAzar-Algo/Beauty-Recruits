@@ -37,6 +37,25 @@ Route::get('/waiting-verification', function(){
 })->name('waiting-verification');
 
 
+
+//Companies Group
+Route::group(['middleware' => ['auth:company']], function(){
+
+    Route::get('/company-profile','CompanyController@show');
+    Route::get('/company-post-job','JobController@create');
+    Route::post('/company-post-job','JobController@post');
+
+});
+
+// Applicants Group
+Route::group(['middleware' => ['auth:applicant']], function(){
+
+    Route::get('/applicant-profile','ApplicantController@show');
+
+});
+
+
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

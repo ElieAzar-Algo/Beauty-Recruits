@@ -59,7 +59,22 @@
                                     Logout
                                 </a>
                             </div>
+
+                            @if (Auth::guard('applicant')->check())
+                                <div class="get-quote">
+                                    <a href="{{url('/applicant-profile')}}" class="default-btn" style="background-color:  #336161;">
+                                        My Profile
+                                    </a>
+                                </div>
+                            @elseif(Auth::guard('company')->check())
+                            <div class="get-quote">
+                                <a href="{{url('/company-profile')}}" class="default-btn" style="background-color:  #336161;">
+                                    My Profile
+                                </a>
+                            </div>
+                        @endif
                         @else
+                        
                         <div class="others-option">
                             <div class="get-quote">
                                 <a href="{{url('/register-page')}}" class="default-btn" style="background-color: #336161;">

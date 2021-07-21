@@ -57,8 +57,8 @@ class Applicant extends Authenticatable
         return $this->hasMany('App\Answer','id','applicant_id');
     }
 
-    // public function field_expertise() 
-    // {
-    //     return $this->hasMany('App\FieldExpertise','id','applicant_id');
-    // }
+    public function field_expertise() 
+    {
+        return $this->hasOne('App\FieldExpertise','id','expertise_id');
+    }
 }

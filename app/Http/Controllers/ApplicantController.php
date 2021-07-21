@@ -96,8 +96,18 @@ class ApplicantController extends Controller
             $message = "Operation Failed";
             return view('register', compact('message'));
          }
+        }
     }
-}
+
+       public function show()
+        {
+
+            $id = auth()->guard('applicant')->id();
+            
+            $applicant = Applicant::where('id', $id)->with('field_expertise')->first();
+
+            return view('front.applicantProfile', compact('applicant'));
+        }
 
     
 }
