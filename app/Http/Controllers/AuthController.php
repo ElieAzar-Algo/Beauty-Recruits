@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -11,11 +12,11 @@ class AuthController extends Controller
     {
         if (auth()->guard('applicant')->check() || auth()->guard('company')->check())
         {
-            return view('home');
+            return view('front.home');
         }
         else 
         {
-            return view('login');
+            return view('front.login');
         }
     }
 
@@ -23,21 +24,22 @@ class AuthController extends Controller
     {
         if (auth()->guard('applicant')->check() || auth()->guard('company')->check())
         {
-            return view('home');
+            return view('front.home');
         }
         else 
         {
-            return view('register');
+            return view('front.register');
         }
     }
 
     public function logout()
     {
-        if (auth()->guard('applicant'))
+        
+        if (auth()->guard('applicant')->check())
         {
             auth()->guard('applicant')->logout();
         }
-        elseif(auth()->guard('company'))
+         elseif(auth()->guard('company')->check())
         {
             auth()->guard('company')->logout();
         }

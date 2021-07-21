@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Applicant;
+use Illuminate\Support\Facades\Log;
+
+use Mail;
 
 class ApplicantController extends Controller
 {
@@ -37,7 +40,16 @@ class ApplicantController extends Controller
     public function register(Request $request)
     {
 
+        $token = openssl_random_pseudo_bytes(16);
+
+        //Convert the binary data into hexadecimal representation.
+        //Cryptographic Token 
+        $token = bin2hex($token);
+
+        if($token)
+        {
         $applicant = new Applicant();
+
         $applicant->fill([
 
             'username'=> $request->username,
@@ -52,12 +64,30 @@ class ApplicantController extends Controller
             'phone'=>$request->phone,
             'years_of_experience'=>$request->years_of_experience,
             'expertise_id'=>$request->expertise_id,
-            
          ]);
-
+            $applicant->token = $token;
          if($applicant->save())
          {
-             return view('waitingVerification');
+
+            // Log::info(config('mail.from_email'));
+            // Log::info($request->email);
+            // Log::info($request->full_name);
+            $mailData = array(
+                'message' => 'Verification Email Beauty Recruits',
+                'name' => $applicant->full_name,
+                'token' => $token ,
+                'id' => $applicant->id,
+                'email' => $applicant->email
+            );
+    
+            Mail::send('mail.applicant-verificationEmail', ["data" => $mailData], function($message) use ($request)
+            {
+                $message->from(config('mail.from_email'),'Beauty-Recruits');
+                $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
+            });
+
+            
+            return redirect()->route('waiting-verification');
          }
          else
          {
@@ -65,6 +95,7 @@ class ApplicantController extends Controller
             return view('register', compact('message'));
          }
     }
+}
 
     
 }

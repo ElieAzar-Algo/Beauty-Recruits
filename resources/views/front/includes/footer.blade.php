@@ -1,0 +1,119 @@
+<footer class="footer-area pt-100 pb-70" style="background-color: #336161;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="single-footer-widget single-bg">
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/black_logo_transparent_background.png" alt="Image">
+                    </a>
+
+                    <p  style="color: #ffffff;">Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua consec tetur.</p>
+
+                    <ul class="social-icon">
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-linkedin-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bx bxl-twitter"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="single-footer-widget">
+                    <h3  style="color: #ffffff;">Contact</h3>
+
+                    <ul class="address">
+                        <li>
+                            <i class="bx bx-phone-call" style="color: #F78154;"></i>
+                            <span  style="color: #ffffff;">Phone:</span>
+                            <a href="tel:+1-(514)-7939-357" style="color: #c3c3c3;">+1 (514) 7939-357</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-envelope" style="color: #F78154;"></i>
+                            <span  style="color: #ffffff;">Email:</span>
+                            <a href="mailto:Admin@beauty-recruits.com"  style="color: #c2c2c2;">Admin@beauty-recruits.com </a>
+                        </li>
+                        <li class="location">
+                            <i class="bx bx-location-plus" style="color: #F78154;"></i>
+                            <span  style="color: #ffffff;">Address:</span>
+                            <span  style="color: #c3c3c3;">6890 Blvd, The Bronx, NY 1058 New York, USA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="single-footer-widget">
+                    <h3  style="color: #ffffff;">Companies</h3>
+
+                    <ul class="import-link">
+                        <li>
+                            <a href="log-in-register.html"  style="color: #ffffff;">Create Account</a>
+                        </li>
+                        <li>
+                            <a href="terms-conditions.html"  style="color: #ffffff;">Terms of Use</a>
+                        </li>
+                        <li>
+                            <a href="privacy-policy.html"  style="color: #ffffff;">Privacy Centre</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="single-footer-widget">
+                    <h3  style="color: #ffffff;">Job Seekers</h3>
+
+                    <ul class="import-link">
+                        <li>
+                            <a href="job-listing.html"  style="color: #ffffff;">Jobs</a>
+                        </li>
+                        <li>
+                            <a href="employers-listing.html"  style="color: #ffffff;">Companies</a>
+                        </li>
+                        <li>
+                            <a href="log-in-register.html"  style="color: #ffffff;">Register</a>
+                        </li>
+                        <li>
+                            <a href="faq.html"  style="color: #ffffff;">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+		<!-- Start Copy Right Area -->
+		<div class="copy-right-area">
+			<div class="container">
+				<p>
+					Copyright <i class="bx bx-copyright"></i>2021 <b style="color: #F78154;">Beauty Recruits.</b>
+				</p>
+			</div>
+		</div>
+		<!-- End Copy Right Area -->
+		
+		<!-- Start Go Top Area -->
+		<div class="go-top">
+			<i class="bx bx-chevrons-up"></i>
+			<i class="bx bx-chevrons-up"></i>
+		</div>
+		<!-- End Go Top Area -->

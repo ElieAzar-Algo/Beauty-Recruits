@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('mail.verificationEmail');
 });
 
 Route::get('/home', function () {
-    return view('home');
+    return view('front.home');
 })->name('home');
 
 Route::post('/applicant/login', 'ApplicantController@login');
@@ -33,8 +33,8 @@ Route::get('/login-page', 'AuthController@indexLogin')->name('login');
 Route::get('/register-page', 'AuthController@indexRegister')->name('register');
 
 Route::get('/waiting-verification', function(){
-    return view('waitingVerification');
-})->name('waiting.verification');
+    return view('front.waiting-verification');
+})->name('waiting-verification');
 
 
 Route::group(['prefix' => 'admin'], function () {
