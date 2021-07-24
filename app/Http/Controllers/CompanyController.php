@@ -101,5 +101,28 @@ class CompanyController extends Controller
         return view('front.companyProfile', compact('company'));
     }
 
+    public function update(Request $request)
+    {
+        $id = auth()->guard('company')->id();
+
+        $company = Company::find($id);
+
+        if($company)
+        {
+         $company->update($request->all());
+         if ($company->save())
+         {
+            return redirect()->route('company-profile');
+         }
+         else
+         {
+            return response()->json([
+                'success' => false,
+                'message' => "Operation Failed",
+           ], 404);
+         }
+        }
+    }
+
     
 }

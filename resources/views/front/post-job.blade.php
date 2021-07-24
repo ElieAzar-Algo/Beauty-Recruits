@@ -162,8 +162,9 @@
                             <div class="col-lg-12 col-md-12">
 								<div class="col-lg-12">
 									<div class="form-group">
-										<label>Date Posted*</label>
-										<input requiured class="form-control" type="date" name="date_posted">
+										<label>Date Posteddddd*</label>
+										<input requiured class="form-control" type="date" name="date_posted" placeholder="yyyy-mm-dd" value=""
+										min="1997-01-01" max="2030-12-31">
 									</div>
 								</div>
 							</div>

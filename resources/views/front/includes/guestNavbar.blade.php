@@ -1,6 +1,6 @@
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="assets/images/icon/favicon.png">
+<link rel="icon" type="image/png" href="{{URL::asset('assets/images/icon/favicon.png')}}">
 <header class="header-area">
 			
     <!-- Start Navbar Area -->
@@ -10,7 +10,7 @@
                 <div class="mobile-menu">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="assets/images/logoo.png" alt="logo">
+                            <img src="{{URL::asset('assets/images/logoo.png')}}" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/logoo.png" alt="logo">
+                        <img src="{{URL::asset('assets/images/logoo.png')}}" alt="logo">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu">
@@ -33,7 +33,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="job-listing.html" class="nav-link">
+                                <a href={{route('job-listing')}} class="nav-link">
                                     Jobs
                                 </a>
                             </li>

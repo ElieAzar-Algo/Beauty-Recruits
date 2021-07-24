@@ -10,6 +10,43 @@ use App\FieldExpertise;
 
 class JobController extends Controller
 {
+
+    
+
+    public function index()
+
+    {
+        if(request()->has('experience'))
+        {
+            $data = Job::where('years_of_experience',">=", request('experience'))
+            ->orderBy('created_at','DESC')
+            ->with('company')
+            ->with('field_expertise')
+            ->paginate(4)
+            ->appends('experience', request('experience'));
+            return view('front.job-listing', compact('data'));
+        }
+        else 
+        {
+            $data = Job::with('company')
+            ->orderBy('created_at','DESC')
+            ->with('field_expertise')
+            ->paginate(4);
+            return view('front.job-listing', compact('data'));
+        }
+        
+    }
+
+    public function show($experience)
+    {
+        $data = Job::where('years_of_experience', $experience)
+        ->with('company')
+        ->with('field_expertise')
+        ->paginate(4);
+        
+        // dd($data);
+        return redirect()->route('job-listing',$data);
+    }
     
     public function create()
     {
@@ -21,12 +58,26 @@ class JobController extends Controller
     public function post(Request $request)
     {
         // dd($request->all());
+        $time_frame = date("Y-m-d", strtotime($request->time_frame));
+        $date_posted = date("Y-m-d", strtotime($request->date_posted));
+        // dd($time_frame." - - - ".$date_posted);
         $job = new Job();
-        $job->fill($request->all());
-
+        $job->fill([
+            'company_id' => $request->company_id,
+            'job_title' => $request->job_title,
+            'salary' => $request->salary,
+            'job_description' => $request->job_description,
+            'years_of_experience' => $request->years_of_experience,
+            'expertise_id' => $request->expertise_id,
+            'question'=> $request->question,
+            'job_type' => $request->job_type,
+            'time_frame' => $time_frame,
+            'date_posted' => $date_posted,
+        ]);
+        
         if($job->save())
         {
-            redirect()->route('home');
+            return redirect()->route('home');
         }
     }
 }

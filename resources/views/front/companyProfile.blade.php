@@ -60,10 +60,18 @@
 
             <div class="col-lg-8">
                 <div class="candidates-profile-content">
-                    <form class="profile-info">
+                    <form class="profile-info" action="{{url(env('APP_URL').'company-update')}}" method="POST">
                         <h3>Basic Info</h3>
 
                         <div class="row">
+                            @csrf
+                            <div hidden class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <label>Method</label>
+                                    <input type="hidden" name="method" value="PUT">
+                                </div>
+                            </div>
+
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
                                     <label>Compnay Name</label>
@@ -161,7 +169,7 @@
                             </div> --}}
 
                             <div class="col-lg-12">
-                                <a href="#" class="default-btn">Save</a>
+                                <input type="submit" class="default-btn" value="Save">
                             </div>
                         </div>
                     </form>

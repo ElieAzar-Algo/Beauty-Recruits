@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('mail.verificationEmail');
+    return view('welcome');
 });
 
 Route::get('/home', function () {
@@ -37,11 +37,13 @@ Route::get('/waiting-verification', function(){
 })->name('waiting-verification');
 
 
-
+Route::get('/job-listing','JobController@index')->name('job-listing');
+Route::get('/jobs-filtered/{experience}','JobController@show');
 //Companies Group
 Route::group(['middleware' => ['auth:company']], function(){
 
-    Route::get('/company-profile','CompanyController@show');
+    Route::get('/company-profile','CompanyController@show')->name('company-profile');
+    Route::post('/company-update','CompanyController@update');
     Route::get('/company-post-job','JobController@create');
     Route::post('/company-post-job','JobController@post');
 

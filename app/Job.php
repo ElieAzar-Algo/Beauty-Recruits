@@ -17,13 +17,19 @@ class Job extends Model
         'time_frame',
         'date_posted',
         'question',
-        'expertise_id'
+        'expertise_id',
+        'job_type'
 
     ];
 
     public function company() 
     {
         return $this->belongsTo('App\Company','company_id','id');
+    }
+
+    public function field_expertise() 
+    {
+        return $this->hasOne('App\FieldExpertise','id','expertise_id');
     }
 
     // public function field_expertise() 
