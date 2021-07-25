@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Applicant;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+
 
 use Mail;
 
@@ -42,6 +45,7 @@ class ApplicantController extends Controller
     public function register(Request $request)
     {
 
+        // dd($request->resume_pdf);
         $token = openssl_random_pseudo_bytes(16);
 
         //Convert the binary data into hexadecimal representation.
@@ -50,6 +54,12 @@ class ApplicantController extends Controller
 
         if($token)
         {
+            $folderPath = public_path('storage/applicant-resumes');
+            if (! File::exists($folderPath)) 
+            {
+                $response = mkdir($folderPath); 
+            }
+
         $applicant = new Applicant();
 
         $applicant->fill([
@@ -62,12 +72,21 @@ class ApplicantController extends Controller
             'title'=> $request->title,
             'description'=>$request->description,
             'location'=>$request->location,
-            'resume_pdf'=>$request->resume_pdf,
+            
             'phone'=>$request->phone,
             'years_of_experience'=>$request->years_of_experience,
             'expertise_id'=>$request->expertise_id,
          ]);
+            $date = date('Y-m-d-h-i-sa');
+
+            $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes','MyResume-'.$request->username.$date.'.pdf');
+            $applicant->resume_pdf = $path;
+
+            $photo = $request->file('photo')->storeAs('applicant-photos','MyPhoto-'.$request->username.$date.'.jpg','public');
+            $applicant->photo = $photo;
+
             $applicant->token = $token;
+
          if($applicant->save())
          {
 
@@ -99,6 +118,16 @@ class ApplicantController extends Controller
         }
     }
 
+    public function downloadResume($id)
+    {
+        $applicant = Applicant::find($id);
+        // dd($applicant->resume_pdf);
+        $path = $applicant->resume_pdf;
+
+        return Storage::download($path);
+    }
+    
+
        public function show()
         {
 
@@ -107,6 +136,16 @@ class ApplicantController extends Controller
             $applicant = Applicant::where('id', $id)->with('field_expertise')->first();
 
             return view('front.applicantProfile', compact('applicant'));
+        }
+
+        public function index()
+        {
+            
+            $data = Applicant::orderBy('created_at','DESC')
+            ->with('field_expertise')
+            ->paginate(10);
+            return view('front.candidate-listing', compact('data'));
+        
         }
 
     

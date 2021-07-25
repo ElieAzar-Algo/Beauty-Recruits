@@ -27,7 +27,8 @@ class Applicant extends Authenticatable
         'phone',
         'years_of_experience',
         'verified',
-        'expertise_id'
+        'expertise_id',
+        'photo'
 
     ];
 

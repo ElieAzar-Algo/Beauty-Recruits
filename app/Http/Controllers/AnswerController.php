@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Answer;
-use App\JobApplicant;
+use App\ApplicantJob;
 
 class AnswerController extends Controller
 {
@@ -19,7 +19,7 @@ class AnswerController extends Controller
 
         if($answer->save()){
 
-            $jobApplicant = new JobApplicant();
+            $jobApplicant = new ApplicantJob();
             $jobApplicant->applicant_id = $id;
             $jobApplicant->job_id = $request->job_id;
             

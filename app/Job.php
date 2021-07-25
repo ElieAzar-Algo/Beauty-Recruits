@@ -34,6 +34,6 @@ class Job extends Model
 
     public function applicant() 
     {
-        return $this->belongsToMany('App\Applicant','job_applicants','job_id','id')->withPivot('applicant_id');
+        return $this->belongsToMany(\App\Applicant::class)->withPivot('applicant_id');
     }
 }

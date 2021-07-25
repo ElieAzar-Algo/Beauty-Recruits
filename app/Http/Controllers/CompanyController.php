@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Company;
+use App\Job;
 use Mail;
 
 class CompanyController extends Controller
@@ -97,8 +98,9 @@ class CompanyController extends Controller
         $id = auth()->guard('company')->id();
         
         $company = Company::where('id', $id)->with('field_expertise')->first();
+        $myJobs = Job::where('company_id', $id)->get();
 
-        return view('front.companyProfile', compact('company'));
+        return view('front.companyProfile', compact('company','myJobs'));
     }
 
     public function update(Request $request)
@@ -124,5 +126,29 @@ class CompanyController extends Controller
         }
     }
 
+    public function index()
+    {
+        if(request()->has('letter'))
+        {
+            $data = Company::where('name',"LIKE", request('experience'),"%")
+            ->orderBy('created_at','DESC')
+            ->with('job')
+            ->with('field_expertise')
+            ->paginate(10)
+            ->appends('letter', request('letter'));
+            return view('front.company-listing', compact('data'));
+        }
+        else 
+        {
+            $data = Company::with('job')
+            ->orderBy('created_at','DESC')
+            ->with('field_expertise')
+            ->paginate(10);
+        
+
+            return view('front.company-listing', compact('data'));
+        }
+
+    }
     
 }

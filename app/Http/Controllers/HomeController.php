@@ -9,6 +9,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //get jobs randomly or latest
+        $data = Job::with('company')
+            ->orderBy('created_at','DESC')
+            ->with('field_expertise')
+            ->take(10)
+            ->get();
+            return view('front.home', compact('data'));
     }
 }

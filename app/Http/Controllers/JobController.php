@@ -45,6 +45,8 @@ class JobController extends Controller
         ->with('field_expertise')
         ->with('applicant')
         ->first();
+
+        
        
         foreach($data->applicant as $app)
         {

@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('front.home');
-})->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/applicant/login', 'ApplicantController@login');
 Route::post('/applicant/register', 'ApplicantController@register');
@@ -39,6 +37,13 @@ Route::get('/waiting-verification', function(){
 
 Route::get('/job-listing','JobController@index')->name('job-listing');
 Route::get('/job-details/{id}','JobController@show')->name('job-details');
+
+Route::get('/applicant-listing','ApplicantController@index')->name('applicant-listing');
+
+Route::get('/company-listing','CompanyController@index')->name('company-listing');
+
+Route::get('/download-resume/{id}', 'ApplicantController@downloadResume');
+
 //Companies Group
 Route::group(['middleware' => ['auth:company']], function(){
 

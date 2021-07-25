@@ -58,4 +58,9 @@ class Company extends Authenticatable
     {
         return $this->hasOne('App\FieldExpertise','id','expertise_id');
     }
+
+    public function job()
+    {
+        return $this->hasMany('App\Job','company_id','id');
+    }
 }
