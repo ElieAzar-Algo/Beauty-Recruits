@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
-                <div class="avatar-sidebar">
+                <div class="avatar-sidebar" style="margin-bottom:100px">
                     <h3>Profile</h3>
 
                     <div class="avatar-img">
@@ -56,6 +56,32 @@
                         </li>
                     </ul>
                 </div>
+
+
+                <h3>My Jobs</h3>
+                @foreach ($myJobs as $item)
+                <div class="hot-jobs-list">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="hot-jobs-content">
+                            <h3><a href="job-details.html">{{$item->job_title}}</a></h3>
+                                
+                                <ul>
+                                <li><span>Job Type:</span> {{$item->job_type}}</li>
+                                <li><span>Experience: </span>{{$item->years_of_experience}}</li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="hot-my-jobs-btn" style="width:10px;height:10px">
+                            <a href="{{url('job-details/')}}/{{$item->id}}" style="width:10px;height:10px" class="default-btn">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
 
             <div class="col-lg-8">

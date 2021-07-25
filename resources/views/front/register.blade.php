@@ -119,6 +119,12 @@
 									</div>
 									<div class="col-6">
 										<div class="form-group">
+											<label>Photo</label>
+											<input required class="form-control" type="file" name="photo" >
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
 											<label>phone</label>
 											<input required class="form-control" type="text" name="phone">
 										</div>

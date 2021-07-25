@@ -45,7 +45,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="employers-listing.html" class="nav-link">
+                                <a href={{route('company-listing')}} class="nav-link">
                                     Companies
                                 </a>
                             </li>

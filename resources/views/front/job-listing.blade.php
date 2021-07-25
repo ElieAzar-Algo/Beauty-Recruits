@@ -37,7 +37,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="hot-jobs-content">
-                            <h3><a href="job-details.html">{{$item->job_title}}</a></h3>
+                            <h3><a href="{{url('job-details/')}}/{{$item->id}}">{{$item->job_title}}</a></h3>
                                 <span class="sub-title">{{$item->field_expertise->expertise_name}}</span>
                                 <ul>
                                 <li><span>Job Type:</span> {{$item->job_type}}</li>

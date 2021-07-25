@@ -232,6 +232,41 @@
                 </div>
             </div>
         </div>
+        @if(Auth::guard('company')->check() && Auth::guard('company')->id()==$data->company->id)
+        <div class="row" style="margin-top: 100px">
+            <h2 style="margin-bottom: 50px">Applicants</h2>
+            @foreach ($data->applicant as $i)
+                
+            <div class="col-6">
+                <div class="candidates-single-listing">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2">
+                            <div class="hot-jobs-img">
+                            <img src="{{'storage/'.$i->photo}}" alt="Image">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="candidates-cv-content">
+                            <h3>{{$i->full_name}}</h3>
+                            
+                                <ul>
+                                <li><span>Location: </span>{{$i->location}}</li>
+                                <li><span>Experience: </span>{{$i->years_of_experience}} years</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                        <a href="{{url('/download-resume/'.$i->id)}}" class="default-btn">View Resume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+        </div>
+        @endif
     </div>
 </section>
 <!-- End Job Details Area -->

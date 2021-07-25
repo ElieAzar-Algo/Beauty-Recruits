@@ -30,7 +30,7 @@
                     <h3 style="color: #ffffff;">Profile</h3>
 
                     <div class="avatar-img">
-                        <img src="../assets/images/avatar-img.jpg" alt="Image">
+                        <img src="{{'storage/'.$applicant->photo}}" alt="Image">
 
                         <div class="avatar-mane">
                         <h4>{{$applicant->full_name}}</h4>

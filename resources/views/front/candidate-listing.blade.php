@@ -25,6 +25,7 @@
         </div>
     </div>
 </section>
+
 <!-- Start Candidates Listing Area -->
 <section class="candidates-listing-area ptb-100">
     <div class="container">
@@ -38,7 +39,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-2">
                             <div class="hot-jobs-img">
-                                <img src="assets/images/candidates-listing/candidates-listing-1.jpg" alt="Image">
+                            <img src="{{'storage/'.$item->photo}}" alt="Image">
                             </div>
                         </div>
 
