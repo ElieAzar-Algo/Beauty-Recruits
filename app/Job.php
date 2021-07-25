@@ -32,8 +32,8 @@ class Job extends Model
         return $this->hasOne('App\FieldExpertise','id','expertise_id');
     }
 
-    // public function field_expertise() 
-    // {
-    //     return $this->hasOne('App\FieldExpertise','expertise_id','id');
-    // }
+    public function applicant() 
+    {
+        return $this->belongsToMany('App\Applicant','job_applicants','job_id','id')->withPivot('applicant_id');
+    }
 }

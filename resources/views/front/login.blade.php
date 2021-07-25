@@ -5,7 +5,7 @@
 		<div class="page-title-area">
 			<div class="container">
 				<div class="page-title-content">
-					<h2>Welcome Back</h2>
+					<h2>LOGIN</h2>
 					<ul>
 						<li>
 							<a href="index.html">

@@ -49,7 +49,7 @@
 
                         <div class="col-lg-4">
                             <div class="hot-jobs-btn">
-                                <a href="job-details.html" class="default-btn">Browse Job</a>
+                            <a href="{{url('job-details/')}}/{{$item->id}}" class="default-btn">Browse Job</a>
                             </div>
                         </div>
                     </div>

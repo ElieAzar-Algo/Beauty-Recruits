@@ -34,7 +34,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="job-listing.html" class="nav-link">
+                                <a href={{route('job-listing')}} class="nav-link">
                                     Jobs
                                 </a>
                             </li>

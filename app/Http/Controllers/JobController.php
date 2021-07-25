@@ -37,15 +37,25 @@ class JobController extends Controller
         
     }
 
-    public function show($experience)
+    public function show($id)
     {
-        $data = Job::where('years_of_experience', $experience)
+        $indicator = 0;
+        $data = Job::where('id',$id)
         ->with('company')
         ->with('field_expertise')
-        ->paginate(4);
-        
-        // dd($data);
-        return redirect()->route('job-listing',$data);
+        ->with('applicant')
+        ->first();
+       
+        foreach($data->applicant as $app)
+        {
+            
+            if($app->pivot->applicant_id == auth()->guard('applicant')->id())
+            {
+                $indicator = 1;
+            }
+        }
+
+        return view('front.job-details', compact('data','indicator'));
     }
     
     public function create()

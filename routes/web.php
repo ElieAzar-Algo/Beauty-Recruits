@@ -38,7 +38,7 @@ Route::get('/waiting-verification', function(){
 
 
 Route::get('/job-listing','JobController@index')->name('job-listing');
-Route::get('/jobs-filtered/{experience}','JobController@show');
+Route::get('/job-details/{id}','JobController@show')->name('job-details');
 //Companies Group
 Route::group(['middleware' => ['auth:company']], function(){
 
@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth:company']], function(){
 Route::group(['middleware' => ['auth:applicant']], function(){
 
     Route::get('/applicant-profile','ApplicantController@show');
+    Route::post('/applicant-answer', 'AnswerController@store');
 
 });
 
