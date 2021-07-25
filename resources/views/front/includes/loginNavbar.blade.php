@@ -39,7 +39,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="candidates-listing.html" class="nav-link">
+                                <a href={{route('applicant-listing')}} class="nav-link">
                                     Candidates
                                 </a>
                             </li>

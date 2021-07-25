@@ -43,7 +43,7 @@
 							<h3 style="color: #ffffff;">Create an Account as an applicant</h3>
 							
 
-							<form class="user-form" action="{{url(env('APP_URL').'applicant/register')}}" method="post">
+							<form class="user-form" action="{{url(env('APP_URL').'applicant/register')}}" method="post" enctype="multipart/form-data">
 								<div class="row">
 									@csrf
 									<div class="col-6">
@@ -114,7 +114,7 @@
 									<div class="col-6">
 										<div class="form-group">
 											<label>Resume in PDF</label>
-											<input required class="form-control" type="text" name="resume_pdf">
+											<input required class="form-control" type="file" name="resume_pdf" >
 										</div>
 									</div>
 									<div class="col-6">
