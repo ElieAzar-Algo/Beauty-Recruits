@@ -91,7 +91,7 @@
                             <a href="log-in-register.html"  style="color: #ffffff;">Register</a>
                         </li>
                         <li>
-                            <a href="faq.html"  style="color: #ffffff;">FAQ</a>
+                        <a href="{{route('faq-page')}}"  style="color: #ffffff;">FAQ</a>
                         </li>
                     </ul>
                 </div>
