@@ -67,7 +67,7 @@
                             <a href="log-in-register.html"  style="color: #ffffff;">Create Account</a>
                         </li>
                         <li>
-                            <a href="terms-conditions.html"  style="color: #ffffff;">Terms of Use</a>
+                            <a href={{route('terms-conditions')}}  style="color: #ffffff;">Terms of Use</a>
                         </li>
                         <li>
                             <a href="privacy-policy.html"  style="color: #ffffff;">Privacy Centre</a>
