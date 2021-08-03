@@ -64,13 +64,13 @@
 
                     <ul class="import-link">
                         <li>
-                            <a href="log-in-register.html"  style="color: #ffffff;">Create Account</a>
+                            <a href="{{route('register')}}"  style="color: #ffffff;">Create Account</a>
                         </li>
                         <li>
                             <a href={{route('terms-conditions')}}  style="color: #ffffff;">Terms of Use</a>
                         </li>
                         <li>
-                            <a href="privacy-policy.html"  style="color: #ffffff;">Privacy Centre</a>
+                            <a href=""  style="color: #ffffff;">Privacy Centre</a>
                         </li>
                     </ul>
                 </div>
@@ -82,13 +82,13 @@
 
                     <ul class="import-link">
                         <li>
-                            <a href="job-listing.html"  style="color: #ffffff;">Jobs</a>
+                            <a href="{{route('job-listing')}}" style="color: #ffffff;">Jobs</a>
                         </li>
                         <li>
-                            <a href="employers-listing.html"  style="color: #ffffff;">Companies</a>
+                            <a href="{{route('company-listing')}}"  style="color: #ffffff;">Companies</a>
                         </li>
                         <li>
-                            <a href="log-in-register.html"  style="color: #ffffff;">Register</a>
+                        <a href="{{route('register')}}"  style="color: #ffffff;">Register</a>
                         </li>
                         <li>
                         <a href="{{route('faq-page')}}"  style="color: #ffffff;">FAQ</a>
