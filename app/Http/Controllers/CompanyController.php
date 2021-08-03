@@ -25,9 +25,8 @@ class CompanyController extends Controller
                 else
                 {
                     $logout = auth()->guard('company')->logout();
-                    
-                    $message = "You are not verified yet";
-                    return view('notVerified', compact('message'));
+        
+                    return redirect()->route('waiting-verification');
                 }
         }
         else
@@ -81,7 +80,7 @@ class CompanyController extends Controller
             });
 
 
-             return redirect()->route('waiting-verification');
+             return redirect()->route('not-verified');
          }
          else
          {
@@ -149,6 +148,20 @@ class CompanyController extends Controller
             return view('front.company-listing', compact('data'));
         }
 
+    }
+
+
+    public function showDetails($id)
+    {
+        $company = Company::where('id',$id)
+        ->with('job')
+        ->with('field_expertise')
+        ->first();
+
+        if($company)
+        {
+            return view('front.company-details',compact('company'));
+        }
     }
     
 }

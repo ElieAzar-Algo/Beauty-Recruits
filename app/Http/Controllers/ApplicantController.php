@@ -30,8 +30,7 @@ class ApplicantController extends Controller
                 {
                     $logout = auth()->guard('applicant')->logout();
                     
-                    $message = "You are not verified yet";
-                    return view('notVerified', compact('message'));
+                    return redirect()->route('waiting-verification');
                 }
         }
         else
@@ -108,7 +107,7 @@ class ApplicantController extends Controller
             });
 
             
-            return redirect()->route('waiting-verification');
+            return redirect()->route('not-verified');
          }
          else
          {
@@ -118,14 +117,14 @@ class ApplicantController extends Controller
         }
     }
 
-    public function downloadResume($id)
-    {
-        $applicant = Applicant::find($id);
-        // dd($applicant->resume_pdf);
-        $path = $applicant->resume_pdf;
+        public function downloadResume($id)
+        {
+            $applicant = Applicant::find($id);
+            // dd($applicant->resume_pdf);
+            $path = $applicant->resume_pdf;
 
-        return Storage::download($path);
-    }
+            return Storage::download($path);
+        }
     
 
        public function show()
@@ -146,6 +145,29 @@ class ApplicantController extends Controller
             ->paginate(10);
             return view('front.candidate-listing', compact('data'));
         
+        }
+
+        public function update(Request $request)
+        {
+            $id = auth()->guard('applicant')->id();
+
+            $company = Applicant::find($id);
+
+            if($company)
+            {
+                $company->update($request->all());
+                if ($company->save())
+                {
+                    return redirect()->route('applicant-profile');
+                }
+                else
+                {
+                    return response()->json([
+                        'success' => false,
+                        'message' => "Operation Failed",
+                    ], 404);
+                }
+            }
         }
 
     

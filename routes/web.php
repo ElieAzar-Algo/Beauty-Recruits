@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/applicant/login', 'ApplicantController@login');
@@ -34,6 +31,10 @@ Route::get('/waiting-verification', function(){
     return view('front.waiting-verification');
 })->name('waiting-verification');
 
+Route::get('/not-verified', function(){
+    return view('front.not-verified');
+})->name('not-verified');
+
 
 Route::get('/job-listing','JobController@index')->name('job-listing');
 Route::get('/job-details/{id}','JobController@show')->name('job-details');
@@ -41,25 +42,27 @@ Route::get('/job-details/{id}','JobController@show')->name('job-details');
 Route::get('/applicant-listing','ApplicantController@index')->name('applicant-listing');
 
 Route::get('/company-listing','CompanyController@index')->name('company-listing');
+Route::get('/company-details/{id}','CompanyController@showDetails')->name('company-details');
 
 Route::get('/download-resume/{id}', 'ApplicantController@downloadResume');
 
-//Companies Group
+
+//Companies auth Group
 Route::group(['middleware' => ['auth:company']], function(){
 
     Route::get('/company-profile','CompanyController@show')->name('company-profile');
     Route::post('/company-update','CompanyController@update');
     Route::get('/company-post-job','JobController@create');
     Route::post('/company-post-job','JobController@post');
-
 });
 
-// Applicants Group
+
+// Applicants auth Group
 Route::group(['middleware' => ['auth:applicant']], function(){
 
-    Route::get('/applicant-profile','ApplicantController@show');
+    Route::get('/applicant-profile','ApplicantController@show')->name('applicant-profile');
     Route::post('/applicant-answer', 'AnswerController@store');
-
+    Route::post('/applicant-update','ApplicantController@update');
 });
 
 

@@ -149,6 +149,12 @@
                                             </ul>
                                         </div>
                                     </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="hot-jobs-btn">
+                                        <a href="{{url('company-details/')}}/{{$item->id}}" class="default-btn">Browse Company</a>
+                                        </div>
+                                    </div>
             
                                     
                                 </div>

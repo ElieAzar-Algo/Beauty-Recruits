@@ -1,6 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {{-- url('{{asset('images/banners/March2019') }} --}}
 <section class="banner-area ptb-100" style="background-image: url('{{asset('assets/images/welcome-image.jpg')}}'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
     <div class="d-table">
@@ -9,7 +10,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-7">
                         <div class="banner-content">
-                            <div class="page-title-content">
+                            <div id="banner" class="page-title-content">
                                 <h1 style="color: #ffffff;">Job Listing</h1>
                                 <p style="color: #F78154;">
                                     <a href={{route('home')}} style="color: #ffffff;">
@@ -26,14 +27,17 @@
         </div>
     </div>
 </section>
+<div id="section">
+
+</div>
 <!-- Start Job Listing Area -->
-<section class="job-listing-area ptb-100">
+<section  class="job-listing-area ptb-100">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
 
                 @foreach ($data as $item)
-                <div class="hot-jobs-list">
+                <div id="jobs" class="hot-jobs-list">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="hot-jobs-content">
@@ -69,9 +73,13 @@
 
             <div class="col-lg-4">
                 <div class="job-listing-sidebar">
-                   
+                   <div>
+                       <input type='text' name='search' id='search' placeholder="Search" onkeyup="searchFunction(event)" onblur="searchFunction(event)"/>
+                       
+                           <a  href="{{url('job-listing')}}" id="search-route" style="font-size: 1.5rem;"><i class="fa fa-search fa-x2"></i></a>
+                   </div>
 
-                    <div class="job-listing-widget">
+                    {{-- <div class="job-listing-widget">
                         <ul class="accordion-widget">
                             <li class="accordion-item">
                                 <a class="accordion-widget-title active" href="javascript:void(0)">
@@ -84,21 +92,21 @@
                                         <label class="single-check">
                                             
                                         <a href="{{url('job-listing/?experience=0')}}" type="link" checked="checked" name="radio-5" >All </a>
-                                            {{-- <span class="checkmark"></span> --}}
+                                           
                                         </label>
                                     </li>
                                     <li>
                                         <label class="single-check">
                                             
                                             <a href="{{url('job-listing/?experience=1')}}" type="link" checked="checked" name="radio-5">1 Year and above</a>
-                                            {{-- <span class="checkmark"></span> --}}
+                                            
                                         </label>
                                     </li>
                                     <li>
                                         <label class="single-check">
                                             
                                             <a href="{{url('job-listing/?experience=3')}}" type="link" checked="checked" name="radio-5">3 Years and above</a>
-                                            {{-- <span class="checkmark"></span> --}}
+                                            
                                         </label>
                                     </li>
                                     <li>
@@ -118,12 +126,35 @@
                                 </ul>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- End Job Listing Area -->
+<script>
+    function searchFunction(e)
+    {
+        e.preventDefault();
+        if(e.target.value)
+        {
+            console.log(e.target.value)
+            var a = document.getElementById('search-route');
+            a.href = `{{url('job-listing/?search=${e.target.value}')}}`;
+        }
+        else
+        {
+            var a = document.getElementById('search-route');
+             a.href = `{{url('job-listing')}}`;
+        }
+    }
+
+    window.onload = function() {
+        var elmnt = document.getElementById("section");
+        elmnt.scrollIntoView({behavior: "smooth", block: "start", inline: "start"}); 
+    }
+</script>
+
     
 @endsection

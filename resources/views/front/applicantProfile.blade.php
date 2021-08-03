@@ -54,9 +54,9 @@
 
             <div class="col-lg-8">
                 <div class="candidates-resume-content">
-                    <form class="resume-info">
+                    <form class="resume-info" action="{{url(env('APP_URL').'applicant-update')}}" method="POST">
                         <h3>Personal Details</h3>
-
+                        @csrf
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6">
+                            {{-- <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
                                     <label>Date Of Barth</label>
                                     <div class="input-group date" id="datetimepicker">
@@ -136,7 +136,7 @@
                                     <label>Address Details</label>
                                     <textarea name="message" class="form-control" rows="4"></textarea>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <h3>Career And Application Information</h3>
@@ -153,7 +153,7 @@
                         <h3>Experience</h3>
 
                         <div class="row">
-                            <div class="col-lg-6 col-md-6">
+                            {{-- <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
                                     <label>Company Name</label>
                                     <input class="form-control" type="text" name="Company">
@@ -207,10 +207,10 @@
                                         <option value="6">2025</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="col-lg-12">
-                                <a href="#" class="default-btn">Save</a>
+                                <input type="submit" class="default-btn" value="Save">
                             </div>
                         </div>
                     </form>

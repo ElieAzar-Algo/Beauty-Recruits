@@ -16,14 +16,15 @@ class JobController extends Controller
     public function index()
 
     {
-        if(request()->has('experience'))
+        if(request()->has('search'))
         {
-            $data = Job::where('years_of_experience',">=", request('experience'))
+            // dd(request('search'));
+            $data = Job::where('job_title','LIKE',request('search').'%')
             ->orderBy('created_at','DESC')
             ->with('company')
             ->with('field_expertise')
             ->paginate(4)
-            ->appends('experience', request('experience'));
+            ->appends('search', request('search'));
             return view('front.job-listing', compact('data'));
         }
         else 
