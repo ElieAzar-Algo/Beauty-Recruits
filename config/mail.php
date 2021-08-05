@@ -36,8 +36,7 @@ return [
     
     //elie configuration
     'from_email'=>env('MAIL_USERNAME'),
-    'to_email'=>env('MAIL_RECEIVER'),
-    'mailer_name'=>env('MAIL_RECEIVER_NAME'),
+    
     //end conf
 
 
