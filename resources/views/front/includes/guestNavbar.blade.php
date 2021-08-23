@@ -28,7 +28,7 @@
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
                                 <a href={{route('home')}} class="nav-link active" style="color:#F78154">
-                                    Home
+                                    HomeTest
                                 </a>
                             </li>
 
