@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="mobile-menu">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href={{route('home')}}>
                             <img src="{{URL::asset('assets/images/logoo.png')}}" alt="logo">
                         </a>
                     </div>
@@ -28,7 +28,7 @@
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
                                 <a href={{route('home')}} class="nav-link active" style="color:#F78154">
-                                    HomeTest
+                                    Home
                                 </a>
                             </li>
 
