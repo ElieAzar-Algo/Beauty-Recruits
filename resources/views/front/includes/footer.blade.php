@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-widget single-bg">
-                    <a href="index.html" class="logo">
+                    <a href={{route('home')}} class="logo">
                         <img src="assets/images/black_logo_transparent_background.png" alt="Image">
                     </a>
 

@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="mobile-menu">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href=href={{route('home')}}>
                             <img src="assets/images/logoo.png" alt="logo">
                         </a>
                     </div>
@@ -21,7 +21,7 @@
         <div class="desktop-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href=href={{route('home')}}>
                         <img src="assets/images/logoo.png" alt="logo">
                     </a>
 
