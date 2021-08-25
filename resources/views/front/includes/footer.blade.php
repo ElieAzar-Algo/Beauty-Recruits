@@ -7,29 +7,29 @@
                         <img src="assets/images/black_logo_transparent_background.png" alt="Image">
                     </a>
 
-                    <p  style="color: #ffffff;">Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua consec tetur.</p>
+                    <p  style="color: #ffffff;">Beauty-Recruits makes it easy for you to find your perfect job within all sectors of the hair, spa, medical spa and beauty industry. There are always hundreds of exciting job vacancies being advertised on our site.</p>
 
                     <ul class="social-icon">
-                        <li>
+                        {{-- <li>
                             <a href="#">
                                 <i class="bx bxl-facebook"></i>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
-                            <a href="#">
+                            <a href="https://instagram.com/br.beautyrecruits?igshid=1kyn8e112nvcz" target="_blank">
                                 <i class="bx bxl-instagram"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="http://linkedin.com/in/beauty-recruits-10984821a"  target="_blank">
                                 <i class="bx bxl-linkedin-square"></i>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#">
                                 <i class="bx bxl-twitter"></i>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -39,11 +39,11 @@
                     <h3  style="color: #ffffff;">Contact</h3>
 
                     <ul class="address">
-                        <li>
+                        {{-- <li>
                             <i class="bx bx-phone-call" style="color: #F78154;"></i>
                             <span  style="color: #ffffff;">Phone:</span>
                             <a href="tel:+1-(514)-7939-357" style="color: #c3c3c3;">+1 (514) 7939-357</a>
-                        </li>
+                        </li> --}}
                         <li>
                             <i class="bx bx-envelope" style="color: #F78154;"></i>
                             <span  style="color: #ffffff;">Email:</span>

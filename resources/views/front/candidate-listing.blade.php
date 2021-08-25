@@ -11,8 +11,8 @@
                             <div class="page-title-content">
                                 <h1 style="color: #ffffff;">Candidates Listing</h1>
                                 <p style="color: #F78154;">
-                                    <a href={{route('home')}}>
-                                        Home 
+                                    <a href={{route('home')}} style="color: #ffffff;">
+                                        Home /
                                     </a>
                                     
                                         Candidates
