@@ -215,10 +215,10 @@
 
 </style>
 <script src="https://kit.fontawesome.com/d681e607fc.js" crossorigin="anonymous"></script>
-<section>
+<section id="testing-alert">
   <div class="square_box box_three"></div>
   <div class="square_box box_four"></div>
-  <div class="container mt-5" id="testing-alert" >
+  <div class="container mt-5"  >
     <div class="row">
       <div class="col-sm-12">
         <div class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show" role="alert" data-brk-library="component__alert">
