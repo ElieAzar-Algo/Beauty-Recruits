@@ -216,8 +216,7 @@
 </style>
 <script src="https://kit.fontawesome.com/d681e607fc.js" crossorigin="anonymous"></script>
 <section id="testing-alert">
-  <div class="square_box box_three"></div>
-  <div class="square_box box_four"></div>
+  
   <div class="container mt-5"  >
     <div class="row">
       <div class="col-sm-12">
