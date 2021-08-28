@@ -44,6 +44,8 @@
     <body>
 		
 		@include('front.includes.guestNavbar')
+		@include('front.includes.under-testing')
+
 
 		
 

@@ -44,6 +44,8 @@
     <body>
 		
 		@include('front.includes.loginNavbar')
+		@include('front.includes.under-testing')
+
 
 		@yield('content')
 
