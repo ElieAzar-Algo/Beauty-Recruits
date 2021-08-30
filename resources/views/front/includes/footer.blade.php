@@ -52,7 +52,7 @@
                         <li class="location">
                             <i class="bx bx-location-plus" style="color: #F78154;"></i>
                             <span  style="color: #ffffff;">Address:</span>
-                            <span  style="color: #c3c3c3;">6890 Blvd, The Bronx, NY 1058 New York, USA</span>
+                            <span  style="color: #c3c3c3;">PO box 118683, Dubai UAE</span>
                         </li>
                     </ul>
                 </div>
@@ -70,7 +70,7 @@
                             <a href={{route('terms-conditions')}}  style="color: #ffffff;">Terms of Use</a>
                         </li>
                         <li>
-                            <a href=""  style="color: #ffffff;">Privacy Centre</a>
+                            <a href=""  style="color: #ffffff;">Privacy Center</a>
                         </li>
                     </ul>
                 </div>
