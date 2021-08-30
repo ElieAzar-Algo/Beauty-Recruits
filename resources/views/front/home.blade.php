@@ -31,7 +31,7 @@
                     <h2>New & Random Jobs</h2>
                 </div>
                 @foreach ($data as $item)
-            <div> {{$item->field_expertise->expertise_name}}</div> 
+            <div> {{$item->field_expertise}}</div> 
                
 {{--                 
                 <div class="hot-jobs-list">
