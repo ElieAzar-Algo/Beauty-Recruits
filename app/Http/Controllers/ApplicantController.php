@@ -7,6 +7,7 @@ use App\Applicant;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ApplicantValidator;
 
 
 use Mail;
@@ -41,7 +42,7 @@ class ApplicantController extends Controller
 
     
 
-    public function register(Request $request)
+    public function register(ApplicantValidator $request)
     {
 
         // dd($request->resume_pdf);
@@ -111,8 +112,9 @@ class ApplicantController extends Controller
          }
          else
          {
-            $message = "Operation Failed";
-            return view('register', compact('message'));
+            // $message = "Operation Failed";
+            // return view('register', compact('message'));
+            return response();
          }
         }
     }

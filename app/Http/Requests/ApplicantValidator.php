@@ -24,7 +24,28 @@ class ApplicantValidator extends FormRequest
     public function rules()
     {
         return [
-            //
+            'username',
+            'email' => 'email|unique:applicants',
+            'password',
+            'full_name',
+            'has_answered',
+            'title',
+            'description',
+            'location',
+            'resume_pdf',
+            'phone',
+            'years_of_experience',
+            'verified',
+            'expertise_id',
+            'photo'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.email' => "Email must be in this format example@example",
+            'email.unique' => "Email already exist",
         ];
     }
 }

@@ -36,7 +36,12 @@
         <!-- Start User Area -->
 		<section class="user-area pb-100 pt-70">
 			<div class="container">
-				
+				@error('email')<div>
+					<div  class="alert alert-danger" role="alert">
+						{{$message}}
+					  </div>
+				</div>
+				@enderror
 				<div hidden id="applicant-form" class="row">
 					<div class="col-lg-6" style="margin: auto;">
 						<div class="user-form-content">
@@ -58,6 +63,9 @@
 											<label>Email</label>
 											<input required class="form-control" type="email" name="email">
 										</div>
+										@error('email')
+										<span>{{ $message }}</span>
+									@enderror
 									</div>
 
 									
@@ -126,7 +134,7 @@
 									<div class="col-6">
 										<div class="form-group">
 											<label>phone</label>
-											<input required class="form-control" type="text" name="phone">
+											<input required class="form-control" type="text" name="phone" placeholder="+971 XXX XXXX">
 										</div>
 									</div>
 									<div class="col-6">
@@ -174,6 +182,9 @@
 											<label>Email</label>
 											<input required class="form-control" type="email" name="email">
 										</div>
+										@error('email')
+										<span>{{ $message }}</span>
+									@enderror
 									</div>
 
 									
@@ -235,7 +246,7 @@
 									<div class="col-6">
 										<div class="form-group">
 											<label>phone</label>
-											<input required class="form-control" type="text" name="phone">
+											<input required class="form-control" type="text" name="phone" placeholder="+971 XXX XXXX">
 										</div>
 									</div>
 			
@@ -250,6 +261,7 @@
 										<button class="default-btn register" type="submit">
 											Register Now
 										</button>
+										
 									</div>
 								</div>
 							</form>
@@ -261,4 +273,8 @@
 			</div>
 		</section>
 		<!-- End User Area -->
+
+		<script>
+		
+		</script>
 @endsection
