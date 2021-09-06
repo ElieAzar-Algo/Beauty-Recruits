@@ -85,7 +85,7 @@
 
 										<div>
 											<div  hidden id="alertApplicantPassword" class="alert alert-danger" role="alert">
-												Password not match
+												Password mismatch
 											  </div>
 										</div>
 									</div>
@@ -203,7 +203,7 @@
 										</div>
 										<div>
 											<div  hidden id="alertCompanyPassword" class="alert alert-danger" role="alert">
-												Password not match
+												Password mismatch
 											  </div>
 										</div>
 									</div>
