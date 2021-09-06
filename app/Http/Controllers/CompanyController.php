@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Job;
 use Mail;
+use App\Http\Requests\CompanyValidator;
 
 class CompanyController extends Controller
 {
@@ -37,7 +38,7 @@ class CompanyController extends Controller
 
     
 
-    public function register(Request $request)
+    public function register(CompanyValidator $request)
     {
 
         $token = openssl_random_pseudo_bytes(16);
