@@ -116,12 +116,18 @@
     <div>
         <section class="full">
             <div class="containerr-fluid">
+               
                 <div class="center">
-                    <img src="assets/images/logo-white.png" alt="image"  height="300px" width="300px">
+                   
+                    <img  src="assets/images/logo-white.png" alt="image"  height="300px" width="300px">
+                   
                 </div>
+            
+            <a href="{{url('/login-page')}}">
                 <div class="centered">
                     <h2> One last step! check your email to verify</h2>  
                 </div>
+            </a>
             </div>
         </section>
 </div>   

@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Start Banner Area -->
-<section class="banner-area ptb-100" style="background-image: url('assets/images/welcome-image.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+<section class="banner-area ptb-100" style="background-image: url('assets/images/intro-image.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container-fluid">

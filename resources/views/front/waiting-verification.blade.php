@@ -123,9 +123,9 @@
         <div class="containerr-fluid" >
 
         <div class="center">
-            <img src="assets/images/logo-white.png" alt="image"  height="300px" width="300px">
-         </div>
-    
+            <img  src="assets/images/logo-white.png" alt="image"  height="300px" width="300px">
+         </div href="{{url('/login-page')}}">
+         <a>
         <div class="centered">
 
         <p class="text"> Hello, please wait for the admin to verify you</p>
@@ -135,6 +135,7 @@
             ready to go ! </h4>
 
     </div>
+</a>
 </div>
 
 </section>
