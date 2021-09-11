@@ -10,7 +10,7 @@
                 <div class="mobile-menu">
                     <div class="logo">
                         <a href={{route('home')}}>
-                            <img src="assets/images/logoo.png" alt="logo">
+                            <img src="public/assets/images/logo-header.png" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href={{route('home')}}>
-                        <img src="assets/images/logo-header.png" alt="logo">
+                        <img src="public/assets/images/logo-header.png" alt="logo">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu">
