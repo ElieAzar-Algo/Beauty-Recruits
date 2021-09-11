@@ -21,7 +21,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href={{route('home')}}>
-                        <img src="{{URL::asset('assets/images/logoo.png')}}" alt="logo">
+                        <img src="{{URL::asset('assets/images/logo-header.png')}}" alt="logo">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu">
