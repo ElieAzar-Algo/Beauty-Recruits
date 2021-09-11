@@ -20,7 +20,7 @@
         <div class="desktop-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href=href={{route('home')}}>
+                    <a class="navbar-brand" href={{route('home')}}>
                         <img src="assets/images/logoo.png" alt="logo">
                     </a>
 
