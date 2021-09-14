@@ -28,7 +28,7 @@
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
-                                <a href={{route('home')}} class="nav-link active" style="color:#F78154">
+                                <a href={{route('home')}} class="nav-link">
                                     Home
                                 </a>
                             </li>

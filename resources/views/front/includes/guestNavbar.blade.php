@@ -2,6 +2,11 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="{{URL::asset('assets/images/icon/favicon.png')}}">
 <header class="header-area">
+    <style>
+        .aactive{
+            color:#F78154 !importrant;
+        }
+    </style>
 			
     <!-- Start Navbar Area -->
     <div class="navbar-area">
@@ -27,25 +32,25 @@
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
-                                <a href={{route('home')}} class="nav-link active" style="color:#F78154">
+                                <a href={{route('home')}} class="nav-link {{ request()->is('home') ? 'a_actv' : ''}}">
                                     Home
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href={{route('job-listing')}} class="nav-link">
+                                <a href={{route('job-listing')}} class="nav-link {{ request()->is('job-listing') ? 'a_actv' : ''}}">
                                     Jobs
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href={{route('applicant-listing')}} class="nav-link">
+                                <a href={{route('applicant-listing')}} class="nav-link {{ request()->is('applicant-listing') ? 'a_actv' : ''}}">
                                     Candidates
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href={{route('company-listing')}} class="nav-link">
+                                <a href={{route('company-listing')}} class="nav-link {{ request()->is('company-listing') ? 'a_actv' : ''}}">
                                     Companies
                                 </a>
                             </li>

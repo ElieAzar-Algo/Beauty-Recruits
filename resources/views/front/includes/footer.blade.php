@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-widget single-bg">
                     <a href={{route('home')}} class="logo">
-                        <img src="assets/images/black_logo_transparent_background.png" alt="Image">
+                        <img src="assets/images/logo-footer.png" alt="Image">
                     </a>
 
                     <p  style="color: #ffffff;">Beauty-Recruits makes it easy for you to find your perfect job within all sectors of the hair, spa, medical spa and beauty industry. There are always hundreds of exciting job vacancies being advertised on our site.</p>

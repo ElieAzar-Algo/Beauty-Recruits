@@ -38,7 +38,11 @@
 		<link rel="icon" type="image/png" href="{{URL::asset('assets/images/icon/favicon.png')}}">
 		<!-- Title -->
 		<title>Beauty Recruits</title>
-		
+		<style>
+		.a_actv{
+				color:#F78154 !important;
+			}
+		</style>
     </head>
 
     <body>
