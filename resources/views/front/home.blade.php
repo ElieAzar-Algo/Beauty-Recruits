@@ -2,15 +2,22 @@
 
 @section('content')
 <!-- Start Banner Area -->
-<section class="banner-area ptb-100" style="background-image: url('public/assets/images/intro-image.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+<section class="banner-area ptb-100" style="background-image: url('public/assets/images/intro-image.jpg'); 
+background-repeat: no-repeat; 
+background-position: center center;
+background-attachment: fixed; 
+background-size: cover;
+background-color: #336161;
+width: 100%;
+height: 750px;">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-7">
                         <div class="banner-content">
-                            <h1 style="color: #ffffff;">Find Your Career to Make a Better Life</h1>
-                            <p style="color: #ffffff;">Search Over 10,000 Jobs Today!</p>
+                            <h1 style="color: #ffffff;">Your Hair, Beauty and Medical Spa Career starts here!</h1>
+                            <p style="color: #ffffff;font size: 30px;">Register your profile or company absolutely free!</p>
                         </div>
                     </div>
                 </div>
