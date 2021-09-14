@@ -225,7 +225,7 @@
                             </li> --}}
                             <li>
                                 Salary
-                            <span>{{$data->salary}}</span>
+                            <span>{{$data->salary}} USD</span>
                             </li>
                         </ul>
                     </div>
