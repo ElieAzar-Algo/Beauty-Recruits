@@ -42,6 +42,22 @@
 		.a_actv{
 				color:#F78154 !important;
 			}
+			
+			.pagination > li > span,
+			.pagination > li > a
+			 {
+			z-index: 3;
+			color: #ddd;
+			background-color: #336161;
+			border-color: #ddd;
+		}
+
+		.page-item.active .page-link {
+			z-index: 3;
+			color: #fff;
+			background-color: #F78154;
+			border-color: #F78154;
+		}
 		</style>
     </head>
 

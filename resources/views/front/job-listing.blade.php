@@ -74,7 +74,7 @@
             <div class="col-lg-4">
                 <div class="job-listing-sidebar">
                    <div>
-                       <input type='text' name='search' id='search' placeholder="Search" onkeyup="searchFunction(event)" onblur="searchFunction(event)"/>
+                       <input type='text' name='search' id='search' placeholder="Search..." onkeyup="searchFunction(event)" onblur="searchFunction(event)"/>
                        
                            <a  href="{{url('job-listing')}}" id="search-route" style="font-size: 1.5rem;"><i class="fa fa-search fa-x2"></i></a>
                    </div>
