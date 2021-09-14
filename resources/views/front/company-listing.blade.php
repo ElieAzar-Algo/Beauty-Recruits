@@ -139,7 +139,7 @@
             
                                     <div class="col-lg-5">
                                         <div class="hot-jobs-content">
-                                        <h3><a href="employers-details.html">{{$item->name}}</a></h3>
+                                        <h3><a href="{{url('company-details/')}}/{{$item->id}}">{{$item->name}}</a></h3>
                                         <span class="sub-title">{{$item->field_expertise->expertise_name}}</span>
                                             <ul>
                                             <li><span>Jobs:</span> {{$item->job->count()}}</li>
