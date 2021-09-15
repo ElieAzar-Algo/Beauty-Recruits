@@ -73,13 +73,13 @@
 									{{-- &nbsp; --}}
 									<div class="col-6">
 										<div class="form-group">
-											<label>Password</label>
-											<input required  id="applicantPassword" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+											<label>Password <span hidden id="passwordMessage" style="color:red"> Password must contains at least one number, one lowercase, one uppercase letter, and six characters</span></label>
+											<input required  onblur="check_Password(this.value)" id="applicantPassword" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="form-group">
-											<label>Confirm Password</label>
+											<label>Confirm Password </label>
 											<input required onblur="passwords(this.id,'applicantPassword','alertApplicantPassword')" id="applicantConfirmPassword" class="form-control" type="password" name="confirm-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 										</div>
 
@@ -195,13 +195,13 @@
 									{{-- &nbsp; --}}
 									<div class="col-6">
 										<div class="form-group">
-											<label>Password</label>
-											<input required id='companyPassword' class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+											<label>Password <span hidden id="passwordMessage_2" style="color:red"> Password must contains at least one number, one lowercase, one uppercase letter, and six characters</span></label>
+											<input required onblur="check_Password(this.value)"  id='companyPassword' class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="form-group">
-											<label>Confirm Password</label>
+											<label>Confirm Password </label>
 											<input required  onblur="passwords(this.id,'companyPassword','alertCompanyPassword')" id="companyConfirmPassword" class="form-control" type="password" name="confirm-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 										</div>
 										<div>
@@ -278,7 +278,24 @@
 		</section>
 		<!-- End User Area -->
 
-		<script>
-		
-		</script>
+		<script type="text/javascript">
+	 	var passwordValidator = true
+		function check_Password(str)
+			{
+				console.log(str)
+			  // at least one number, one lowercase and one uppercase letter
+			  // at least six characters
+			  var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+			  
+			  var passwordValidator = re.test(str)
+			  if(!passwordValidator){
+				document.getElementById('passwordMessage').hidden = false
+				document.getElementById('passwordMessage_2').hidden = false
+			  }else{
+				document.getElementById('passwordMessage').hidden = true
+				document.getElementById('passwordMessage_2').hidden = true
+			  }
+			}
+		  
+		  </script>
 @endsection
