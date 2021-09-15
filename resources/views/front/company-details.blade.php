@@ -73,11 +73,11 @@
                             </li> --}}
                             <li>
                                 Location
-                            <span>: {{$company->location}}</span>
+                            <span style="margin-left: -50px">: {{$company->location}}</span>
                             </li>
                             <li>
                                 Email
-                            <span>: {{$company->email}}</span></a>
+                            <span>: {{$company->email}}</span>
                             </li>
                             <li>
                                 Call

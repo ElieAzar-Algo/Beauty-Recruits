@@ -5,7 +5,7 @@
 		<div class="page-title-area">
 			<div class="container">
 				<div class="page-title-content">
-					<h2>Start your journey with us</h2>
+					<h2>Get your job offer in front of qualified candidates</h2>
 					<ul>
 						<li>
 							<a href="{{url('/home')}}">
@@ -21,8 +21,8 @@
         
         <div class="row mt-4">
             <div class="col-sm-6 offset-sm-3 d-flex p-2">
-                <button onclick="showApplicantForm()" class="btn btn-primary w-50">I am an Applicant</button>
-                <button onclick="showCompanyForm()" class="btn btn-success w-50"  >I am a Company</button>
+                <button style="height:300px; background-color:#F78154;  margin-right:20px; font-size:40px; font-weight:900" onclick="showApplicantForm()" class="btn w-50">Job Seekers</button>
+                <button style="height:300px; background-color:#336161 ;  font-size:40px; font-weight:900" onclick="showCompanyForm()" class="btn w-50"  >Employers</button>
             </div>
         </div>
         @isset($message)
@@ -91,7 +91,7 @@
 									</div>
 									<div class="col-6">
 										<div class="form-group">
-											<label>username</label>
+											<label>Username</label>
 											<input required class="form-control" type="text" name="username">
 										</div>
 									</div>
@@ -101,7 +101,7 @@
 											<input required class="form-control" type="text" name="title">
 										</div>
 									</div>
-									<div class="col-12">
+									<div class="col-6">
 										<div class="form-group">
 											<label>Expertise</label>
 											<br>
@@ -113,10 +113,23 @@
 											</select>
 										</div>
 									</div>
+
 									<div class="col-6">
 										<div class="form-group">
-											<label>location</label>
+											<label>Years Of Experience</label>
+											<input  style="" required class="form-control" type="number" name="years_of_experience">
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label>Location</label>
 											<input required class="form-control" type="text" name="location">
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label>phone</label>
+											<input required class="form-control" type="text" name="phone" placeholder="ex: +(XXX) XXX XXXX">
 										</div>
 									</div>
 									<div class="col-6">
@@ -131,22 +144,12 @@
 											<input required class="form-control" type="file" name="photo" >
 										</div>
 									</div>
-									<div class="col-6">
-										<div class="form-group">
-											<label>phone</label>
-											<input required class="form-control" type="text" name="phone" placeholder="+971 XXX XXXX">
-										</div>
-									</div>
-									<div class="col-6">
-										<div class="form-group">
-											<label>Years Of Experience</label>
-											<input required class="form-control" type="number" name="years_of_experience">
-										</div>
-									</div>
+									
+								
 									<div class="col-12">
 										<div class="form-group">
-											<label>description</label>
-											<input required class="form-control" type="textarea" name="description">
+											<label>Description</label>
+											<input required class="form-control" type="textarea" name="description" style="height:150px;">
 										</div>
 									</div>
 									<div class="col-12">
