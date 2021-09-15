@@ -21,8 +21,8 @@
         
         <div class="row mt-4">
             <div class="col-sm-6 offset-sm-3 d-flex p-2">
-                <button style="height:300px; background-color:#F78154;  margin-right:20px; font-size:40px; font-weight:900" onclick="showApplicantForm()" class="btn w-50">Job Seekers</button>
-                <button style="height:300px; background-color:#336161 ;  font-size:40px; font-weight:900" onclick="showCompanyForm()" class="btn w-50"  >Employers</button>
+                <button style="height:300px; background-color:#F78154;  margin-right:20px; font-size:40px; font-weight:900; color:white" onclick="showApplicantForm()" class="btn w-50">Job Seekers</button>
+                <button style="height:300px; background-color:#336161 ;  font-size:40px; font-weight:900; color:white" onclick="showCompanyForm()" class="btn w-50"  >Employers</button>
             </div>
         </div>
         @isset($message)
