@@ -212,17 +212,12 @@
 									</div>
 									<div class="col-6">
 										<div class="form-group">
-											<label>username</label>
+											<label>Username</label>
 											<input required class="form-control" type="text" name="username">
 										</div>
 									</div>
+								
 									<div class="col-6">
-										<div class="form-group">
-											<label>Introduction</label>
-											<input required class="form-control" type="text" name="introduction">
-										</div>
-									</div>
-									<div class="col-12">
 										<div class="form-group">
 											<label>Expertise</label>
 											<br>
@@ -236,7 +231,7 @@
 									</div>
 									<div class="col-6">
 										<div class="form-group">
-											<label>location</label>
+											<label>Location</label>
 											<input required class="form-control" type="text" name="location">
 										</div>
 									</div>
@@ -248,15 +243,21 @@
 									</div>
 									<div class="col-6">
 										<div class="form-group">
-											<label>phone</label>
-											<input required class="form-control" type="text" name="phone" placeholder="+971 XXX XXXX">
+											<label>Phone</label>
+											<input required class="form-control" type="text" name="phone" placeholder="ex: +(xxx) xxx xxx">
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label>Introduction</label>
+											<input required class="form-control" type="text" name="introduction">
 										</div>
 									</div>
 			
 									<div class="col-12">
 										<div class="form-group">
-											<label>description</label>
-											<input required class="form-control" type="textarea" name="description">
+											<label>Description</label>
+											<input required class="form-control" type="textarea" name="description" style="height:150px;">
 										</div>
 									</div>
 									
