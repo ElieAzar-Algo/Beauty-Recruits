@@ -74,13 +74,13 @@
 									<div class="col-6">
 										<div class="form-group">
 											<label>Password</label>
-											<input required  id="applicantPassword" class="form-control" type="password" name="password">
+											<input required  id="applicantPassword" class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="form-group">
 											<label>Confirm Password</label>
-											<input required onblur="passwords(this.id,'applicantPassword','alertApplicantPassword')" id="applicantConfirmPassword" class="form-control" type="password" name="confirm-password">
+											<input required onblur="passwords(this.id,'applicantPassword','alertApplicantPassword')" id="applicantConfirmPassword" class="form-control" type="password" name="confirm-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 										</div>
 
 										<div>
@@ -196,13 +196,13 @@
 									<div class="col-6">
 										<div class="form-group">
 											<label>Password</label>
-											<input required id='companyPassword' class="form-control" type="password" name="password">
+											<input required id='companyPassword' class="form-control" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="form-group">
 											<label>Confirm Password</label>
-											<input required  onblur="passwords(this.id,'companyPassword','alertCompanyPassword')" id="companyConfirmPassword" class="form-control" type="password" name="confirm-password">
+											<input required  onblur="passwords(this.id,'companyPassword','alertCompanyPassword')" id="companyConfirmPassword" class="form-control" type="password" name="confirm-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
 										</div>
 										<div>
 											<div  hidden id="alertCompanyPassword" class="alert alert-danger" role="alert">
