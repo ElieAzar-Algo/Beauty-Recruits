@@ -12,14 +12,14 @@
 <div class="page-title-area">
     <div class="container">
         <div class="page-title-content">
-            <h2>Privacy & Policy</h2>
+            <h2>Disclaimers</h2>
             <ul>
                 <li>
                     <a href={{route('home')}}>
                         Home
                     </a>
                 </li>
-                <li class="active" >Privacy & Policy</li>
+                <li class="active" >Disclaimers</li>
             </ul>
         </div>
     </div>

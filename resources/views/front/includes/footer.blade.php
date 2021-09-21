@@ -99,7 +99,7 @@
                             <a href="{{route('terms-conditions')}}"  style="color: #ffffff;">Terms of Use</a>
                         </li>
                         <li>
-                            <a href=""  style="color: #ffffff;">Acceptable Use Policy</a>
+                            <a href="{{route('acceptable-use-policy')}}"  style="color: #ffffff;">Acceptable Use Policy</a>
                         </li>
                         <li>
                             <a href="{{route('disclaimers-page')}}"   style="color: #ffffff;">Disclaimer</a>

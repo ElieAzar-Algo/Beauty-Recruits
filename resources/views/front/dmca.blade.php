@@ -5,14 +5,14 @@
 <div class="page-title-area">
     <div class="container">
         <div class="page-title-content">
-            <h2>FAQ</h2>
+            <h2>DMCA Policy</h2>
             <ul>
                 <li>
                 <a href="{{route('home')}}">
                         Home 
                     </a>
                 </li>
-                <li class="active">FAQ</li>
+                <li class="active">DMCA Policy</li>
             </ul>
         </div>
     </div>

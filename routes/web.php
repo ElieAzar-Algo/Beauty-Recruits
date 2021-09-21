@@ -19,6 +19,7 @@ Route::get('/terms-conditions', 'TermConditionController@index')->name('terms-co
 Route::get('/privacy-policy', 'PrivacyPolicyController@index')->name('privacy-policy');
 Route::get('/disclaimers', 'DisclaimersController@index')->name('disclaimers-page');
 Route::get('/dmca', 'DmcaController@index')->name('dmca-page');
+Route::get('/acceptable-use-policy', 'AcceptableUsePolicyController@index')->name('acceptable-use-policy');
 Route::get('/faq', 'FaqController@index')->name('faq-page');
 
 Route::post('/applicant/login', 'ApplicantController@login');
