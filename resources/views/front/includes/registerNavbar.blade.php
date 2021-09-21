@@ -41,13 +41,13 @@
 
                             <li class="nav-item">
                                 <a href={{route('applicant-listing')}} class="nav-link">
-                                    Candidates
+                                    Job Seekers
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a href={{route('company-listing')}} class="nav-link">
-                                    Companies
+                                    Employers
                                 </a>
                             </li>
                             

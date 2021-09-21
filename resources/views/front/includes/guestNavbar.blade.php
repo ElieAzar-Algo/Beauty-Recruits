@@ -45,13 +45,13 @@
 
                             <li class="nav-item">
                                 <a href={{route('applicant-listing')}} class="nav-link {{ request()->is('applicant-listing') ? 'a_actv' : ''}}">
-                                    Candidates
+                                    Job Seekers
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a href={{route('company-listing')}} class="nav-link {{ request()->is('company-listing') ? 'a_actv' : ''}}">
-                                    Companies
+                                    Employers
                                 </a>
                             </li>
                             
