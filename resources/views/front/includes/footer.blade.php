@@ -85,12 +85,7 @@
                         <li>
                             <a href="{{route('job-listing')}}" style="color: #ffffff;">Jobs</a>
                         </li>
-                        <li>
-                            <a href={{route('terms-conditions')}}  style="color: #ffffff;">Terms of Use</a>
-                        </li>
-                        <li>
-                            <a href=""  style="color: #ffffff;">Privacy Center</a>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>
