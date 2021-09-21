@@ -105,7 +105,7 @@
                             <a href="{{route('disclaimers-page')}}"   style="color: #ffffff;">Disclaimer</a>
                         </li>
                         <li>
-                            <a href=""  style="color: #ffffff;">DMCA policy</a>
+                            <a href="{{route('dmca-page')}}"  style="color: #ffffff;">DMCA Policy</a>
                         </li>
                         <li>
                             <a href="{{route('privacy-policy')}}"  style="color: #ffffff;">Privacy Policy</a>
