@@ -60,11 +60,30 @@
 
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-widget">
-                    <h3  style="color: #ffffff;">Companies</h3>
+                    <h3  style="color: #ffffff;">My Account</h3>
 
                     <ul class="import-link">
                         <li>
+                            @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())
+                            <a style="color: #adadadbf;">Create Account</a>
+                            @else
                             <a href="{{route('register')}}"  style="color: #ffffff;">Create Account</a>
+                            @endif
+
+                        </li>
+
+                        <li>
+                            @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())
+                            <a style="color: #adadadbf;">Login</a>
+                            @else
+                            <a href="{{url('/login-page')}}"  style="color: #ffffff;">Login</a>
+                            @endif
+                        </li>
+                        <li>
+                            <a href="{{route('company-listing')}}"  style="color: #ffffff;">Employers</a>
+                        </li>
+                        <li>
+                            <a href="{{route('job-listing')}}" style="color: #ffffff;">Jobs</a>
                         </li>
                         <li>
                             <a href={{route('terms-conditions')}}  style="color: #ffffff;">Terms of Use</a>
@@ -78,18 +97,25 @@
 
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-widget">
-                    <h3  style="color: #ffffff;">Job Seekers</h3>
+                    <h3  style="color: #ffffff;">Customer Care</h3>
 
                     <ul class="import-link">
                         <li>
-                            <a href="{{route('job-listing')}}" style="color: #ffffff;">Jobs</a>
+                            <a href={{route('terms-conditions')}}  style="color: #ffffff;">Terms of Use</a>
                         </li>
                         <li>
-                            <a href="{{route('company-listing')}}"  style="color: #ffffff;">Companies</a>
+                            <a href=""  style="color: #ffffff;">Acceptable Use Policy</a>
                         </li>
                         <li>
-                        <a href="{{route('register')}}"  style="color: #ffffff;">Register</a>
+                            <a href=""  style="color: #ffffff;">Disclaimer</a>
                         </li>
+                        <li>
+                            <a href=""  style="color: #ffffff;">DMCA policy</a>
+                        </li>
+                        <li>
+                            <a href=""  style="color: #ffffff;">Privacy Policy</a>
+                        </li>
+                        
                         <li>
                         <a href="{{route('faq-page')}}"  style="color: #ffffff;">FAQ</a>
                         </li>
