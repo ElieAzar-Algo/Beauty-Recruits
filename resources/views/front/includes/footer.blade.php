@@ -96,7 +96,7 @@
 
                     <ul class="import-link">
                         <li>
-                            <a href={{route('terms-conditions')}}  style="color: #ffffff;">Terms of Use</a>
+                            <a href="{{route('terms-conditions')}}"  style="color: #ffffff;">Terms of Use</a>
                         </li>
                         <li>
                             <a href=""  style="color: #ffffff;">Acceptable Use Policy</a>
@@ -108,7 +108,7 @@
                             <a href=""  style="color: #ffffff;">DMCA policy</a>
                         </li>
                         <li>
-                            <a href=""  style="color: #ffffff;">Privacy Policy</a>
+                            <a href="{{route('privacy-policy')}} "  style="color: #ffffff;">Privacy Policy</a>
                         </li>
                         
                         <li>
