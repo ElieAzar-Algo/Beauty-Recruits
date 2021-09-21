@@ -102,13 +102,13 @@
                             <a href=""  style="color: #ffffff;">Acceptable Use Policy</a>
                         </li>
                         <li>
-                            <a href=""  style="color: #ffffff;">Disclaimer</a>
+                            <a href="{{route('disclaimers-page')}}"   style="color: #ffffff;">Disclaimer</a>
                         </li>
                         <li>
                             <a href=""  style="color: #ffffff;">DMCA policy</a>
                         </li>
                         <li>
-                            <a href="{{route('privacy-policy')}} "  style="color: #ffffff;">Privacy Policy</a>
+                            <a href="{{route('privacy-policy')}}"  style="color: #ffffff;">Privacy Policy</a>
                         </li>
                         
                         <li>
