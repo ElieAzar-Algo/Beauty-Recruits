@@ -45,7 +45,7 @@
 				<div hidden id="applicant-form" class="row">
 					<div class="col-lg-6" style="margin: auto;">
 						<div class="user-form-content">
-							<h3 style="color: #ffffff;">Create an Account as an applicant</h3>
+							<h3 style="color: #ffffff;">Create an Account as a Job Seeker</h3>
 							
 
 							<form class="user-form" action="{{url(env('APP_URL').'applicant/register')}}" method="post" enctype="multipart/form-data">
@@ -167,7 +167,7 @@
 				<div hidden id="company-form" class="row">
 					<div class="col-lg-6" style="margin: auto;">
 						<div class="user-form-content">
-							<h3 style="color: #ffffff;">Create an Account as a Company</h3>
+							<h3 style="color: #ffffff;">Create an Account as an Employer</h3>
 							
 
 							<form class="user-form" action="{{url(env('APP_URL').'company/register')}}" method="post">

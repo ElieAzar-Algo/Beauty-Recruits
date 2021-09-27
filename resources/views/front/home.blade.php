@@ -2,7 +2,34 @@
 
 @section('content')
 <!-- Start Banner Area -->
-<section class="banner-area ptb-100" style="background-image: url('public/assets/images/intro-image.jpg'); 
+<section class="banner-area ptb-100" style="background-image: url('{{asset('assets/images/intro-image.jpg')}}'); background-repeat:no-repeat;
+background-position:center;
+background-attachment:fixed;
+background-size:cover;
+background-color:#336161;
+width:100%;
+height:750px;">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container-fluid">
+                <div class="row align-items-center mr-0 m-lg-3">
+                    <div class="col-lg-6">
+                        <div class="banner-content">
+                            <div id="banner" class="page-title-content">
+                                <h1 style="color: #ffffff; " >Your Hair, Beauty and <br> Medical Spa Career <br> starts here!</h1>
+                            <p style="color: #ffffff;font size: 30px;">Register your profile or company <br>absolutely free!</p>
+                        </div>
+                                 
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{-- <section class="banner-area ptb-100" style="background-image: url('public/assets/images/intro-image.jpg'); 
 background-repeat: no-repeat; 
 background-position: center center;
 background-attachment: fixed; 
@@ -24,7 +51,7 @@ height: 750px;">
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- End Banner Area -->
 
 <!-- Start Hot Jobs Area -->

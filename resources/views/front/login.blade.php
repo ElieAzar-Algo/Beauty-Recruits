@@ -40,7 +40,7 @@
 				<div class="row">
 					<div class="col-lg-6" style="margin: auto;">
 						<div hidden id="applicant-form" class="user-form-content log-in-50">
-							<h3 style="color: #ffffff;">Log In as Applicant</h3>
+							<h3 style="color: #ffffff;">Login as Job Seeker</h3>
 						
 							<form  class="user-form" action="{{url(env('APP_URL').'applicant/login')}}" method="post">
 								<div class="row">
@@ -68,7 +68,7 @@
 						</div>
 
 						<div hidden id="company-form" class="user-form-content log-in-50">
-							<h3 style="color: #ffffff;">Log In as Company</h3>
+							<h3 style="color: #ffffff;">Login as an Employer</h3>
 						
 							<form  class="user-form" action="{{url(env('APP_URL').'company/login')}}" method="post">
 								<div class="row">
