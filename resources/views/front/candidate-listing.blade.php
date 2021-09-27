@@ -1,15 +1,17 @@
 @extends('layouts.site')
 
 @section('content')
-<section class="banner-area ptb-100" style="background-image: url('assets/images/welcome-image.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-lg-7">
-                        <div class="banner-content">
+<section class="banner-area ptb-100" style="background-image: url('public/assets/images/job-seekers.png'); background-position:center;
+background-attachment:fixed;
+background-size:cover;
+background-color:#336161;
+width:100%;
+height:750px;">
+    
+    
+                        <div class="container" style="text-align:center; margin-top:200px">
                             <div class="page-title-content">
-                                <h1 style="color: #ffffff;">Candidates Listing</h1>
+                                <h1 style="color: #ffffff; font-size:50px" >Candidates Listing</h1>
                                 <p style="color: #F78154;">
                                     <a href={{route('home')}} style="color: #ffffff;">
                                         Home /
@@ -19,11 +21,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </section>
 
 <!-- Start Candidates Listing Area -->

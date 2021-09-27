@@ -1,15 +1,16 @@
 @extends('layouts.site')
 @section('content')
 
-<section class="banner-area ptb-100" style="background-image: url('assets/images/welcome-image.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-lg-7">
-                        <div class="banner-content">
+<section class="banner-area ptb-100" style="background-image: url('public/assets/images/employers.png'); background-position:center;
+background-attachment:fixed;
+background-size:cover;
+background-color:#336161;
+width:100%;
+height:750px;"">
+ 
+                        <div class="container" style="text-align:center; margin-top:200px">
                             <div class="page-title-content">
-                                <h1 style="color: #ffffff;">Employers Listing</h1>
+                                <h1 style="color: #ffffff; font-size:50px">Employers Listing</h1>
                                 <p style="color: #F78154;">
                                     <a href={{route('home')}} style="color: #ffffff;">
                                         Home /
@@ -18,12 +19,7 @@
                                         Companies
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </section>
 <!-- Start Employers Listing Area -->
 <section class="employers-listing-area ptb-100">

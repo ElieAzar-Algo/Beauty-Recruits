@@ -3,16 +3,17 @@
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {{-- url('{{asset('images/banners/March2019') }} --}}
-<section class="banner-area ptb-100" style="background-image: url('{{asset('assets/images/welcome-image.jpg')}}'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-lg-7">
-                        <div class="banner-content">
+<section class="banner-area ptb-100" style="background-image: url('{{asset('public/assets/images/jobs.png')}}'); background-position:center;
+background-attachment:fixed;
+background-size:cover;
+background-color:#336161;
+width:100%;
+height:750px;">
+  
+                        <div class="container" style="text-align:center;margin-top:200px">
                             <div id="banner" class="page-title-content">
-                                <h1 style="color: #ffffff;">Job Listing</h1>
-                                <p style="color: #F78154;">
+                                <h1 style="color:#ffffff; font-size:50px">Job Listing</h1>
+                                <p style="color:#F78154;">
                                     <a href={{route('home')}} style="color: #ffffff;">
                                             Home /
                                         </a>
@@ -21,11 +22,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
 </section>
 <div id="section">
 
