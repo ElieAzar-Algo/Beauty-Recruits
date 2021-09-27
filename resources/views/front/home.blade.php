@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Start Banner Area -->
-<section class="banner-area ptb-100" style="background-image: url('{{asset('assets/images/intro-image.jpg')}}'); background-repeat:no-repeat;
+<section class="banner-area ptb-100" style="background-image: url('{{asset('public/assets/images/intro-image.jpg')}}'); background-repeat:no-repeat;
 background-position:center;
 background-attachment:fixed;
 background-size:cover;
