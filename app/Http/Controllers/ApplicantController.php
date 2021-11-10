@@ -6,41 +6,38 @@ use Illuminate\Http\Request;
 use App\Applicant;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ApplicantValidator;
+use Illuminate\Support\Facades\Hash;
 
-
+use Illuminate\Support\Facades\Validator;
 use Mail;
 
 class ApplicantController extends Controller
 {
-    public function login() 
+    public function login()
     {
+
         $credentials = request(['email', 'password']);
-        
-        if (auth()->guard('applicant')->attempt($credentials))
-        {
+
+        if (auth()->guard('applicant')->attempt($credentials)) {
             $id = auth()->guard('applicant')->id();
             $applicant = Applicant::where('id', $id)->first();
 
-                if($applicant->verified == 1)
-                {
-                    return redirect()->route('home');
-                }
-                else
-                {
-                    $logout = auth()->guard('applicant')->logout();
-                    
-                    return redirect()->route('waiting-verification');
-                }
-        }
-        else
-        {
-            return redirect()->route('login'); 
+            if ($applicant->verified == 1) {
+                return redirect()->route('home');
+            } else {
+                $logout = auth()->guard('applicant')->logout();
+
+                return redirect()->route('waiting-verification');
+            }
+        } else {
+            return Redirect::back()->with('failed_login', 'Login failed. Account not found');
+//            return redirect()->route('login');
         }
     }
 
-    
 
     public function register(ApplicantValidator $request)
     {
@@ -49,128 +46,184 @@ class ApplicantController extends Controller
         $token = openssl_random_pseudo_bytes(16);
 
         //Convert the binary data into hexadecimal representation.
-        //Cryptographic Token 
+        //Cryptographic Token
         $token = bin2hex($token);
 
-        if($token)
-        {
+        if ($token) {
             $folderPath = public_path('storage/applicant-resumes');
-            if (! File::exists($folderPath)) 
-            {
-                $response = mkdir($folderPath); 
+            if (!File::exists($folderPath)) {
+                $response = mkdir($folderPath);
             }
 
-        $applicant = new Applicant();
+            $applicant = new Applicant();
 
-        $applicant->fill([
+            $applicant->fill([
 
-            'username'=> $request->username,
-            'email' => $request->email,
-            'password'    => $request->password,
-            'full_name' => $request->full_name,
-            'has_answered'  => 1,
-            'title'=> $request->title,
-            'description'=>$request->description,
-            'location'=>$request->location,
-            
-            'phone'=>$request->phone,
-            'years_of_experience'=>$request->years_of_experience,
-            'expertise_id'=>$request->expertise_id,
-         ]);
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => $request->password,
+                'full_name' => $request->full_name,
+                'has_answered' => 1,
+                'title' => $request->title,
+                'description' => $request->description,
+                'location' => $request->location,
+
+                'phone' => $request->phone,
+                'years_of_experience' => $request->years_of_experience,
+                'expertise_id' => $request->expertise_id,
+            ]);
             $date = date('Y-m-d-h-i-sa');
 
-            $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes','MyResume-'.$request->username.$date.'.pdf');
+            $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
             $applicant->resume_pdf = $path;
 
-            $photo = $request->file('photo')->storeAs('applicant-photos','MyPhoto-'.$request->username.$date.'.jpg','public');
+            $photo = $request->file('photo')->storeAs('applicant-photos', 'MyPhoto-' . $request->username . $date . '.jpg', 'public');
             $applicant->photo = $photo;
 
             $applicant->token = $token;
 
-         if($applicant->save())
-         {
+            if ($applicant->save()) {
 
-            // Log::info(config('mail.from_email'));
-            // Log::info($request->email);
-            // Log::info($request->full_name);
-            $mailData = array(
-                'message' => 'Verification Email Beauty Recruits',
-                'name' => $applicant->full_name,
-                'token' => $token ,
-                'id' => $applicant->id,
-                'email' => $applicant->email
-            );
-    
-            Mail::send('mail.applicant-verificationEmail', ["data" => $mailData], function($message) use ($request)
-            {
-                $message->from(config('mail.from_email'),'Beauty-Recruits');
-                $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
-            });
+                // Log::info(config('mail.from_email'));
+                // Log::info($request->email);
+                // Log::info($request->full_name);
+                $mailData = array(
+                    'message' => 'Verification Email Beauty Recruits',
+                    'name' => $applicant->full_name,
+                    'token' => $token,
+                    'id' => $applicant->id,
+                    'email' => $applicant->email
+                );
 
-            
-            return redirect()->route('not-verified');
-         }
-         else
-         {
-            // $message = "Operation Failed";
-            // return view('register', compact('message'));
-            return response();
-         }
+                Mail::send('mail.applicant-verificationEmail', ["data" => $mailData], function ($message) use ($request) {
+                    $message->from(config('mail.from_email'), 'Beauty-Recruits');
+                    $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
+                });
+
+
+                return redirect()->route('not-verified');
+            } else {
+                // $message = "Operation Failed";
+                // return view('register', compact('message'));
+                return response();
+            }
         }
     }
 
-        public function downloadResume($id)
-        {
-            $applicant = Applicant::find($id);
-            // dd($applicant->resume_pdf);
-            $path = $applicant->resume_pdf;
 
-            return Storage::download($path);
-        }
-    
+    public function reset(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+        ]);
 
-       public function show()
-        {
-
-            $id = auth()->guard('applicant')->id();
-            
-            $applicant = Applicant::where('id', $id)->with('field_expertise')->first();
-
-            return view('front.applicantProfile', compact('applicant'));
+        $user = Applicant::where('email', $request->email)->first();
+        if (!$user) {
+            return back()->with('failed_login', 'Failed! email is not registered.');
         }
 
-        public function index()
-        {
-            
-            $data = Applicant::orderBy('created_at','DESC')
+
+        $token = openssl_random_pseudo_bytes(16);
+
+        //Convert the binary data into hexadecimal representation.
+        //Cryptographic Token
+        $token = bin2hex($token);
+
+        $user->token = $token;
+//        $user['is_verified'] = 0;
+        $user->save();
+        $mailData = array(
+            'name' => 'Verification Email Beauty Recruits',
+            'token' => $token
+        );
+
+
+        Mail::send('mail.reset-password', ['user' => $mailData], function ($message) use ($user) {
+            $message->from(config('mail.from_email'), 'Beauty-Recruits');
+            $message->to($user->email, $user->username)->subject('Password Reset Link');
+        });
+
+        if (Mail::failures() != 0) {
+            return redirect()->route('login')->with('failed_login', 'Success! password reset link has been sent to your email');
+        }
+        return back()->with('failed_login', 'Failed! there is some issue with email provider');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $rules = array(
+            'email' => 'email|required',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password');
+        $inputs = array(
+            'email' => $request->email,
+            'password' => $request->password,
+            'confirm_password' => $request->confirm_password,
+        );
+        $validator = Validator::make($inputs, $rules);
+        if ($validator->fails()) {
+            return redirect()->back()->with('failed_login', 'password does not match, or less than 6 charecters');
+        }
+
+        $user = Applicant::where('email', $request->email)->first();
+        if ($user) {
+            $user->fill([
+                'token' => '',
+                'password' => $request->password]);
+            $user->save();
+            return redirect()->route('login')->with('failed_login', 'Success! password has been changed');
+        }
+        return redirect()->back()->with('failed_login', 'Failed! something went wrong');
+    }
+
+    public function downloadResume($id)
+    {
+        $applicant = Applicant::find($id);
+        // dd($applicant->resume_pdf);
+        $path = $applicant->resume_pdf;
+
+        return Storage::download($path);
+    }
+
+
+    public function show()
+    {
+
+        $id = auth()->guard('applicant')->id();
+
+        $applicant = Applicant::where('id', $id)->with('field_expertise')->first();
+
+        return view('front.applicantProfile', compact('applicant'));
+    }
+
+    public function index()
+    {
+
+        $data = Applicant::orderBy('created_at', 'DESC')
             ->with('field_expertise')
             ->paginate(10);
-            return view('front.candidate-listing', compact('data'));
-        
-        }
+        return view('front.candidate-listing', compact('data'));
 
-        public function update(Request $request)
-        {
-            $id = auth()->guard('applicant')->id();
+    }
 
-            $company = Applicant::find($id);
+    public function update(Request $request)
+    {
+        $id = auth()->guard('applicant')->id();
 
-            if($company)
-            {
-                $company->update($request->all());
-                if ($company->save())
-                {
-                    return redirect()->route('applicant-profile');
-                }
-                else
-                {
-                    return response()->json([
-                        'success' => false,
-                        'message' => "Operation Failed",
-                    ], 404);
-                }
+        $company = Applicant::find($id);
+
+        if ($company) {
+            $company->update($request->all());
+            if ($company->save()) {
+                return redirect()->route('applicant-profile');
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => "Operation Failed",
+                ], 404);
             }
         }
+    }
 
-    
+
 }
