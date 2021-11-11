@@ -12,22 +12,21 @@
                             Home
                         </a>
                     </li>
-                    <li class="active">Reset Password</li>
+                    <li class="active">Company Reset Password</li>
                 </ul>
             </div>
         </div>
     </div>
     <!-- End Page Title Area -->
     @if (\Session::has('failed_login'))
-        <div id="reset-alert"
-
+        <div id="company-reset-alert"
             class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show"
             role="alert" data-brk-library="component__alert">
 
             <i class="start-icon fa fa-exclamation-triangle faa-flash animated"></i>
             {!! \Session::get('failed_login') !!}
 
-            <button onclick="closeFuctionReset()" style="float:right;background-color:#faebd6;" type="button"
+            <button onclick="closeFuctionCompanyReset()" style="float:right;background-color:#faebd6;" type="button"
                     class="close font__size-18" data-dismiss="alert">
             <span aria-hidden="true">
               <i class="fa fa-times warning"></i>
@@ -43,9 +42,9 @@
             <div class="row">
                 <div class="col-lg-6" style="margin: auto;">
                     <div class="user-form-content log-in-50">
-                        <h3 style="color: #ffffff;">Reset Password</h3>
+                        <h3 style="color: #ffffff;">Company Reset Password</h3>
 
-                        <form class="user-form" action="{{url(env('APP_URL').'applicant/reset-password')}}" method="post">
+                        <form class="user-form" action="{{url(env('APP_URL').'company/reset-password')}}" method="post">
                             <div class="row">
                                 @csrf
                                 <div class="col-12">

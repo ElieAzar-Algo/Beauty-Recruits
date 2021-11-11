@@ -33,7 +33,7 @@ class ApplicantController extends Controller
                 return redirect()->route('waiting-verification');
             }
         } else {
-            return Redirect::back()->with('failed_login', 'Login failed. Account not found');
+            return Redirect::back()->with('failed_login', 'Incorrect email or password. <a href="'. url('/reset-password') . '"> Reset Password  </a> ');
 //            return redirect()->route('login');
         }
     }
@@ -113,9 +113,15 @@ class ApplicantController extends Controller
 
     public function reset(Request $request)
     {
-        $this->validate($request, [
-            'email' => 'required|email',
-        ]);
+        $rules = array(
+            'email' => 'required|email');
+        $inputs = array(
+            'email' => $request->email
+        );
+        $validator = Validator::make($inputs, $rules);
+        if ($validator->fails()) {
+            return redirect()->back()->with('failed_login', 'You did not enter your email correctly');
+        }
 
         $user = Applicant::where('email', $request->email)->first();
         if (!$user) {
@@ -162,7 +168,7 @@ class ApplicantController extends Controller
         );
         $validator = Validator::make($inputs, $rules);
         if ($validator->fails()) {
-            return redirect()->back()->with('failed_login', 'password does not match, or less than 6 charecters');
+            return redirect()->back()->with('failed_login', 'Password does not match, or must contains at least one number, one lowercase, one uppercase letter, and six characters');
         }
 
         $user = Applicant::where('email', $request->email)->first();

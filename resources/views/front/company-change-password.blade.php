@@ -5,29 +5,28 @@
     <div class="page-title-area">
         <div class="container">
             <div class="page-title-content">
-                <h2>Change Password</h2>
+                <h2>Company Change Password</h2>
                 <ul>
                     <li>
                         <a href="index.html">
                             Home
                         </a>
                     </li>
-                    <li class="active">Change Password</li>
+                    <li class="active">Company Change Password</li>
                 </ul>
             </div>
         </div>
     </div>
     <!-- End Page Title Area -->
     @if (\Session::has('failed_login'))
-        <div
-            id="change-password-alert"
+        <div id="company-change-password-alert"
             class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show"
             role="alert" data-brk-library="component__alert">
 
             <i class="start-icon fa fa-exclamation-triangle faa-flash animated"></i>
             {!! \Session::get('failed_login') !!}
 
-            <button onclick="closeFuctionChangePassword()" style="float:right;background-color:#faebd6;" type="button"
+            <button onclick="closeFuctionCompanyChangePassword()" style="float:right;background-color:#faebd6;" type="button"
                     class="close font__size-18" data-dismiss="alert">
             <span aria-hidden="true">
               <i class="fa fa-times warning"></i>
@@ -46,7 +45,7 @@
                     <div class="user-form-content log-in-50">
 
 
-                        <form class="user-form" action="{{url(env('APP_URL').'applicant/change-password')}}" method="post">
+                        <form class="user-form" action="{{url(env('APP_URL').'company/change-password')}}" method="post">
                             <div class="row">
                                 @csrf
                                 <div class="col-12">

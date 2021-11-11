@@ -27,6 +27,9 @@ Route::post('/applicant/register', 'ApplicantController@register');
 Route::post('/applicant/reset-password', 'ApplicantController@reset');
 Route::post('/applicant/change-password', 'ApplicantController@updatePassword');
 
+Route::post('/company/reset-password', 'CompanyController@reset');
+Route::post('/company/change-password', 'CompanyController@updatePassword');
+
 Route::post('/company/login', 'CompanyController@login');
 Route::post('/company/register', 'CompanyController@register');
 
@@ -36,6 +39,8 @@ Route::get('/login-page', 'AuthController@indexLogin')->name('login');
 Route::get('/register-page', 'AuthController@indexRegister')->name('register');
 Route::get('/reset-password', 'AuthController@indexResetPassword')->name('reset');
 Route::get('/change-password', 'AuthController@forgotPasswordValidate')->name('change-password');
+Route::get('/company-reset-password', 'AuthController@indexCompanyResetPassword')->name('company-reset');
+Route::get('/company-change-password', 'AuthController@forgotCompanyPasswordValidate')->name('company-change-password');
 
 Route::get('/waiting-verification', function(){
     return view('front.waiting-verification');

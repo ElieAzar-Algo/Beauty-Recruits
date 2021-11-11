@@ -1,5 +1,5 @@
 <style>
-  
+
 
 .alert>.start-icon {
     margin-right: 0;
@@ -78,7 +78,7 @@
     color: #0e0d0c;
     text-shadow: none;
     float: right;
-   
+
 }
 
 
@@ -216,12 +216,12 @@
 </style>
 <script src="https://kit.fontawesome.com/d681e607fc.js" crossorigin="anonymous"></script>
 <section id="testing-alert">
-  
+
   <div class="container mt-5"  >
     <div class="row">
       <div class="col-sm-12">
         <div class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show" role="alert" data-brk-library="component__alert">
-          
+
           <i class="start-icon fa fa-exclamation-triangle faa-flash animated"></i>
           <strong class="font__weight-semibold">Attention!</strong> The website is under testing...
 
@@ -229,10 +229,10 @@
             <span aria-hidden="true">
               <i class="fa fa-times warning"></i>
             </span>
-            
+
           </button>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -243,4 +243,24 @@
 {
 document.getElementById('testing-alert').setAttribute('hidden',true)
 }
+  function closeFuctionCompanyChangePassword()
+  {
+      document.getElementById('company-change-password-alert').setAttribute('hidden',true)
+  }
+  function closeFuctionCompanyReset()
+  {
+      document.getElementById('company-reset-alert').setAttribute('hidden',true)
+  }
+  function closeFuctionLogin()
+  {
+      document.getElementById('login-alert').setAttribute('hidden',true)
+  }
+  function closeFuctionReset()
+  {
+      document.getElementById('reset-alert').setAttribute('hidden',true)
+  }
+  function closeFuctionChangePassword()
+  {
+      document.getElementById('change-password-alert').setAttribute('hidden',true)
+  }
 </script>
