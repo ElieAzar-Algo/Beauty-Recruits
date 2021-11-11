@@ -99,7 +99,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input class="form-control" type="text" name="email" disabled>
+                                        <input class="form-control" type="text" name="email" >
                                     </div>
                                 </div>
 
