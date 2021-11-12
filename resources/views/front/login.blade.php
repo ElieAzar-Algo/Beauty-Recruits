@@ -86,6 +86,10 @@
                                         Log In
                                     </button>
                                 </div>
+                                <div class="col-12">
+                                    <a href="{{url(env('APP_URL').'company-reset-password')}}"> Reset Password  </a>
+
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -113,6 +117,9 @@
                                     <button class="default-btn" type="submit">
                                         Log In
                                     </button>
+                                </div>
+                                <div class="col-12">
+                                    <a href="{{url(env('APP_URL').'company-reset-password')}}">  Reset Password  </a>
                                 </div>
                             </div>
                         </form>
