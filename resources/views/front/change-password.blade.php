@@ -21,7 +21,8 @@
     @if (\Session::has('failed_login'))
         <div
             id="change-password-alert"
-            class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show"
+            class="alert alert-danger"
+{{--            class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show"--}}
             role="alert" data-brk-library="component__alert">
 
             <i class="start-icon fa fa-exclamation-triangle faa-flash animated"></i>
