@@ -23,15 +23,41 @@ Route::get('/acceptable-use-policy', 'AcceptableUsePolicyController@index')->nam
 Route::get('/faq', 'FaqController@index')->name('faq-page');
 
 Route::post('/applicant/login', 'ApplicantController@login');
+Route::get('/applicant/login', function () {
+    return redirect('/home');
+});
 Route::post('/applicant/register', 'ApplicantController@register');
+Route::get('/applicant/register', function () {
+    return redirect('/home');
+});
 Route::post('/applicant/reset-password', 'ApplicantController@reset');
+Route::get('/applicant/reset-password', function () {
+    return redirect('/home');
+});
 Route::post('/applicant/change-password', 'ApplicantController@updatePassword');
-
+Route::get('/applicant/change-password', function () {
+    return redirect('/home');
+});
 Route::post('/company/reset-password', 'CompanyController@reset');
+Route::get('/company/reset-password', function () {
+    return redirect('/home');
+});
+
 Route::post('/company/change-password', 'CompanyController@updatePassword');
+Route::get('/company/change-password', function () {
+    return redirect('/home');
+});
 
 Route::post('/company/login', 'CompanyController@login');
+Route::get('/company/login', function () {
+    return redirect('/home');
+});
+
+
 Route::post('/company/register', 'CompanyController@register');
+Route::get('/company/register', function () {
+    return redirect('/home');
+});
 
 Route::get('/logout', 'AuthController@logout');
 
@@ -67,6 +93,10 @@ Route::group(['middleware' => ['auth:company']], function(){
 
     Route::get('/company-profile','CompanyController@show')->name('company-profile');
     Route::post('/company-update','CompanyController@update');
+    Route::get('/company-update', function () {
+        return redirect('/home');
+    });
+
     Route::get('/company-post-job','JobController@create');
     Route::post('/company-post-job','JobController@post');
 });
@@ -77,7 +107,13 @@ Route::group(['middleware' => ['auth:applicant']], function(){
 
     Route::get('/applicant-profile','ApplicantController@show')->name('applicant-profile');
     Route::post('/applicant-answer', 'AnswerController@store');
+    Route::get('/applicant-answer', function () {
+        return redirect('/home');
+    });
     Route::post('/applicant-update','ApplicantController@update');
+    Route::get('/applicant-update', function () {
+        return redirect('/home');
+    });
 });
 
 
