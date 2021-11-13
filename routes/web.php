@@ -23,15 +23,31 @@ Route::get('/acceptable-use-policy', 'AcceptableUsePolicyController@index')->nam
 Route::get('/faq', 'FaqController@index')->name('faq-page');
 
 Route::post('/applicant/login', 'ApplicantController@login');
+Route::get('/applicant/login', 'ApplicantController@login');
+
+Route::post('/applicant/login', 'ApplicantController@login');
+Route::get('/applicant/login', 'ApplicantController@login');
+
 Route::post('/applicant/register', 'ApplicantController@register');
+Route::get('/applicant/register', 'ApplicantController@register');
+
 Route::post('/applicant/reset-password', 'ApplicantController@reset');
+Route::get('/applicant/reset-password', 'ApplicantController@reset');
+
 Route::post('/applicant/change-password', 'ApplicantController@updatePassword');
+Route::get('/applicant/change-password', 'ApplicantController@updatePassword');
 
 Route::post('/company/reset-password', 'CompanyController@reset');
+Route::get('/company/reset-password', 'CompanyController@reset');
+
 Route::post('/company/change-password', 'CompanyController@updatePassword');
+Route::get('/company/change-password', 'CompanyController@updatePassword');
 
 Route::post('/company/login', 'CompanyController@login');
+Route::get('/company/login', 'CompanyController@login');
+
 Route::post('/company/register', 'CompanyController@register');
+Route::get('/company/register', 'CompanyController@register');
 
 Route::get('/logout', 'AuthController@logout');
 
@@ -67,6 +83,7 @@ Route::group(['middleware' => ['auth:company']], function(){
 
     Route::get('/company-profile','CompanyController@show')->name('company-profile');
     Route::post('/company-update','CompanyController@update');
+    Route::get('/company-update','CompanyController@update');
     Route::get('/company-post-job','JobController@create');
     Route::post('/company-post-job','JobController@post');
 });
@@ -77,7 +94,10 @@ Route::group(['middleware' => ['auth:applicant']], function(){
 
     Route::get('/applicant-profile','ApplicantController@show')->name('applicant-profile');
     Route::post('/applicant-answer', 'AnswerController@store');
+    Route::get('/applicant-answer', 'AnswerController@store');
+
     Route::post('/applicant-update','ApplicantController@update');
+    Route::get('/applicant-update','ApplicantController@update');
 });
 
 
