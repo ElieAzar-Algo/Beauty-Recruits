@@ -88,7 +88,8 @@ Route::get('/company-details/{id}','CompanyController@showDetails')->name('compa
 Route::get('/download-resume/{id}', 'ApplicantController@downloadResume');
 
 
-//Companies auth Group
+
+//Companies auth Group Beauty Recruits
 Route::group(['middleware' => ['auth:company']], function(){
 
     Route::get('/company-profile','CompanyController@show')->name('company-profile');
