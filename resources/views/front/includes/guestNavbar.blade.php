@@ -7,7 +7,7 @@
             color:#F78154 !importrant;
         }
     </style>
-			
+
     <!-- Start Navbar Area -->
     <div class="navbar-area">
         <div class="mobile-nav">
@@ -33,7 +33,7 @@
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
                                 <a href={{route('home')}} class="nav-link {{ request()->is('home') ? 'a_actv' : ''}}">
-                                    Home
+                                    Lab
                                 </a>
                             </li>
 
@@ -54,9 +54,9 @@
                                     Employers
                                 </a>
                             </li>
-                            
+
                         </ul>
-                        
+
                         <div class="others-option">
                             @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())
                             <div class="get-quote">
@@ -79,7 +79,7 @@
                             </div>
                         @endif
                         @else
-                        
+
                         <div class="others-option">
                             <div class="get-quote">
                                 <a href="{{url('/register-page')}}" class="default-btn" style="background-color: #336161;">
@@ -140,4 +140,3 @@
     </div>
     <!-- End Navbar Area -->
 </header>
- 
