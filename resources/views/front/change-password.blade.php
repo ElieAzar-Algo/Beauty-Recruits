@@ -40,6 +40,7 @@
 
 
     <!-- Start User Area -->
+    <!-- Start User Area -->
     <section class="user-area pb-100 pt-70">
         <div class="container">
             <div class="row">
