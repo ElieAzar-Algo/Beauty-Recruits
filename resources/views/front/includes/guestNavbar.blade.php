@@ -33,7 +33,7 @@
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
                                 <a href={{route('home')}} class="nav-link {{ request()->is('home') ? 'a_actv' : ''}}">
-                                    Lab
+                                    Home
                                 </a>
                             </li>
 
