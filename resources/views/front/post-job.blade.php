@@ -6,14 +6,14 @@
 <div class="page-title-area">
     <div class="container">
         <div class="page-title-content">
-            <h2>Candidate</h2>
+            <h2>Company</h2>
             <ul>
                 <li>
                     <a href={{route('home')}}>
-                        Home 
+                        Home
                     </a>
                 </li>
-                <li class="active">Candidate Profile</li>
+                <li class="active">Company Profile</li>
             </ul>
         </div>
     </div>
@@ -72,7 +72,7 @@
 									</div>
 								</div>
                             </div>
-                            
+
 
 							<div class="col-lg-12 col-md-12">
 								<div class="col-lg-12">
@@ -93,8 +93,8 @@
                                                 @foreach ($categories as $category)
 
                                                 <option value="{{$category->id}}">{{$category->expertise_name}}</option>
-               
-                                                @endforeach		
+
+                                                @endforeach
 										</select>
 									</div>
 								</div>
@@ -112,7 +112,7 @@
 									</select>
 								</div>
                             </div>
-                            
+
                             <div class="col-lg-12 col-md-12">
 								<div class="col-lg-12">
 									<div class="form-group">
@@ -128,10 +128,10 @@
 									<div class="input-group date" id="datetimepicker">
 										<input required type="text" class="form-control" placeholder="12/11/2021" name="time_frame">
 										<span class="input-group-addon"></span>
-									</div>	
+									</div>
 								</div>
 							</div>
-							
+
 							<div class="col-lg-12 col-md-12">
 								<div class="form-group">
 									<label>Salary Currency</label>
@@ -158,11 +158,11 @@
 									<textarea required name="question" class="form-control" rows="6"></textarea>
 								</div>
                             </div>
-                            
+
                             <div class="col-lg-12 col-md-12">
 								<div class="col-lg-12">
 									<div class="form-group">
-										<label>Date Posteddddd*</label>
+										<label>Date Posted*</label>
 										<input requiured class="form-control" type="date" name="date_posted" placeholder="yyyy-mm-dd" value=""
 										min="1997-01-01" max="2030-12-31">
 									</div>
@@ -181,5 +181,5 @@
 			</div>
 		</section>
 <!-- End Candidates Profile Area -->
-    
+
 @endsection
