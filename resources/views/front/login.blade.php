@@ -8,7 +8,7 @@
                 <h2>Start Recruiting Now</h2>
                 <ul>
                     <li>
-                        <a href="index.html">
+                        <a href="{{url('/home')}}">
                             Home
                         </a>
                     </li>

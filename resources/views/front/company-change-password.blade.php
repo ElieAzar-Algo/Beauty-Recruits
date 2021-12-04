@@ -8,7 +8,7 @@
                 <h2>Company Change Password</h2>
                 <ul>
                     <li>
-                        <a href="index.html">
+                        <a href="{{url('/home')}}">
                             Home
                         </a>
                     </li>
