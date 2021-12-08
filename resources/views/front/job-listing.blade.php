@@ -9,7 +9,7 @@ background-size:cover;
 background-color:#336161;
 width:100%;
 height:750px;">
-  
+
                         <div class="container" style="text-align:center;margin-top:200px">
                             <div id="banner" class="page-title-content">
                                 <h1 style="color:#ffffff; font-size:50px">Job Listing</h1>
@@ -17,12 +17,12 @@ height:750px;">
                                     <a href={{route('home')}} style="color: #ffffff;">
                                             Home /
                                         </a>
-                                    
+
                                         Job Listing
                                 </p>
                             </div>
                         </div>
-  
+
 </section>
 <div id="section">
 
@@ -58,7 +58,7 @@ height:750px;">
 
                 @endforeach
 
-                
+
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <div class="pagination-area">
@@ -72,7 +72,7 @@ height:750px;">
                 <div class="job-listing-sidebar">
                    <div>
                        <input type='text' name='search' id='search' placeholder="Search..." onkeyup="searchFunction(event)" onblur="searchFunction(event)"/>
-                       
+
                            <a  href="{{url('job-listing')}}" id="search-route" style="font-size: 1.5rem;"><i class="fa fa-search fa-x2"></i></a>
                    </div>
 
@@ -87,37 +87,37 @@ height:750px;">
                                 <ul class="accordion-widget-content show">
                                     <li>
                                         <label class="single-check">
-                                            
+
                                         <a href="{{url('job-listing/?experience=0')}}" type="link" checked="checked" name="radio-5" >All </a>
-                                           
+
                                         </label>
                                     </li>
                                     <li>
                                         <label class="single-check">
-                                            
+
                                             <a href="{{url('job-listing/?experience=1')}}" type="link" checked="checked" name="radio-5">1 Year and above</a>
-                                            
+
                                         </label>
                                     </li>
                                     <li>
                                         <label class="single-check">
-                                            
+
                                             <a href="{{url('job-listing/?experience=3')}}" type="link" checked="checked" name="radio-5">3 Years and above</a>
-                                            
+
                                         </label>
                                     </li>
                                     <li>
                                         <label class="single-check">
-                                            
+
                                             <a href="{{url('job-listing/?experience=5')}}" type="link" checked="checked" name="radio-5">5 Years and above</a>
-                                           
+
                                         </label>
                                     </li>
                                     <li>
                                         <label class="single-check">
-                                           
+
                                             <a href="{{url('job-listing/?experience=7')}}" type="link"  name="radio-5">7 Years above</a>
-                                           
+
                                         </label>
                                     </li>
                                 </ul>
@@ -149,9 +149,9 @@ height:750px;">
 
     window.onload = function() {
         var elmnt = document.getElementById("section");
-        elmnt.scrollIntoView({behavior: "smooth", block: "start", inline: "start"}); 
+        elmnt.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
     }
 </script>
 
-    
+
 @endsection

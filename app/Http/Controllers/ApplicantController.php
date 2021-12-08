@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Applicant;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Validator;
 use Mail;
-
+use Session;
+use URL;
 class ApplicantController extends Controller
 {
     public function login()
@@ -26,7 +28,12 @@ class ApplicantController extends Controller
             $applicant = Applicant::where('id', $id)->first();
 
             if ($applicant->verified == 1) {
-                return redirect()->route('home');
+                $privUrl=str_replace(url('/'), '', Session::get('url.intended'));
+
+                if($privUrl=='/login-page'){
+                    return redirect()->route('home');
+                }
+                return Redirect::to(Session::get('url.intended'));
             } else {
                 $logout = auth()->guard('applicant')->logout();
 
@@ -204,10 +211,18 @@ class ApplicantController extends Controller
 
     public function index()
     {
-
-        $data = Applicant::orderBy('created_at', 'DESC')
-            ->with('field_expertise')
+//
+//        $data = Applicant::orderBy('created_at', 'DESC')
+//            ->with('field_expertise')
+//            ->paginate(10);
+        $data = Applicant::
+        join('fields_expertises', 'fields_expertises.id', '=', 'applicants.expertise_id')
+            ->select(DB::raw('LEFT(applicants.full_name , 3) as full_name'),'applicants.location','applicants.years_of_experience','applicants.photo',
+                'fields_expertises.*')
+//            ->with('field_expertise')
+            -> orderBy('applicants.created_at', 'DESC')
             ->paginate(10);
+        $x=0;
         return view('front.candidate-listing', compact('data'));
 
     }

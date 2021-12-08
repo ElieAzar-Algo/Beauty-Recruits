@@ -7,12 +7,14 @@ use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\FieldExpertise;
-
+use Session;
+use URL;
 class AuthController extends Controller
 {
 
     public function indexLogin()
     {
+        Session::put('url.intended',URL::previous());
         if (auth()->guard('applicant')->check() || auth()->guard('company')->check()) {
             return view('front.home');
         } else {

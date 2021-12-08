@@ -3,7 +3,7 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="assets/images/icon/favicon.png">
 <header class="header-area">
-			
+
     <!-- Start Navbar Area -->
     <div class="navbar-area">
         <div class="mobile-nav">
@@ -11,7 +11,7 @@
                 <div class="mobile-menu">
                     <div class="logo">
                         <a href=href={{route('home')}}>
-                            <img src="public/assets/images/logo-header.png" alt="logo">
+                            <img src="https://beauty-recruits.com/public/assets/images/logo-header.png" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href={{route('home')}}>
-                        <img src="public/assets/images/logo-header.png" alt="logo">
+                        <img src="https://beauty-recruits.com/public/assets/images/logo-header.png" alt="logo">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu">
@@ -50,9 +50,9 @@
                                     Employers
                                 </a>
                             </li>
-                            
+
                         </ul>
-                        
+
                         <div class="others-option">
                             @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())
                             <div class="get-quote">
@@ -62,7 +62,7 @@
                             </div>
                         @else
                         <div class="others-option">
-                            
+
                             <div class="get-quote">
                                 <a href="{{url('/login-page')}}" class="default-btn" style="background-color: #F78154;">
                                     Login
@@ -95,7 +95,7 @@
                 @else
                 <div class="container">
                     <div class="option-inner">
-                        
+
                         <div class="others-option justify-content-center d-flex align-items-center">
                             <div class="get-quote">
                                 <a href="{{url('/login-page')}}" class="default-btn">
@@ -111,4 +111,3 @@
     </div>
     <!-- End Navbar Area -->
 </header>
- 

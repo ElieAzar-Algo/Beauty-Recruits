@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-widget single-bg">
                     <a href={{route('home')}} class="logo">
-                        <img src="public/assets/images/logo-footer.png" alt="Image">
+                        <img src="https://beauty-recruits.com/public/assets/images/logo-footer.png" alt="Image">
                     </a>
 
                     <p  style="color: #ffffff;">Beauty-Recruits makes it easy for you to find your perfect job within all sectors of the hair, spa, medical spa and beauty industry. There are always hundreds of exciting job vacancies being advertised on our site.</p>
@@ -85,7 +85,7 @@
                         <li>
                             <a href="{{route('job-listing')}}" style="color: #ffffff;">Jobs</a>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                         <li>
                             <a href="{{route('privacy-policy')}}"  style="color: #ffffff;">Privacy Policy</a>
                         </li>
-                        
+
                         <li>
                         <a href="{{route('faq-page')}}"  style="color: #ffffff;">FAQ</a>
                         </li>
@@ -131,7 +131,7 @@
 			</div>
 		</div>
 		<!-- End Copy Right Area -->
-		
+
 		<!-- Start Go Top Area -->
 		<div class="go-top">
 			<i class="bx bx-chevrons-up"></i>

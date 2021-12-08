@@ -2,7 +2,7 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="assets/images/icon/favicon.png">
 <header class="header-area">
-			
+
     <!-- Start Navbar Area -->
     <div class="navbar-area">
         <div class="mobile-nav">
@@ -10,7 +10,7 @@
                 <div class="mobile-menu">
                     <div class="logo">
                         <a href={{route('home')}}>
-                            <img src="public/assets/images/logo-header.png" alt="logo">
+                            <img src="https://beauty-recruits.com/public/assets/images/logo-header.png" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href={{route('home')}}>
-                        <img src="public/assets/images/logo-header.png" alt="logo">
+                        <img src="https://beauty-recruits.com/public/assets/images/logo-header.png" alt="logo">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu">
@@ -49,9 +49,9 @@
                                     Employers
                                 </a>
                             </li>
-                            
+
                         </ul>
-                        
+
                         <div class="others-option">
                             @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())
                             <div class="get-quote">
@@ -66,7 +66,7 @@
                                     Register
                                 </a>
                             </div>
-                            
+
                         </div>
                         @endif
                     </div>
@@ -101,7 +101,7 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 @endif
