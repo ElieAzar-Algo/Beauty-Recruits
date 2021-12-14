@@ -134,13 +134,20 @@
 
 							<div class="col-lg-12 col-md-12">
 								<div class="form-group">
-									<label>Salary Currency</label>
+									<label>Monthly Salary</label>
 									<select required name="salary">
-										<option value="default">Default</option>
-										<option value="20000 To 30000">20000 To 30000</option>
-										<option value="40000 To 50000">40000 To 50000</option>
-										<option value="60000 To 70000">60000 To 70000</option>
-										<option value="80000 To 90000">80000 To 90000</option>
+                                        <option value="default">Not Disclosed </option>
+                                        <option value="Up to 1,000 USD ">Up to 1,000 USD </option>
+                                        <option value="1,000 To 2,000 USD">1,000 To 2,000 USD </option>
+                                        <option value="2,000 To 3,000 USD">2,000 To 3,000 USD </option>
+                                        <option value="3,000 To 4,000 USD">3,000 To 4,000 USD </option>
+                                        <option value="4,000 To 5,000 USD">4,000 To 5,000 USD </option>
+                                        <option value="5,000 To 6,000 USD">5,000 To 6,000 USD </option>
+                                        <option value="6,000 To 7,000 USD">6,000 To 7,000 USD </option>
+                                        <option value="7,000 To 8,000 USD">7,000 To 8,000 USD </option>
+                                        <option value="8,000 To 9,000 USD">8,000 To 9,000 USD </option>
+                                        <option value="9,000 To 10,000 USD">9,000 To 10,000 USD </option>
+                                        <option value="Over 10,000 USD">Over 10,000 USD</option>
 									</select>
 								</div>
 							</div>

@@ -45,7 +45,8 @@
                                         <ul>
                                             <li><span>Job Type:</span> {{$item->job_type}}</li>
                                             <li><span>Experience: </span>{{$item->years_of_experience}}</li>
-                                            @if(array_key_exists("location", $item->company))
+
+                                            @if(isset( $item->company->location))
                                                 <li><span>Location: </span>
                                                     {{$item->company->location}}</li>
                                             @endif
