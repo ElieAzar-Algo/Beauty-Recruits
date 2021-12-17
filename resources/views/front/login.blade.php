@@ -88,7 +88,7 @@
                                     </button>
                                 </div>
                                 <div class="col-12">
-                                    <a href="{{url(env('APP_URL').'company-reset-password')}}"> Reset Password  </a>
+                                    <a href="{{url(env('APP_URL').'reset-password')}}"> Reset Password  </a>
 
                                 </div>
                             </div>

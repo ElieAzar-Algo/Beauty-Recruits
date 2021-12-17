@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use Mail;
 use Session;
 use URL;
+
 class ApplicantController extends Controller
 {
     public function login()
@@ -28,9 +29,9 @@ class ApplicantController extends Controller
             $applicant = Applicant::where('id', $id)->first();
 
             if ($applicant->verified == 1) {
-                $privUrl=str_replace(url('/'), '', Session::get('url.intended'));
+                $privUrl = str_replace(url('/'), '', Session::get('url.intended'));
 
-                if($privUrl=='/login-page'){
+                if ($privUrl == '/login-page') {
                     return redirect()->route('home');
                 }
                 return Redirect::to(Session::get('url.intended'));
@@ -40,7 +41,7 @@ class ApplicantController extends Controller
                 return redirect()->route('waiting-verification');
             }
         } else {
-            return Redirect::back()->with('failed_login', 'Incorrect email or password. <a href="'. url('/reset-password') . '"> Reset Password  </a> ');
+            return Redirect::back()->with('failed_login', 'Incorrect email or password. <a href="' . url('/reset-password') . '"> Reset Password  </a> ');
 //            return redirect()->route('login');
         }
     }
@@ -55,65 +56,70 @@ class ApplicantController extends Controller
         //Convert the binary data into hexadecimal representation.
         //Cryptographic Token
         $token = bin2hex($token);
+        if (count($request->all())>0) {
 
-        if ($token) {
-            $folderPath = public_path('storage/applicant-resumes');
-            if (!File::exists($folderPath)) {
-                $response = mkdir($folderPath);
+            if ($token) {
+                $folderPath = public_path('storage/applicant-resumes');
+                if (!File::exists($folderPath)) {
+                    $response = mkdir($folderPath);
+                }
+
+                $applicant = new Applicant();
+
+                $applicant->fill([
+
+                    'username' => $request->username,
+                    'email' => $request->email,
+                    'password' => $request->password,
+                    'full_name' => $request->full_name,
+                    'has_answered' => 1,
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'location' => $request->location,
+
+                    'phone' => $request->phone,
+                    'years_of_experience' => $request->years_of_experience,
+                    'expertise_id' => $request->expertise_id,
+                ]);
+                $date = date('Y-m-d-h-i-sa');
+
+                $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
+                $applicant->resume_pdf = $path;
+
+                $photo = $request->file('photo')->storeAs('applicant-photos', 'MyPhoto-' . $request->username . $date . '.jpg', 'public');
+                $applicant->photo = $photo;
+
+                $applicant->token = $token;
+
+                if ($applicant->save()) {
+
+                    // Log::info(config('mail.from_email'));
+                    // Log::info($request->email);
+                    // Log::info($request->full_name);
+                    $mailData = array(
+                        'message' => 'Verification Email Beauty Recruits',
+                        'name' => $applicant->full_name,
+                        'token' => $token,
+                        'id' => $applicant->id,
+                        'email' => $applicant->email
+                    );
+
+                    Mail::send('mail.applicant-verificationEmail', ["data" => $mailData], function ($message) use ($request) {
+                        $message->from(config('mail.from_email'), 'Beauty-Recruits');
+                        $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
+                    });
+
+
+                    return redirect()->route('not-verified');
+                } else {
+                    // $message = "Operation Failed";
+                    // return view('register', compact('message'));
+                    return response();
+                }
             }
-
-            $applicant = new Applicant();
-
-            $applicant->fill([
-
-                'username' => $request->username,
-                'email' => $request->email,
-                'password' => $request->password,
-                'full_name' => $request->full_name,
-                'has_answered' => 1,
-                'title' => $request->title,
-                'description' => $request->description,
-                'location' => $request->location,
-
-                'phone' => $request->phone,
-                'years_of_experience' => $request->years_of_experience,
-                'expertise_id' => $request->expertise_id,
-            ]);
-            $date = date('Y-m-d-h-i-sa');
-
-            $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
-            $applicant->resume_pdf = $path;
-
-            $photo = $request->file('photo')->storeAs('applicant-photos', 'MyPhoto-' . $request->username . $date . '.jpg', 'public');
-            $applicant->photo = $photo;
-
-            $applicant->token = $token;
-
-            if ($applicant->save()) {
-
-                // Log::info(config('mail.from_email'));
-                // Log::info($request->email);
-                // Log::info($request->full_name);
-                $mailData = array(
-                    'message' => 'Verification Email Beauty Recruits',
-                    'name' => $applicant->full_name,
-                    'token' => $token,
-                    'id' => $applicant->id,
-                    'email' => $applicant->email
-                );
-
-                Mail::send('mail.applicant-verificationEmail', ["data" => $mailData], function ($message) use ($request) {
-                    $message->from(config('mail.from_email'), 'Beauty-Recruits');
-                    $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
-                });
-
-
-                return redirect()->route('not-verified');
-            } else {
-                // $message = "Operation Failed";
-                // return view('register', compact('message'));
-                return response();
-            }
+        }
+        else {
+            return redirect()->route('register');
         }
     }
 
@@ -217,12 +223,12 @@ class ApplicantController extends Controller
 //            ->paginate(10);
         $data = Applicant::
         join('fields_expertises', 'fields_expertises.id', '=', 'applicants.expertise_id')
-            ->select(DB::raw('LEFT(applicants.full_name , 3) as full_name'),'applicants.location','applicants.years_of_experience','applicants.photo',
+            ->select(DB::raw('LEFT(applicants.full_name , 3) as full_name'), 'applicants.location', 'applicants.years_of_experience', 'applicants.photo',
                 'fields_expertises.*')
 //            ->with('field_expertise')
-            -> orderBy('applicants.created_at', 'DESC')
+            ->orderBy('applicants.created_at', 'DESC')
             ->paginate(10);
-        $x=0;
+        $x = 0;
         return view('front.candidate-listing', compact('data'));
 
     }
