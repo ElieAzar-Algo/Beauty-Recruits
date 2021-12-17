@@ -134,7 +134,7 @@
 
 							<div class="col-lg-12 col-md-12">
 								<div class="form-group">
-									<label>Monthly Salary</label>
+									<label>monthly salary rate $ </label>
 									<select required name="salary">
                                         <option value="default">Not Disclosed </option>
                                         <option value="Up to 1,000 USD ">Up to 1,000 USD </option>

@@ -3,7 +3,7 @@
 @section('content')
 <style>
     body {font-family: Arial, Helvetica, sans-serif;}
-    
+
     /* The Modal (background) */
     .modal {
       display: none; /* Hidden by default */
@@ -18,7 +18,7 @@
       background-color: rgb(0,0,0); /* Fallback color */
       background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
-    
+
     /* Modal Content */
     .modal-content {
       position: relative;
@@ -33,18 +33,18 @@
       animation-name: animatetop;
       animation-duration: 0.4s
     }
-    
+
     /* Add Animation */
     @-webkit-keyframes animatetop {
-      from {top:-300px; opacity:0} 
+      from {top:-300px; opacity:0}
       to {top:0; opacity:1}
     }
-    
+
     @keyframes animatetop {
       from {top:-300px; opacity:0}
       to {top:0; opacity:1}
     }
-    
+
     /* The Close Button */
     .close {
       color: white;
@@ -52,14 +52,14 @@
       font-size: 28px;
       font-weight: bold;
     }
-    
+
     .close:hover,
     .close:focus {
       color: #000;
       text-decoration: none;
       cursor: pointer;
     }
-    
+
     .modal-header {
       padding: 2px 16px;
       background-color: #3c6869;
@@ -70,12 +70,12 @@
         float:left;
         color:white;
     }
-    
+
     .modal-body {padding: 2px 16px;}
-    
+
     .modal-footer {
       padding: 2px 16px;
-      
+
       color: white;
     }
     .stamp {
@@ -93,13 +93,13 @@
     -webkit-mask-size: 944px 604px;
     mix-blend-mode: multiply;
   }
-  
+
   .is-nope {
     color: #D23;
     border: 0.5rem double #D23;
     transform: rotate(3deg);
       -webkit-mask-position: 2rem 3rem;
-    font-size: 2rem;  
+    font-size: 2rem;
   }
 
   .stampDiv{
@@ -133,29 +133,29 @@
             <div class="col-lg-8">
                 <div class="hot-jobs-list">
                     <div class="row align-items-center">
-                        
+
 
                         <div class="col-lg-6">
                             <div class="hot-jobs-content">
                                 <h1>{{$data->job_title}}</h1>
                             <h3 class="sub-title">{{$data->company->name}}</h3>
                             <h5>
-                                {{$data->applicant->count()}} 
+                                {{$data->applicant->count()}}
                                 @if ($data->applicant->count() < 2)
                                 Applicant
-                                @else 
+                                @else
                                 Applicants
-                                @endif 
+                                @endif
                             </h5>
 
                             </div>
                         </div>
-                   
-                        
+
+
                         @if (Auth::guard('applicant')->check() && $indicator==0)
                         <div class="col-lg-4">
                             <div class="hot-jobs-btn">
-                                
+
                                 <button id="myBtn" class="default-btn">Apply Now</button>
                             </div>
                         </div>
@@ -185,11 +185,11 @@
                     <h3>Job Description</h3>
                 <p>{{$data->job_description}}</p>
 
-    
+
                     <h4>Experience Requirements:</h4>
 
                     <ul>
-                        
+
                     <li>{{$data->years_of_experience}} years of experience</li>
                     </ul>
                 </div>
@@ -200,7 +200,7 @@
 
                     <div class="job-widget">
                         <h3 style="color: #ffffff; ">Job Overview</h3>
-                        
+
                         <ul class="overview">
                             <li>
                                 Published On
@@ -210,7 +210,7 @@
                                 Job Type
                             <span>{{$data->job_type}}</span>
                             </li>
-                            
+
                             <li>
                                 Company Location
                             <span> {{$data->company->location}}</span>
@@ -224,7 +224,7 @@
                                 <span>: Male</span>
                             </li> --}}
                             <li>
-                                Salary
+                                Monthly salary rate
                             <span>{{$data->salary}} USD</span>
                             </li>
                         </ul>
@@ -236,7 +236,7 @@
         <div class="row" style="margin-top: 100px">
             <h2 style="margin-bottom: 50px">Applicants</h2>
             @foreach ($data->applicant as $i)
-                
+
             <div class="col-6">
                 <div class="candidates-single-listing">
                     <div class="row align-items-center">
@@ -249,7 +249,7 @@
                         <div class="col-lg-6">
                             <div class="candidates-cv-content">
                             <h3>{{$i->full_name}}</h3>
-                            
+
                                 <ul>
                                 <li><span>Location: </span>{{$i->location}}</li>
                                 <li><span>Experience: </span>{{$i->years_of_experience}} years</li>
@@ -275,11 +275,11 @@
     <form action="{{url(env('APP_URL').'applicant-answer')}}" method="post">
     <!-- Modal content -->
     <div class="modal-content">
-        
+
       <div class="modal-header">
         <h5 class="header-text" style="color:white">Please answer on this question</h5>
         <span class="close">&times;</span>
-        
+
       </div>
       <div class="modal-body">
       <p>{{$data->question}}</p>
@@ -289,14 +289,14 @@
 
       </div>
       <div class="modal-footer">
-        
+
             <div class="hot-jobs-btn">
-                
+
                 <input type="submit" id="myBtn" class="default-btn" value="Submit">
             </div>
-        
+
       </div>
-    
+
     </div>
 </form>
   </div>
@@ -304,23 +304,23 @@
   <script>
     // Get the modal
     var modal = document.getElementById("myModal");
-    
+
     // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
-    
+
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-    
-    // When the user clicks the button, open the modal 
+
+    // When the user clicks the button, open the modal
     btn.onclick = function() {
       modal.style.display = "block";
     }
-    
+
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
       modal.style.display = "none";
     }
-    
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
       if (event.target == modal) {
@@ -328,5 +328,5 @@
       }
     }
     </script>
-    
+
 @endsection
