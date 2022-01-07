@@ -10,11 +10,11 @@
             <ul>
                 <li>
                     <a href={{route('home')}}>
-                        Home 
+                        Home
                     </a>
                 </li>
                 <li class="active">Candidate Profile</li>
-            
+
             </ul>
         </div>
     </div>
@@ -30,7 +30,7 @@
                     <h3 style="color: #ffffff;">Profile</h3>
 
                     <div class="avatar-img">
-                        <img src="{{'storage/'.$applicant->photo}}" alt="Image">
+                        <img src="{{'https://beauty-recruits.com/public/assets/images/'.$applicant->photo}}" alt="Image">
 
                         <div class="avatar-mane">
                         <h4>{{$applicant->full_name}}</h4>
@@ -43,7 +43,7 @@
                             <a href="profile.html" class="active">Profile</a>
                         </li>
                         <li>
-                            <a href="change-password.html">Change Password</a>
+                            <a href="/change-password?token={{auth()->user()->token}}">Change Password</a>
                         </li>
                         <li>
                             <a href="{{url('/logout')}}">Log Out</a>
@@ -93,7 +93,7 @@
                                         <input type="text" class="form-control" placeholder="12/11/2021">
                                         <span class="input-group-addon"></span>
                                         <i class="bx bx-calendar"></i>
-                                    </div>	
+                                    </div>
                                 </div>
                             </div>
 
@@ -220,5 +220,5 @@
     </div>
 </section>
 <!-- End Candidates Resume Area -->
-    
+
 @endsection

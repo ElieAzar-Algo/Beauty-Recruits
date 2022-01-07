@@ -67,65 +67,66 @@
                         <span>Hot Jobs</span>
                         <h2>New & Random Jobs</h2>
                     </div>
-                    @foreach ($data as $item)
-                        {{-- <div> {{$item->field_expertise}}</div>  --}}
 
-                        {{--
-                                        <div class="hot-jobs-list">
-                                            <div class="row align-items-center">
-                                                <div class="col-lg-6">
-                                                    <div class="hot-jobs-content">
-                                                    <h3><a href="job-details.html">{{$item->job_title}}</a></h3>
-                                                        <span class="sub-title">{{$item->field_expertise->expertise_name}}</span>
-                                                        <ul>
-                                                        <li><span>Job Type:</span> {{$item->job_type}}</li>
-                                                        <li><span>Experience: </span>{{$item->years_of_experience}}</li>
-                                                            <li><span>Location: </span>{{$item->company->location}}</li>
-                                                        </ul>
+                        @foreach ($data ?? [] as $item)
+                            {{-- <div> {{$item->field_expertise}}</div>  --}}
+
+                            {{--
+                                            <div class="hot-jobs-list">
+                                                <div class="row align-items-center">
+                                                    <div class="col-lg-6">
+                                                        <div class="hot-jobs-content">
+                                                        <h3><a href="job-details.html">{{$item->job_title}}</a></h3>
+                                                            <span class="sub-title">{{$item->field_expertise->expertise_name}}</span>
+                                                            <ul>
+                                                            <li><span>Job Type:</span> {{$item->job_type}}</li>
+                                                            <li><span>Experience: </span>{{$item->years_of_experience}}</li>
+                                                                <li><span>Location: </span>{{$item->company->location}}</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4">
+                                                        <div class="hot-jobs-btn">
+                                                        <a href="{{url('job-details/')}}/{{$item->id}}" class="default-btn">Browse Job</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-lg-4">
-                                                    <div class="hot-jobs-btn">
-                                                    <a href="{{url('job-details/')}}/{{$item->id}}" class="default-btn">Browse Job</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> --}}
+                                            </div> --}}
 
 
-                        <div class="hot-jobs-list">
-                            <div class="row align-items-center">
-                                <div class="col-lg-2">
-                                    <a href="job-details.html" class="hot-jobs-img">
-                                        <img src="assets/images/hot-jobs/hot-jobs-1.png" alt="Image">
-                                    </a>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="hot-jobs-content">
-                                        <h3><a href="{{url('job-details/')}}/{{$item->id}}">{{$item->job_title}}</a>
-                                        </h3>
-                                        <span class="sub-title">{{$item->field_expertise->expertise_name}}</span>
-                                        <ul>
-                                            <li><span>Job Type:</span> {{$item->job_type}}</li>
-                                            <li><span>Experience: </span>{{$item->years_of_experience}}</li>
-                                            <li><span>Location: </span>{{$item->company->location}}</li>
-                                        </ul>
+                            <div class="hot-jobs-list">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-2">
+                                        <a href="job-details.html" class="hot-jobs-img">
+                                            <img src="assets/images/hot-jobs/hot-jobs-1.png" alt="Image">
+                                        </a>
                                     </div>
-                                </div>
 
-                                <div class="col-lg-4">
-                                    <div class="hot-jobs-btn">
-                                        <a href="{{url('job-details/')}}/{{$item->id}}" class="default-btn">Browse
-                                            Job</a>
-                                        <p><span>Deadline: </span>{{$item->time_frame}}</p>
+                                    <div class="col-lg-6">
+                                        <div class="hot-jobs-content">
+                                            <h3><a href="{{url('job-details/')}}/{{$item->id}}">{{$item->job_title}}</a>
+                                            </h3>
+                                            <span class="sub-title">{{$item->field_expertise->expertise_name}}</span>
+                                            <ul>
+                                                <li><span>Job Type:</span> {{$item->job_type}}</li>
+                                                <li><span>Experience: </span>{{$item->years_of_experience}}</li>
+                                                <li><span>Location: </span>{{$item->company->location}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="hot-jobs-btn">
+                                            <a href="{{url('job-details/')}}/{{$item->id}}" class="default-btn">Browse
+                                                Job</a>
+                                            <p><span>Deadline: </span>{{$item->time_frame}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                    @endforeach
+                        @endforeach
 
 
                 </div>

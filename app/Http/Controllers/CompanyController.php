@@ -9,6 +9,8 @@ use App\Job;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Mail;
+use Session;
+use URL;
 use App\Http\Requests\CompanyValidator;
 
 class CompanyController extends Controller
@@ -22,7 +24,11 @@ class CompanyController extends Controller
             $applicant = Company::where('id', $id)->first();
 
             if ($applicant->verified == 1) {
-                return redirect()->route('home');
+                $privUrl = str_replace(url('/'), '', Session::get('url.intended'));
+                if ($privUrl == '/login-page') {
+                    return redirect()->route('home');
+                }
+                return Redirect::to(Session::get('url.intended'));
             } else {
                 $logout = auth()->guard('company')->logout();
 
