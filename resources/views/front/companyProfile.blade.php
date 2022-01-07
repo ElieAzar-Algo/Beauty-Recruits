@@ -6,14 +6,14 @@
 <div class="page-title-area">
     <div class="container">
         <div class="page-title-content">
-            <h2>Candidate</h2>
+            <h2>Employer</h2>
             <ul>
                 <li>
                     <a href={{route('home')}}>
-                        Home 
+                        Home
                     </a>
                 </li>
-                <li class="active">Candidate Profile</li>
+                <li class="active">Employer Profile</li>
             </ul>
         </div>
     </div>
@@ -29,7 +29,7 @@
                     <h3>Profile</h3>
 
                     <div class="avatar-img">
-                        <img src="../assets/images/avatar-img.jpg" alt="Image">
+{{--                        <img src="../assets/images/avatar-img.jpg" alt="Image">--}}
 
                         <div class="avatar-mane">
                         <h4>{{$company->username}}</h4>
@@ -43,13 +43,13 @@
                         </li>
                         <li>
                             <a href="{{url('/company-post-job')}}">Post a Job</a>
-                            
+
                         </li>
                         <li>
                             <a href="pricing.html">Subscription</a>
                         </li>
                         <li>
-                            <a href="change-password.html">Change Password</a>
+                            <a href='/company-change-password?token={{auth()->user()->token}}'>Change Password</a>
                         </li>
                         <li>
                             <a href="{{url('/logout')}}">Log Out</a>
@@ -65,11 +65,11 @@
                         <div class="col-lg-6">
                             <div class="hot-jobs-content">
                             <h3><a href="job-details.html">{{$item->job_title}}</a></h3>
-                                
+
                                 <ul>
                                 <li><span>Job Type:</span> {{$item->job_type}}</li>
                                 <li><span>Experience: </span>{{$item->years_of_experience}}</li>
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -205,5 +205,5 @@
     </div>
 </section>
 <!-- End Candidates Profile Area -->
-    
+
 @endsection
