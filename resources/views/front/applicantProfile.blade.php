@@ -30,7 +30,7 @@
                     <h3 style="color: #ffffff;">Profile</h3>
 
                     <div class="avatar-img">
-                        <img src="{{'https://beauty-recruits.com/public/assets/images/'.$applicant->photo}}" alt="Image">
+                        <img src="{{'https://beauty-recruits.com/public/storage/'.$applicant->photo}}" alt="Image">
 
                         <div class="avatar-mane">
                         <h4>{{$applicant->full_name}}</h4>
