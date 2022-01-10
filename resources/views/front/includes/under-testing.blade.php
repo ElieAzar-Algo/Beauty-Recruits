@@ -215,28 +215,28 @@
 
 </style>
 <script src="https://kit.fontawesome.com/d681e607fc.js" crossorigin="anonymous"></script>
-<section id="testing-alert">
+{{--<section id="testing-alert">--}}
 
-  <div class="container mt-5"  >
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show" role="alert" data-brk-library="component__alert">
+{{--  <div class="container mt-5"  >--}}
+{{--    <div class="row">--}}
+{{--      <div class="col-sm-12">--}}
+{{--        <div class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show" role="alert" data-brk-library="component__alert">--}}
 
-          <i class="start-icon fa fa-exclamation-triangle faa-flash animated"></i>
-          <strong class="font__weight-semibold">Attention!</strong> The website is under testing...
+{{--          <i class="start-icon fa fa-exclamation-triangle faa-flash animated"></i>--}}
+{{--          <strong class="font__weight-semibold">Attention!</strong> The website is under testing...--}}
 
-          <button onclick="closeFuction()"  style="float:right;background-color:#faebd6;" type="button" class="close font__size-18" data-dismiss="alert">
-            <span aria-hidden="true">
-              <i class="fa fa-times warning"></i>
-            </span>
+{{--          <button onclick="closeFuction()"  style="float:right;background-color:#faebd6;" type="button" class="close font__size-18" data-dismiss="alert">--}}
+{{--            <span aria-hidden="true">--}}
+{{--              <i class="fa fa-times warning"></i>--}}
+{{--            </span>--}}
 
-          </button>
-        </div>
+{{--          </button>--}}
+{{--        </div>--}}
 
-      </div>
-    </div>
-  </div>
-</section>
+{{--      </div>--}}
+{{--    </div>--}}
+{{--  </div>--}}
+{{--</section>--}}
 <script>
 
   function closeFuction()
