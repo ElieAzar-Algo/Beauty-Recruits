@@ -10,7 +10,7 @@
             <ul>
                 <li>
                     <a href={{route('home')}}>
-                        Home 
+                        Home
                     </a>
                 </li>
                 <li class="active">Company Details</li>
@@ -24,14 +24,14 @@
 <section class="employers-details-area pt-100 pb-70">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-6">
                 <div class="hot-jobs-list">
                     <div class="row align-items-center">
-                        <div class="col-lg-2">
-                            <div class="hot-jobs-img">
-                                <img src="assets/images/hot-jobs/hot-jobs-1.png" alt="Image">
-                            </div>
-                        </div>
+{{--                        <div class="col-lg-2">--}}
+{{--                            <div class="hot-jobs-img">--}}
+{{--                                <img src="assets/images/hot-jobs/hot-jobs-1.png" alt="Image">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="col-lg-10">
                             <div class="hot-jobs-content">
@@ -53,11 +53,11 @@
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="employers-details-sidebar">
                     <div class="employer-widget">
                         <h3 style="color: #ffffff;">Company Overview</h3>
-                        
+
                         <ul class="overview">
                             <li>
                                 Posted Job
@@ -95,5 +95,5 @@
     </div>
 </section>
 <!-- End Employers Details Area -->
-    
+
 @endsection

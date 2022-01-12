@@ -97,11 +97,11 @@
 
                             <div class="hot-jobs-list">
                                 <div class="row align-items-center">
-                                    <div class="col-lg-2">
-                                        <a href="job-details.html" class="hot-jobs-img">
-                                            <img src="assets/images/hot-jobs/hot-jobs-1.png" alt="Image">
-                                        </a>
-                                    </div>
+{{--                                    <div class="col-lg-2">--}}
+{{--                                        <a href="job-details.html" class="hot-jobs-img">--}}
+{{--                                            <img src="assets/images/hot-jobs/hot-jobs-1.png" alt="Image">--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
 
                                     <div class="col-lg-6">
                                         <div class="hot-jobs-content">

@@ -35,12 +35,12 @@ height:750px;">
 
                         <div class="candidates-single-listing">
                             <div class="row align-items-center">
-                                <div class="col-lg-2">
-                                    <div class="hot-jobs-img">
-                                        <img src="{{'https://beauty-recruits.com/public/storage/'.$item->photo}}"
-                                             alt="Image">
-                                    </div>
-                                </div>
+{{--                                <div class="col-lg-2">--}}
+{{--                                    <div class="hot-jobs-img">--}}
+{{--                                        <img src="{{'https://beauty-recruits.com/public/storage/'.$item->photo}}"--}}
+{{--                                             alt="Image">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
                                 <div class="col-lg-6">
                                     <div class="candidates-cv-content">
