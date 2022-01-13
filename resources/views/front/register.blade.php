@@ -1,6 +1,8 @@
 @extends('layouts.register')
 
 @section('content')
+
+
     <!-- Start Page Title Area -->
 		<div class="page-title-area">
 			<div class="container">
@@ -9,7 +11,7 @@
 					<ul>
 						<li>
 							<a href="{{url('/home')}}">
-								Home 
+								Home
 							</a>
 						</li>
 						<li class="active">Register</li>
@@ -18,7 +20,7 @@
 			</div>
 		</div>
         <!-- End Page Title Area -->
-        
+
         <div class="row mt-4">
             <div class="col-sm-6 offset-sm-3 d-flex p-2">
                 <button style="height:300px; background-color:#F78154;  margin-right:20px; font-size:40px; font-weight:900; color:white" onclick="showApplicantForm()" class="btn w-50">Job Seekers</button>
@@ -32,7 +34,31 @@
 			  </div>
 		</div>
         @endisset
-        
+    @if (\Session::has('failed_register'))
+        <div>
+            <div id="alertMessage" class="alert alert-danger" role="alert" onclick="closeAlert(this.id)">
+                {!! \Session::get('failed_register') !!}
+            </div>
+        </div>
+{{--        <div--}}
+{{--            id="change-password-alert"--}}
+{{--            class="alert alert-danger"--}}
+{{--            --}}{{--            class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show"--}}
+{{--            role="alert" data-brk-library="component__alert">--}}
+
+{{--            <i class="start-icon fa fa-exclamation-triangle faa-flash animated"></i>--}}
+{{--            {!! \Session::get('failed_register') !!}--}}
+
+{{--            <button onclick="closeFuctionChangePassword()" style="float:right;background-color:#faebd6;" type="button"--}}
+{{--                    class="close font__size-18" data-dismiss="alert">--}}
+{{--            <span aria-hidden="true">--}}
+{{--              <i class="fa fa-times warning"></i>--}}
+{{--            </span>--}}
+
+{{--            </button>--}}
+{{--        </div>--}}
+    @endif
+
         <!-- Start User Area -->
 		<section class="user-area pb-100 pt-70">
 			<div class="container">
@@ -46,7 +72,7 @@
 					<div class="col-lg-6" style="margin: auto;">
 						<div class="user-form-content">
 							<h3 style="color: #ffffff;">Create an Account as a Job Seeker</h3>
-							
+
 
 							<form class="user-form" action="{{url(env('APP_URL').'applicant/register')}}" method="post" enctype="multipart/form-data">
 								<div class="row">
@@ -68,8 +94,8 @@
 									@enderror
 									</div>
 
-									
-									
+
+
 									{{-- &nbsp; --}}
 									<div class="col-6">
 										<div class="form-group">
@@ -135,17 +161,19 @@
 									<div class="col-6">
 										<div class="form-group">
 											<label>Resume in PDF</label>
-											<input required class="form-control" type="file" name="resume_pdf" >
+											<input required class="form-control" type="file" name="resume_pdf"
+                                                   accept="application/pdf" >
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="form-group">
 											<label>Photo</label>
-											<input required class="form-control" type="file" name="photo" >
+											<input required class="form-control" type="file" name="photo"
+                                                   accept="image/png, image/gif, image/jpeg" >
 										</div>
 									</div>
-									
-								
+
+
 									<div class="col-12">
 										<div class="form-group">
 											<label>Description</label>
@@ -163,12 +191,12 @@
 					</div>
 				</div>
 
-		
+
 				<div hidden id="company-form" class="row">
 					<div class="col-lg-6" style="margin: auto;">
 						<div class="user-form-content">
 							<h3 style="color: #ffffff;">Create an Account as an Employer</h3>
-							
+
 
 							<form class="user-form" action="{{url(env('APP_URL').'company/register')}}" method="post">
 								<div class="row">
@@ -190,8 +218,8 @@
 									@enderror
 									</div>
 
-									
-									
+
+
 									{{-- &nbsp; --}}
 									<div class="col-6">
 										<div class="form-group">
@@ -216,7 +244,7 @@
 											<input required class="form-control" type="text" name="username">
 										</div>
 									</div>
-								
+
 									<div class="col-6">
 										<div class="form-group">
 											<label>Expertise</label>
@@ -253,19 +281,19 @@
 											<input required class="form-control" type="text" name="introduction">
 										</div>
 									</div>
-			
+
 									<div class="col-12">
 										<div class="form-group">
 											<label>Description</label>
 											<input required class="form-control" type="textarea" name="description" style="height:150px;">
 										</div>
 									</div>
-									
+
 									<div class="col-12">
 										<button class="default-btn register" type="submit">
 											Register Now
 										</button>
-										
+
 									</div>
 								</div>
 							</form>
@@ -273,7 +301,7 @@
 					</div>
 				</div>
 
-		
+
 			</div>
 		</section>
 		<!-- End User Area -->
@@ -286,7 +314,7 @@
 			  // at least one number, one lowercase and one uppercase letter
 			  // at least six characters
 			  var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-			  
+
 			  var passwordValidator = re.test(str)
 			  if(!passwordValidator){
 				document.getElementById('passwordMessage').hidden = false
@@ -296,6 +324,6 @@
 				document.getElementById('passwordMessage_2').hidden = true
 			  }
 			}
-		  
+
 		  </script>
 @endsection

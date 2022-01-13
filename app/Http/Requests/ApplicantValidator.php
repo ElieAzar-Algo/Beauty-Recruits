@@ -45,7 +45,7 @@ class ApplicantValidator extends FormRequest
     {
         return [
             'email.email' => "Email must be in this format example@example",
-            'email.unique' => "Email already exist",
+//            'email.unique' => "Email already exist",
         ];
     }
 }

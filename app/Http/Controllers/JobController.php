@@ -11,11 +11,12 @@ use App\FieldExpertise;
 class JobController extends Controller
 {
 
-    
+
 
     public function index()
 
     {
+
         if(request()->has('search'))
         {
             // dd(request('search'));
@@ -27,15 +28,16 @@ class JobController extends Controller
             ->appends('search', request('search'));
             return view('front.job-listing', compact('data'));
         }
-        else 
+        else
         {
             $data = Job::with('company')
             ->orderBy('created_at','DESC')
             ->with('field_expertise')
+                ->where('time_frame', '>=', date('Y-m-d'))
             ->paginate(4);
             return view('front.job-listing', compact('data'));
         }
-        
+
     }
 
     public function show($id)
@@ -47,11 +49,11 @@ class JobController extends Controller
         ->with('applicant')
         ->first();
 
-        
-       
+
+
         foreach($data->applicant as $app)
         {
-            
+
             if($app->pivot->applicant_id == auth()->guard('applicant')->id())
             {
                 $indicator = 1;
@@ -60,7 +62,7 @@ class JobController extends Controller
 
         return view('front.job-details', compact('data','indicator'));
     }
-    
+
     public function create()
     {
         $categories = FieldExpertise::all();
@@ -87,7 +89,7 @@ class JobController extends Controller
             'time_frame' => $time_frame,
             'date_posted' => $date_posted,
         ]);
-        
+
         if($job->save())
         {
             return redirect()->route('home');

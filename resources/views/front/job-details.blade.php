@@ -285,7 +285,7 @@
       <p>{{$data->question}}</p>
       @csrf
         <input type="hidden" value={{$data->id}} name="job_id"/>
-        <textarea name="answer" id="answer" cols="113" rows="5" placeholder="Insert your answer"></textarea>
+        <textarea name="answer" id="answer" cols="113" rows="5" placeholder="Insert your answer" required></textarea>
 
       </div>
       <div class="modal-footer">

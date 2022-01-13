@@ -12,6 +12,7 @@
                         <a href={{route('home')}}>
                             <img src="https://beauty-recruits.com/public/assets/images/logo-header.png" alt="logo">
                         </a>
+                        <span class="label label-danger" style="color: red">Beta</span>
                     </div>
                 </div>
             </div>
@@ -23,6 +24,7 @@
                     <a class="navbar-brand" href={{route('home')}}>
                         <img src="https://beauty-recruits.com/public/assets/images/logo-header.png" alt="logo">
                     </a>
+                    <span class="label label-danger" style="color: red">Beta</span>
 
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav m-auto">

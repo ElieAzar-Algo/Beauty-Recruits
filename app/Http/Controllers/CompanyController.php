@@ -43,55 +43,60 @@ class CompanyController extends Controller
 
     public function register(CompanyValidator $request)
     {
+        $applicant = Company::where('email', $request->email)->first();
+        if (!$applicant) {
 
-        $token = openssl_random_pseudo_bytes(16);
+            $token = openssl_random_pseudo_bytes(16);
 
-        //Convert the binary data into hexadecimal representation.
-        //Cryptographic Token
-        $token = bin2hex($token);
-        if (count($request->all()) > 0) {
+            //Convert the binary data into hexadecimal representation.
+            //Cryptographic Token
+            $token = bin2hex($token);
 
-            if ($token) {
-                $company = new Company();
-                $company->fill([
+            if (count($request->all()) > 0) {
 
-                    'username' => $request->username,
-                    'email' => $request->email,
-                    'password' => $request->password,
-                    'name' => $request->name,
-                    'introduction' => $request->introduction,
-                    'phone' => $request->phone,
-                    'location' => $request->location,
-                    'website' => $request->website,
-                    'expertise_id' => $request->expertise_id,
+                if ($token) {
+                    $company = new Company();
+                    $company->fill([
 
-                ]);
-                $company->token = $token;
+                        'username' => $request->username,
+                        'email' => $request->email,
+                        'password' => $request->password,
+                        'name' => $request->name,
+                        'introduction' => $request->introduction,
+                        'phone' => $request->phone,
+                        'location' => $request->location,
+                        'website' => $request->website,
+                        'expertise_id' => $request->expertise_id,
 
-                if ($company->save()) {
-                    $mailData = array(
-                        'message' => 'Verification Email Beauty Recruits',
-                        'name' => $company->full_name,
-                        'token' => $token,
-                        'id' => $company->id,
-                        'email' => $company->email
-                    );
+                    ]);
+                    $company->token = $token;
 
-                    Mail::send('mail.company-verificationEmail', ["data" => $mailData], function ($message) use ($request) {
-                        $message->from(config('mail.from_email'), 'Beauty-Recruits');
-                        $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
-                    });
+                    if ($company->save()) {
+                        $mailData = array(
+                            'message' => 'Verification Email Beauty Recruits',
+                            'name' => $company->full_name,
+                            'token' => $token,
+                            'id' => $company->id,
+                            'email' => $company->email
+                        );
+
+                        Mail::send('mail.company-verificationEmail', ["data" => $mailData], function ($message) use ($request) {
+                            $message->from(config('mail.from_email'), 'Beauty-Recruits');
+                            $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
+                        });
 
 
-                    return redirect()->route('not-verified');
-                } else {
-                    $message = "Operation Failed";
-                    return view('register', compact('message'));
+                        return redirect()->route('not-verified');
+                    } else {
+                        $message = "Operation Failed";
+                        return view('register', compact('message'));
+                    }
                 }
+            } else {
+                return redirect()->route('register');
             }
-        }
-        else {
-            return redirect()->route('register');
+        } else {
+            return Redirect::back()->with('failed_register', 'The email has already been taken.');
         }
     }
 

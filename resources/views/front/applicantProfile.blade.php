@@ -145,12 +145,19 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>Objective</label>
-                                    <textarea name="message" class="form-control" rows="4"></textarea>
+                                    <textarea name="description"
+                                              class="form-control" rows="4"
+                                              value="{{ old( 'description', $applicant->description) }}"
+                                    >
+                                        {{$applicant->description}}
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
 
                         <h3>Experience</h3>
+                        <input  value="{{ old( 'years_of_experience', $applicant->years_of_experience) }}"   class="form-control" type="text" name="years_of_experience">
+{{--                        <p>{{$applicant->years_of_experience}} Years of experience</p>--}}
 
                         <div class="row">
                             {{-- <div class="col-lg-6 col-md-6">

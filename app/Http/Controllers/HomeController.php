@@ -15,6 +15,7 @@ class HomeController extends Controller
         $data = Job::with('company')
             ->orderBy('created_at','DESC')
             ->with('field_expertise')
+            ->where('time_frame', '>=', date('Y-m-d'))
             ->take(10)
             ->get();
             // Log::info($data->field_Expertise);

@@ -51,75 +51,81 @@ class ApplicantController extends Controller
     {
 
         // dd($request->resume_pdf);
-        $token = openssl_random_pseudo_bytes(16);
+        $applicant = Applicant::where('email', $request->email)->first();
+        if (!$applicant) {
 
-        //Convert the binary data into hexadecimal representation.
-        //Cryptographic Token
-        $token = bin2hex($token);
-        if (count($request->all())>0) {
 
-            if ($token) {
-                $folderPath = public_path('storage/applicant-resumes');
-                if (!File::exists($folderPath)) {
-                    $response = mkdir($folderPath);
+            $token = openssl_random_pseudo_bytes(16);
+
+            //Convert the binary data into hexadecimal representation.
+            //Cryptographic Token
+            $token = bin2hex($token);
+            if (count($request->all()) > 0) {
+
+                if ($token) {
+                    $folderPath = public_path('storage/applicant-resumes');
+                    if (!File::exists($folderPath)) {
+                        $response = mkdir($folderPath);
+                    }
+
+                    $applicant = new Applicant();
+
+                    $applicant->fill([
+
+                        'username' => $request->username,
+                        'email' => $request->email,
+                        'password' => $request->password,
+                        'full_name' => $request->full_name,
+                        'has_answered' => 1,
+                        'title' => $request->title,
+                        'description' => $request->description,
+                        'location' => $request->location,
+
+                        'phone' => $request->phone,
+                        'years_of_experience' => $request->years_of_experience,
+                        'expertise_id' => $request->expertise_id,
+                    ]);
+                    $date = date('Y-m-d-h-i-sa');
+
+                    $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
+                    $applicant->resume_pdf = $path;
+
+                    $photo = $request->file('photo')->storeAs('applicant-photos', 'MyPhoto-' . $request->username . $date . '.jpg', 'public');
+                    $applicant->photo = $photo;
+
+                    $applicant->token = $token;
+
+                    if ($applicant->save()) {
+
+                        // Log::info(config('mail.from_email'));
+                        // Log::info($request->email);
+                        // Log::info($request->full_name);
+                        $mailData = array(
+                            'message' => 'Verification Email Beauty Recruits',
+                            'name' => $applicant->full_name,
+                            'token' => $token,
+                            'id' => $applicant->id,
+                            'email' => $applicant->email
+                        );
+
+                        Mail::send('mail.applicant-verificationEmail', ["data" => $mailData], function ($message) use ($request) {
+                            $message->from(config('mail.from_email'), 'Beauty-Recruits');
+                            $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
+                        });
+
+
+                        return redirect()->route('not-verified');
+                    } else {
+                        // $message = "Operation Failed";
+                        // return view('register', compact('message'));
+                        return response();
+                    }
                 }
-
-                $applicant = new Applicant();
-
-                $applicant->fill([
-
-                    'username' => $request->username,
-                    'email' => $request->email,
-                    'password' => $request->password,
-                    'full_name' => $request->full_name,
-                    'has_answered' => 1,
-                    'title' => $request->title,
-                    'description' => $request->description,
-                    'location' => $request->location,
-
-                    'phone' => $request->phone,
-                    'years_of_experience' => $request->years_of_experience,
-                    'expertise_id' => $request->expertise_id,
-                ]);
-                $date = date('Y-m-d-h-i-sa');
-
-                $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
-                $applicant->resume_pdf = $path;
-
-                $photo = $request->file('photo')->storeAs('applicant-photos', 'MyPhoto-' . $request->username . $date . '.jpg', 'public');
-                $applicant->photo = $photo;
-
-                $applicant->token = $token;
-
-                if ($applicant->save()) {
-
-                    // Log::info(config('mail.from_email'));
-                    // Log::info($request->email);
-                    // Log::info($request->full_name);
-                    $mailData = array(
-                        'message' => 'Verification Email Beauty Recruits',
-                        'name' => $applicant->full_name,
-                        'token' => $token,
-                        'id' => $applicant->id,
-                        'email' => $applicant->email
-                    );
-
-                    Mail::send('mail.applicant-verificationEmail', ["data" => $mailData], function ($message) use ($request) {
-                        $message->from(config('mail.from_email'), 'Beauty-Recruits');
-                        $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
-                    });
-
-
-                    return redirect()->route('not-verified');
-                } else {
-                    // $message = "Operation Failed";
-                    // return view('register', compact('message'));
-                    return response();
-                }
+            } else {
+                return redirect()->route('register');
             }
-        }
-        else {
-            return redirect()->route('register');
+        } else {
+            return Redirect::back()->with('failed_register', 'The email has already been taken.');
         }
     }
 
