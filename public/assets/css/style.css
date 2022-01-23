@@ -6,7 +6,7 @@ is the file you need to edit to change the look of the template.
 
 This files table contents are outlined below>>>>>
 
-******************************************* 
+*******************************************
 ** - DEFAULT AREA STYLE - **
 
 ** - Default Btn Area Style
@@ -2506,7 +2506,7 @@ Testimonials Area Style
   margin-bottom: 0;
 }
 
-/* 
+/*
 Testimonials Area Three Style
 ======================================================*/
 .testimonials-area-three {
@@ -2958,7 +2958,7 @@ App Downloading Area Style
   background-color: #336161;
 }
 
-/* 
+/*
 Pricing Package Area Style
 =====================================================*/
 .single-pricing-box {
@@ -3523,7 +3523,7 @@ Copy Right Area Style
 /*====================================================
 INNER PAGE STYLE AREA
 ======================================================*/
-/* 
+/*
 Page Title Area Style
 =====================================================*/
 .page-title-area {
@@ -3594,7 +3594,7 @@ Page Title Area Style
   color: #336161;
 }
 
-/* 
+/*
 Who We Are Area Style
 =====================================================*/
 .who-we-are-page .who-we-are-content {
@@ -3627,7 +3627,7 @@ Who We Are Area Style
   margin-bottom: 30px;
 }
 
-/* 
+/*
 Main Contact Area Style
 =====================================================*/
 .main-contact-area h3 {
@@ -4018,7 +4018,7 @@ User Area CSS
   color: #336161;
 }
 
-/* 
+/*
 Sidebar Widget Style
 =====================================================*/
 .sidebar-widget {
@@ -4159,7 +4159,7 @@ Sidebar Widget Style
   margin-bottom: 0;
 }
 
-/* 
+/*
 Blog Details Content Style
 =====================================================*/
 .blog-details-content .blog-details-img {
@@ -4365,7 +4365,7 @@ Blog Details Content Style
   color: #cccccc;
 }
 
-/* 
+/*
 Avatar Sidebar Style
 =====================================================*/
 .avatar-sidebar h3 {
@@ -4423,7 +4423,7 @@ Avatar Sidebar Style
   border-bottom: none;
 }
 
-/* 
+/*
 Candidates Dashboard Content Style
 =====================================================*/
 .candidates-dashboard-content {
@@ -4530,7 +4530,7 @@ Candidates Dashboard Content Style
   color: #ed1d24;
 }
 
-/* 
+/*
 Candidates Profile Content Style
 =====================================================*/
 .candidates-profile-content {
@@ -4582,7 +4582,7 @@ Candidates Profile Content Style
   top: 2px;
 }
 
-/* 
+/*
 Candidates Resume Content Style
 =====================================================*/
 .candidates-resume-content {
@@ -4782,7 +4782,7 @@ Candidates Resume Content Style
   display: none;
 }
 
-/* 
+/*
 Candidates Bookmarks Content Style
 =====================================================*/
 .candidates-bookmarks-content {
@@ -4821,7 +4821,7 @@ Candidates Bookmarks Content Style
   background-color: #ed1d24;
 }
 
-/* 
+/*
 Candidates Applied Jobs Content Style
 =====================================================*/
 .candidates-applied-jobs-content {
@@ -4874,7 +4874,7 @@ Candidates Applied Jobs Content Style
   color: #ffffff;
 }
 
-/* 
+/*
 Candidates Alert Jobs Content Style
 =====================================================*/
 .candidates-alert-jobs-content {
@@ -4913,7 +4913,7 @@ Candidates Alert Jobs Content Style
   color: #ed1d24;
 }
 
-/* 
+/*
 Candidates Jobs Alert Content Style
 =====================================================*/
 .jobs-alert form {
@@ -4998,7 +4998,7 @@ Candidates Jobs Alert Content Style
   max-width: 660px;
 }
 
-/* 
+/*
 Candidates Message Style
 =====================================================*/
 .candidates-message-content {
@@ -5136,7 +5136,7 @@ Candidates Message Style
   margin-bottom: 30px;
 }
 
-/* 
+/*
 Candidates Change Password Style
 =====================================================*/
 .candidates-change-password-content {
@@ -5198,7 +5198,7 @@ Candidates Change Password Style
   font-size: 14px;
 }
 
-/* 
+/*
 Job Information Style
 =====================================================*/
 .job-information {
@@ -5298,7 +5298,7 @@ Job Information Style
   margin-top: 15px;
 }
 
-/* 
+/*
 Employers Listing Area Style
 =====================================================*/
 .employers-listing-area .nice-select {
@@ -5421,7 +5421,7 @@ Employers Listing Area Style
   border-color: #336161;
 }
 
-/* 
+/*
 Employers Details Area Style
 =====================================================*/
 .employers-details-area .employers-details-content {
@@ -5537,8 +5537,8 @@ Employers Details Area Style
   font-weight: normal;
   font-size: 16px;
   display: inline-block;
-  float: right;
-  width: 165px;
+  /*float: right;*/
+  /*width: 165px;*/
 }
 
 .employers-details-area .employers-details-sidebar .employer-widget .contact-us {
@@ -5580,7 +5580,7 @@ Employers Details Area Style
   margin-top: -8px;
 }
 
-/* 
+/*
 Job Details Area Style
 =====================================================*/
 .job-details-area .job-details-content {
@@ -5693,8 +5693,8 @@ Job Details Area Style
   font-weight: normal;
   font-size: 16px;
   display: inline-block;
-  float: right;
-  width: 165px;
+  /*float: right;*/
+  /*width: 165px;*/
 }
 
 .job-details-area .job-details-sidebar .employer-widget .contact-us {
@@ -5781,7 +5781,7 @@ Job Details Area Style
   background: #336161;
 }
 
-/* 
+/*
 Candidates Details Area Style
 =====================================================*/
 .candidates-details-area .candidates-cv {
@@ -6043,7 +6043,7 @@ Candidates Details Area Style
   margin-left: 10px;
 }
 
-/* 
+/*
 Candidates Listing Area Style
 =====================================================*/
 .candidates-listing-area .candidates-single-listing {
@@ -6276,7 +6276,7 @@ Candidates Listing Area Style
   float: right;
 }
 
-/* 
+/*
 Job Details Area Style
 =====================================================*/
 .job-details-area .job-details-content {
@@ -6388,7 +6388,7 @@ Job Details Area Style
   width: 165px;
 }
 
-/* 
+/*
 Job Listing Area Style
 =====================================================*/
 .job-listing-area .job-listing-sidebar .job-listing-widget {

@@ -30,7 +30,7 @@
                     <h3 style="color: #ffffff;">Profile</h3>
 
                     <div class="avatar-img">
-                        <img src="{{'https://beauty-recruits.com/public/storage/'.$applicant->photo}}" alt="Image">
+{{--                        <img src="{{'https://beauty-recruits.com/public/storage/'.$applicant->photo}}" alt="Image">--}}
 
                         <div class="avatar-mane">
                         <h4>{{$applicant->full_name}}</h4>
@@ -155,66 +155,71 @@
                             </div>
                         </div>
 
-                        <h3>Experience</h3>
-                        <input  value="{{ old( 'years_of_experience', $applicant->years_of_experience) }}"   class="form-control" type="text" name="years_of_experience">
-{{--                        <p>{{$applicant->years_of_experience}} Years of experience</p>--}}
+
 
                         <div class="row">
-                            {{-- <div class="col-lg-6 col-md-6">
+                          <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
-                                    <label>Company Name</label>
-                                    <input class="form-control" type="text" name="Company">
+                                    <label>Experience in (Years)</label>
+                                    <input  value="{{ old( 'years_of_experience', $applicant->years_of_experience) }}"   class="form-control" type="text" name="years_of_experience">
                                 </div>
                             </div>
-
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
-                                    <label>Company Business </label>
-                                    <input class="form-control" type="text" name="Business">
+                                    <label>Update Resume in PDF</label>
+                                    <input required class="form-control" type="file" name="resume_pdf"
+                                           accept="application/pdf" >
                                 </div>
                             </div>
+                            {{--
+                                                      <div class="col-lg-6 col-md-6">
+                                                          <div class="form-group">
+                                                              <label>Company Business </label>
+                                                              <input class="form-control" type="text" name="Business">
+                                                          </div>
+                                                      </div>
 
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>Designation</label>
-                                    <input class="form-control" type="text" name="Designation">
-                                </div>
-                            </div>
+                                                      <div class="col-lg-6 col-md-6">
+                                                          <div class="form-group">
+                                                              <label>Designation</label>
+                                                              <input class="form-control" type="text" name="Designation">
+                                                          </div>
+                                                      </div>
 
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>Department</label>
-                                    <input class="form-control" type="text" name="Department">
-                                </div>
-                            </div>
+                                                      <div class="col-lg-6 col-md-6">
+                                                          <div class="form-group">
+                                                              <label>Department</label>
+                                                              <input class="form-control" type="text" name="Department">
+                                                          </div>
+                                                      </div>
 
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>Responsibilities</label>
-                                    <input class="form-control" type="text" name="Responsibilities">
-                                </div>
-                            </div>
+                                                      <div class="col-lg-6 col-md-6">
+                                                          <div class="form-group">
+                                                              <label>Responsibilities</label>
+                                                              <input class="form-control" type="text" name="Responsibilities">
+                                                          </div>
+                                                      </div>
 
-                            <div class="col-lg-6 col-md-6">
-                                <div class="form-group">
-                                    <label>Company Location</label>
-                                    <input class="form-control" type="text" name="Location">
-                                </div>
-                            </div>
+                                                      <div class="col-lg-6 col-md-6">
+                                                          <div class="form-group">
+                                                              <label>Company Location</label>
+                                                              <input class="form-control" type="text" name="Location">
+                                                          </div>
+                                                      </div>
 
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Employment Period</label>
-                                    <select>
-                                        <option value="1">2021</option>
-                                        <option value="2">2021</option>
-                                        <option value="3">2022</option>
-                                        <option value="4">2023</option>
-                                        <option value="5">2024</option>
-                                        <option value="6">2025</option>
-                                    </select>
-                                </div>
-                            </div> --}}
+                                                      <div class="col-lg-6">
+                                                          <div class="form-group">
+                                                              <label>Employment Period</label>
+                                                              <select>
+                                                                  <option value="1">2021</option>
+                                                                  <option value="2">2021</option>
+                                                                  <option value="3">2022</option>
+                                                                  <option value="4">2023</option>
+                                                                  <option value="5">2024</option>
+                                                                  <option value="6">2025</option>
+                                                              </select>
+                                                          </div>
+                                                      </div> --}}
 
                             <div class="col-lg-12">
                                 <input type="submit" class="default-btn" value="Save">

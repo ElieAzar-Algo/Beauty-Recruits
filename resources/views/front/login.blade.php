@@ -5,7 +5,7 @@
     <div class="page-title-area">
         <div class="container">
             <div class="page-title-content">
-                <h2>Start Recruiting Now</h2>
+                <h2>Log in </h2>
                 <ul>
                     <li>
                         <a href="{{url('/home')}}">

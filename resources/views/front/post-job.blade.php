@@ -6,7 +6,7 @@
 <div class="page-title-area">
     <div class="container">
         <div class="page-title-content">
-            <h2>Company</h2>
+            <h2>Post a job listing now and fill your vacancy faster!</h2>
             <ul>
                 <li>
                     <a href={{route('home')}}>

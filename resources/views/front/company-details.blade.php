@@ -73,7 +73,7 @@
                             </li> --}}
                             <li>
                                 Location
-                            <span style="margin-left: -50px">: {{$company->location}}</span>
+                            <span >: {{$company->location}}</span>
                             </li>
                             <li>
                                 Email
@@ -81,7 +81,7 @@
                             </li>
                             <li>
                                 Call
-                            <a href="tel:+1-(514)-7939-357"><span>{{$company->phone}}</span></a>
+                            <a href="tel:+1-(514)-7939-357"><span>: {{$company->phone}}</span></a>
                             </li>
                             <li>
                                 Website

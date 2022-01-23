@@ -7,7 +7,7 @@
 		<div class="page-title-area">
 			<div class="container">
 				<div class="page-title-content">
-					<h2>Get your job offer in front of qualified candidates</h2>
+					<h2>Are you an employer? A job seeker? We’ll help you find each other!</h2>
 					<ul>
 						<li>
 							<a href="{{url('/home')}}">
