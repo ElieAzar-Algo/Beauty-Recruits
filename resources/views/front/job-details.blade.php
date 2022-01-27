@@ -116,8 +116,8 @@
             <h2>Job Details</h2>
             <ul>
                 <li>
-                    <a href={{route('home')}} style="color: #ffffff;">
-                        Home /
+                    <a href={{route('home')}} style="color: #336161;">
+                        Home
                     </a>
                 </li>
                 <li class="active">Job Details</li>
@@ -161,15 +161,15 @@
                         </div>
                         @elseif(Auth::guard('company')->check() || $indicator == '1' )
                         <div class="col-lg-4">
-                            <div disabled >
-                                <a onclick="return false"; href="/" class="default-btn" style="pointer-events: none;
-                                cursor: default; background-color:#f2b9a4">Apply Now</a>
-                            </div>
+{{--                            <div disabled >--}}
+{{--                                <a onclick="return false"; href="/" class="default-btn" style="pointer-events: none;--}}
+{{--                                cursor: default; background-color:#f2b9a4">Apply Now</a>--}}
+{{--                            </div>--}}
                         </div>
                         @else
                         <div class="col-lg-4">
                             <div class="hot-jobs-btn">
-                                <a href="{{url('/login-page')}}" class="default-btn">Apply Now</a>
+                                <a href="{{url('/login-page?type=seekers')}}" class="default-btn">Apply Now</a>
                             </div>
                         </div>
                         @endif
@@ -258,7 +258,7 @@
                         </div>
 
                         <div class="col-lg-4">
-                        <a href="{{url('/download-resume/'.$i->id)}}" class="default-btn">View Resume</a>
+                        <a href="{{url('/view-candidate/'.$i->id)}}" class="default-btn">View Candidate</a>
                         </div>
                     </div>
                 </div>

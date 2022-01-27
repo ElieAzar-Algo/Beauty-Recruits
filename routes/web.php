@@ -69,6 +69,7 @@ Route::get('/not-verified', function(){
 
 Route::get('/job-listing','JobController@index')->name('job-listing');
 Route::get('/job-details/{id}','JobController@show')->name('job-details');
+Route::get('/view-candidate/{id}','JobController@getCandidate')->name('job-details');
 
 Route::get('/applicant-listing','ApplicantController@index')->name('applicant-listing');
 

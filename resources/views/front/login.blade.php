@@ -20,9 +20,9 @@
     <!-- End Page Title Area -->
     @if (\Session::has('failed_login'))
         <div id="login-alert"
-         class="alert alert-danger"
-{{--            class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show"--}}
-            role="alert" data-brk-library="component__alert">
+             class="alert alert-danger"
+             {{--            class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show"--}}
+             role="alert" data-brk-library="component__alert">
 
             <i class="start-icon fa fa-exclamation-triangle faa-flash animated"></i>
             {!! \Session::get('failed_login') !!}
@@ -39,13 +39,29 @@
 
     <div class="row mt-4">
         <div class="col-sm-6 offset-sm-3 d-flex p-2">
-            <button
-                style="height:300px; background-color:#F78154;  margin-right:20px; font-size:40px; font-weight:900; color:white"
-                onclick="showApplicantForm()" class="btn w-50">Job Seekers
-            </button>
-            <button style="height:300px; background-color:#336161 ;  font-size:40px; font-weight:900; color:white"
+            @if(request()->has('type'))
+                @if(request()->get('type')=='seekers')
+                    <button
+                        style="height:300px; background-color:#F78154;  margin-right:20px; font-size:40px; font-weight:900; color:white"
+                        onclick="showApplicantForm()" class="btn w-50">Job Seekers
+                    </button>
+                @elseif(request()->get('type')=='employers')
+                    <button
+                        style="height:300px; background-color:#336161 ;  font-size:40px; font-weight:900; color:white"
+                        onclick="showCompanyForm()" class="btn w-50">Employers
+                    </button>
+                @endif
+            @else
+                <button
+                    style="height:300px; background-color:#F78154;  margin-right:20px; font-size:40px; font-weight:900; color:white"
+                    onclick="showApplicantForm()" class="btn w-50">Job Seekers
+                </button>
+
+                <button
+                    style="height:300px; background-color:#336161 ;  font-size:40px; font-weight:900; color:white"
                     onclick="showCompanyForm()" class="btn w-50">Employers
-            </button>
+                </button>
+            @endif
         </div>
 
     </div>
@@ -88,7 +104,7 @@
                                     </button>
                                 </div>
                                 <div class="col-12">
-                                    <a href="{{url(env('APP_URL').'reset-password')}}"> Reset Password  </a>
+                                    <a href="{{url(env('APP_URL').'reset-password')}}"> Reset Password </a>
 
                                 </div>
                             </div>
@@ -104,7 +120,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input class="form-control" type="text" name="email" >
+                                        <input class="form-control" type="text" name="email">
                                     </div>
                                 </div>
 
@@ -120,7 +136,7 @@
                                     </button>
                                 </div>
                                 <div class="col-12">
-                                    <a href="{{url(env('APP_URL').'company-reset-password')}}">  Reset Password  </a>
+                                    <a href="{{url(env('APP_URL').'company-reset-password')}}"> Reset Password </a>
                                 </div>
                             </div>
                         </form>

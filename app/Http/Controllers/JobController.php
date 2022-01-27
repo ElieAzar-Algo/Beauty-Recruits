@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Applicant;
 use Illuminate\Http\Request;
 use App\Job;
 use App\FieldExpertise;
@@ -38,6 +39,20 @@ class JobController extends Controller
             return view('front.job-listing', compact('data'));
         }
 
+    }
+
+    public function getCandidate($id)
+    {
+        $indicator = 0;
+        $data = Applicant::where('id', $id)->first();
+//        $data = Job::where('id',$id)
+//        ->with('company')
+//        ->with('field_expertise')
+//        ->with('applicant')
+//        ->first();
+//
+
+        return view('front.candidate-job-details', compact('data'));
     }
 
     public function show($id)

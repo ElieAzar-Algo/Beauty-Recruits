@@ -90,8 +90,8 @@ class ApplicantController extends Controller
                     $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
                     $applicant->resume_pdf = $path;
 
-                    $photo = $request->file('photo')->storeAs('applicant-photos', 'MyPhoto-' . $request->username . $date . '.jpg', 'public');
-                    $applicant->photo = $photo;
+//                    $photo = $request->file('photo')->storeAs('applicant-photos', 'MyPhoto-' . $request->username . $date . '.jpg', 'public');
+                    $applicant->photo = '';//$photo;
 
                     $applicant->token = $token;
 

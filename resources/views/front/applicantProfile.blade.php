@@ -40,7 +40,7 @@
 
                     <ul>
                         <li>
-                            <a href="profile.html" class="active">Profile</a>
+                            <a href="" class="active">Profile</a>
                         </li>
                         <li>
                             <a href="/change-password?token={{auth()->user()->token}}">Change Password</a>
@@ -164,9 +164,11 @@
                                     <input  value="{{ old( 'years_of_experience', $applicant->years_of_experience) }}"   class="form-control" type="text" name="years_of_experience">
                                 </div>
                             </div>
+
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
-                                    <label>Update Resume in PDF</label>
+                                    <label>Update Resume in PDF   <a href="{{url('/download-resume/'.$applicant->id)}}" style="color: #0bd2ff">(View Resume)</a>
+                                    </label>
                                     <input required class="form-control" type="file" name="resume_pdf"
                                            accept="application/pdf" >
                                 </div>
