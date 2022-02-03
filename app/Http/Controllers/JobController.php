@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Applicant;
 use Illuminate\Http\Request;
 use App\Job;
@@ -41,9 +42,20 @@ class JobController extends Controller
 
     }
 
-    public function getCandidate($id)
+    public function getCandidate($id,$job_id)
     {
         $indicator = 0;
+        $job = Job::where('id',$job_id)
+            ->with('company')
+            ->with('field_expertise')
+            ->with('applicant')
+            ->first();
+        $question =$job->question;
+        $applicantAnswer= $answer = Answer::
+        where('applicant_id', $id)
+            ->where('job_id', $job_id)
+            ->first();
+        $answer=$applicantAnswer->answer;
         $data = Applicant::where('id', $id)->first();
 //        $data = Job::where('id',$id)
 //        ->with('company')
@@ -52,7 +64,7 @@ class JobController extends Controller
 //        ->first();
 //
 
-        return view('front.candidate-job-details', compact('data'));
+        return view('front.candidate-job-details', compact('data','question','answer'));
     }
 
     public function show($id)

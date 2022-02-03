@@ -113,7 +113,7 @@
 <div class="page-title-area">
     <div class="container">
         <div class="page-title-content">
-            <h2>Job Details</h2>
+            <h2>Candidate Job Details</h2>
             <ul>
                 <li>
                     <a href={{route('home')}} style="color: #336161;">
@@ -123,46 +123,52 @@
                 <li class="active">Candidate Job Details</li>
             </ul>
         </div>
+        <div class="row" style="margin-top: 100px">
+            <h2 style="margin-bottom: 50px">Applicants</h2>
+
+            <div class="col-6">
+                <div class="candidates-single-listing">
+                    <div class="row align-items-center">
+                        {{--                                                    <div class="col-lg-2">--}}
+                        {{--                                                        <div class="hot-jobs-img">--}}
+                        {{--                                                        <img src="{{'storage/'.$data->photo}}" alt="Image">--}}
+                        {{--                                                        </div>--}}
+                        {{--                                                    </div>--}}
+
+                        <div class="col-lg-6">
+                            <div class="candidates-cv-content">
+                                <h3>{{$data->full_name}}</h3>
+
+                                <ul>
+                                    <li><span>Location: </span>{{$data->location}}</li>
+                                    <li><span>Experience: </span>{{$data->years_of_experience}} years</li>
+                                    <li><span>Objective: </span>{{$data->description}}</li>
+                                    <li><span>Job Question : </span>{{$question}}</li>
+                                    <li><span>Applicant Answer: </span>"{{$answer}}"</li>
+                                </ul>
+                                <div class="col-lg-4">
+                                    <a href="{{url('/download-resume/'.$data->id)}}" class="default-btn">View Resume</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <a href="{{url('/download-resume/'.$data->id)}}" class="default-btn">View Resume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 <!-- End Page Title Area -->
 <!-- Start Job Details Area -->
-<section class="job-details-area ptb-100">
-    <div class="container">
-        <div class="row" style="margin-top: 100px">
-            <h2 style="margin-bottom: 50px">Applicants</h2>
-
-                <div class="col-6">
-                    <div class="candidates-single-listing">
-                        <div class="row align-items-center">
-{{--                                                    <div class="col-lg-2">--}}
-{{--                                                        <div class="hot-jobs-img">--}}
-{{--                                                        <img src="{{'storage/'.$data->photo}}" alt="Image">--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-
-                            <div class="col-lg-6">
-                                <div class="candidates-cv-content">
-                                    <h3>{{$data->full_name}}</h3>
-
-                                    <ul>
-                                        <li><span>Location: </span>{{$data->location}}</li>
-                                        <li><span>Experience: </span>{{$data->years_of_experience}} years</li>
-                                        <li><span>Objective: </span>{{$data->description}}</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <a href="{{url('/download-resume/'.$data->id)}}" class="default-btn">View Resume</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-        </div>
-    </div>
-</section>
+{{--<section class="job-details-area ptb-100">--}}
+{{--    <div class="container">--}}
+{{--       --}}
+{{--    </div>--}}
+{{--</section>--}}
 <!-- End Job Details Area -->
 
 {{--<div id="myModal" class="modal">--}}

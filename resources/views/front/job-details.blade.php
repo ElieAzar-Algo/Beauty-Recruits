@@ -234,7 +234,7 @@
         </div>
         @if(Auth::guard('company')->check() && Auth::guard('company')->id()==$data->company->id)
         <div class="row" style="margin-top: 100px">
-            <h2 style="margin-bottom: 50px">Applicants</h2>
+            <h2 style="margin-bottom: 50px">Applicants:</h2>
             @foreach ($data->applicant as $i)
 
             <div class="col-6">
@@ -258,7 +258,7 @@
                         </div>
 
                         <div class="col-lg-4">
-                        <a href="{{url('/view-candidate/'.$i->id)}}" class="default-btn">View Candidate</a>
+                        <a href="{{url('/view-candidate/'.$i->id.'/job/'.$data->id)}}" class="default-btn">View Candidate</a>
                         </div>
                     </div>
                 </div>
