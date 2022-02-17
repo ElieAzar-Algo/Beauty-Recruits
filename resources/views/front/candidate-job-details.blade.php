@@ -145,16 +145,17 @@
                                     <li><span>Objective: </span>{{$data->description}}</li>
                                     <li><span>Job Question : </span>{{$question}}</li>
                                     <li><span>Applicant Answer: </span>"{{$answer}}"</li>
+                                    <div class="">
+                                        <a href="{{url('/download-resume/'.$data->id)}}" class="default-btn">View Resume</a>
+                                    </div>
                                 </ul>
-                                <div class="col-lg-4">
-                                    <a href="{{url('/download-resume/'.$data->id)}}" class="default-btn">View Resume</a>
-                                </div>
+
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
-                            <a href="{{url('/download-resume/'.$data->id)}}" class="default-btn">View Resume</a>
-                        </div>
+{{--                        <div class="col-lg-4">--}}
+{{--                            <a href="{{url('/download-resume/'.$data->id)}}" class="default-btn">View Resume</a>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             </div>

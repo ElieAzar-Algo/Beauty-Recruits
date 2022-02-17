@@ -41,7 +41,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href={{route('applicant-listing')}} class="nav-link">
+                                <a href="#" class="nav-link">
                                     Job Seekers
                                 </a>
                             </li>
@@ -49,6 +49,11 @@
                             <li class="nav-item">
                                 <a href={{route('company-listing')}} class="nav-link">
                                     Employers
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    Pricing
                                 </a>
                             </li>
 

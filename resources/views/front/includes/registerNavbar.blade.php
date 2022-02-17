@@ -53,6 +53,12 @@
                                 </a>
                             </li>
 
+                            <li class="nav-item">
+                                <a href={{route('company-listing')}} class="nav-link">
+                                    Pricing
+                                </a>
+                            </li>
+
                         </ul>
 
                         <div class="others-option">

@@ -85,7 +85,9 @@
                             </li>
                             <li>
                                 Website
-                            <a href="{{$company->website}}"><span>: {{$company->website}}</span></a>
+                            <a>
+{{--                                href="{{$company->website}}">--}}
+                                <span>: {{$company->website}}</span></a>
                             </li>
                         </ul>
                     </div>

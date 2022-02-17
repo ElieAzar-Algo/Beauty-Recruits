@@ -56,6 +56,11 @@
                                     Employers
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href={{route('home')}} class="nav-link {{ request()->is('home') ? 'a_actv' : ''}}">
+                                    Pricing
+                                </a>
+                            </li>
 
                         </ul>
 
