@@ -247,10 +247,19 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
+                    <div class="get-quote">
+                        <a href="{{url('job-update/')}}/{{$data->id}}" class="default-btn" style="background-color:  #F78154;">
+                            Update Job
+                        </a>
+                        <a href="{{url('job-delete/')}}/{{$data->id}}" class="default-btn"
+                           style="background-color:  #F78154;">
+                            Delete Job
+                        </a>
+                    </div>
 
-        </div>
+                </div>
+
+            </div>
     </section>
     <section>
         @if(Auth::guard('company')->check() && Auth::guard('company')->id()==$data->company->id)

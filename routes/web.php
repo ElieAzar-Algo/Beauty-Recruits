@@ -69,6 +69,9 @@ Route::get('/not-verified', function(){
 
 Route::get('/job-listing','JobController@index')->name('job-listing');
 Route::get('/job-details/{id}','JobController@show')->name('job-details');
+Route::get('/job-delete/{id}','JobController@jobDelete')->name('job-delete');
+Route::post('/job-update/{id}','JobController@jobUpdate')->name('job-update');
+Route::get('/job-update/{id}','JobController@jobEdit')->name('job-edit');
 Route::get('/view-candidate/{id}/job/{job_id}','JobController@getCandidate')->name('view-candidate');
 
 Route::get('/applicant-listing','ApplicantController@index')->name('applicant-listing');

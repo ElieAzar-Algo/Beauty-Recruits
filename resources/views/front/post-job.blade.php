@@ -155,14 +155,14 @@
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label>Job Description*</label>
-									<textarea required name="job_description" class="form-control" rows="6"></textarea>
+									<textarea required maxlength="200"  name="job_description" class="form-control" rows="6"></textarea>
 								</div>
                             </div>
 
                             <div class="col-lg-12">
 								<div class="form-group">
 									<label>Job Question*</label>
-									<textarea required name="question" class="form-control" rows="6"></textarea>
+									<textarea required maxlength="200"  name="question" class="form-control" rows="6"></textarea>
 								</div>
                             </div>
 
