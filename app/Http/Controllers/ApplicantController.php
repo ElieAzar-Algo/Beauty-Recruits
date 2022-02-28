@@ -244,10 +244,17 @@ class ApplicantController extends Controller
         $id = auth()->guard('applicant')->id();
 
         $company = Applicant::find($id);
-        $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
-        $company->resume_pdf = $path;
+        $date = time();
+        if ($request->hasFile('resume_pdf')) {
+            $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
+
+        }
+
+
+
         if ($company) {
             $company->update($request->all());
+            $company->resume_pdf = $path;
             if ($company->save()) {
                 return redirect()->route('applicant-profile');
             } else {

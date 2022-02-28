@@ -1,7 +1,7 @@
 <footer class="footer-area pt-100 pb-70" style="background-color: #336161;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="single-footer-widget single-bg">
                     <a href={{route('home')}} class="logo">
                         <img src="https://beauty-recruits.com/public/assets/images/logo-footer.png" alt="Image">
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="single-footer-widget">
                     <h3  style="color: #ffffff;">Contact</h3>
 
@@ -58,39 +58,39 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="single-footer-widget">
-                    <h3  style="color: #ffffff;">My Account</h3>
+{{--            <div class="col-lg-3 col-md-6">--}}
+{{--                <div class="single-footer-widget">--}}
+{{--                    <h3  style="color: #ffffff;">My Account</h3>--}}
 
-                    <ul class="import-link">
-                        <li>
-                            @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())
-                            <a style="color: #adadadbf;">Create Account</a>
-                            @else
-                            <a href="{{route('register')}}"  style="color: #ffffff;">Create Account</a>
-                            @endif
+{{--                    <ul class="import-link">--}}
+{{--                        <li>--}}
+{{--                            @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())--}}
+{{--                            <a style="color: #adadadbf;">Create Account</a>--}}
+{{--                            @else--}}
+{{--                            <a href="{{route('register')}}"  style="color: #ffffff;">Create Account</a>--}}
+{{--                            @endif--}}
 
-                        </li>
+{{--                        </li>--}}
 
-                        <li>
-                            @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())
-                            <a style="color: #adadadbf;">Login</a>
-                            @else
-                            <a href="{{url('/login-page')}}"  style="color: #ffffff;">Login</a>
-                            @endif
-                        </li>
-                        <li>
-                            <a href="{{route('company-listing')}}"  style="color: #ffffff;">Employers</a>
-                        </li>
-                        <li>
-                            <a href="{{route('job-listing')}}" style="color: #ffffff;">Jobs</a>
-                        </li>
+{{--                        <li>--}}
+{{--                            @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())--}}
+{{--                            <a style="color: #adadadbf;">Login</a>--}}
+{{--                            @else--}}
+{{--                            <a href="{{url('/login-page')}}"  style="color: #ffffff;">Login</a>--}}
+{{--                            @endif--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="{{route('company-listing')}}"  style="color: #ffffff;">Employers</a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="{{route('job-listing')}}" style="color: #ffffff;">Jobs</a>--}}
+{{--                        </li>--}}
 
-                    </ul>
-                </div>
-            </div>
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="single-footer-widget">
                     <h3  style="color: #ffffff;">Customer Care</h3>
 

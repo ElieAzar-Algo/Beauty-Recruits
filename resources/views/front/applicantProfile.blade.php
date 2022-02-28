@@ -54,9 +54,10 @@
 
             <div class="col-lg-8">
                 <div class="candidates-resume-content">
-                    <form class="resume-info" action="{{url(env('APP_URL').'applicant-update')}}" method="POST">
+                    <form class="resume-info" action="{{url(env('APP_URL').'applicant-update')}}" method="POST" enctype="multipart/form-data">
                         <h3>Personal Details</h3>
                         @csrf
+
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">

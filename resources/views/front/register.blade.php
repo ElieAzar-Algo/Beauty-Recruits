@@ -179,7 +179,8 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Location</label>
-                                        <input required class="form-control" type="text" name="location">
+                                        @include('front.includes.country')
+{{--                                        <input required class="form-control" type="text" name="location">--}}
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -298,7 +299,8 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Location</label>
-                                        <input required class="form-control" type="text" name="location">
+                                        @include('front.includes.country')
+{{--                                        <input required class="form-control" type="text" name="location">--}}
                                     </div>
                                 </div>
                                 <div class="col-6">

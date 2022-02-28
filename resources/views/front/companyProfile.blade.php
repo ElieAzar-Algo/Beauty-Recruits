@@ -64,7 +64,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-lg-6">
                                         <div class="hot-jobs-content">
-                                            <h3><a href="job-details.html">{{$item->job_title}}</a></h3>
+                                            <h3><a>{{$item->job_title}}</a></h3>
 
                                             <ul>
                                                 <li><span>Job Type:</span> {{$item->job_type}}</li>
