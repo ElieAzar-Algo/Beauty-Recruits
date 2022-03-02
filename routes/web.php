@@ -67,6 +67,9 @@ Route::get('/not-verified', function(){
 })->name('not-verified');
 
 
+Route::get('/price-listing','PriceController@index')->name('price-listing');
+
+
 Route::get('/job-listing','JobController@index')->name('job-listing');
 Route::get('/job-details/{id}','JobController@show')->name('job-details');
 Route::get('/job-delete/{id}','JobController@jobDelete')->name('job-delete');

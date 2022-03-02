@@ -57,7 +57,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href={{route('home')}} class="nav-link {{ request()->is('home') ? 'a_actv' : ''}}">
+                                <a href={{route('price-listing')}} class="nav-link {{ request()->is('price-listing') ? 'a_actv' : ''}}">
                                     Pricing
                                 </a>
                             </li>
