@@ -105,6 +105,7 @@ Route::group(['middleware' => ['auth:applicant']], function(){
 
     Route::post('/applicant-update','ApplicantController@update');
     Route::get('/applicant-update','ApplicantController@update');
+    Route::get('/job-history','ApplicantController@history')->name('job-history');
 });
 
 

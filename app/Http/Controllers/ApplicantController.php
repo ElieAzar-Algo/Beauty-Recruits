@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ApplicantJob;
+use App\Job;
 use Illuminate\Http\Request;
 use App\Applicant;
 use Illuminate\Support\Facades\DB;
@@ -129,142 +131,159 @@ class ApplicantController extends Controller
         }
     }
 
+    public function history()
 
-    public function reset(Request $request)
     {
-        $rules = array(
-            'email' => 'required|email');
-        $inputs = array(
-            'email' => $request->email
-        );
-        $validator = Validator::make($inputs, $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->with('failed_login', 'You did not enter your email correctly');
+
+        $jobApplicant = ApplicantJob::where('applicant_id','=',auth()->guard('applicant')->id())->pluck('id');
+
+            $data = Job::with('company')
+                ->orderBy('created_at', 'DESC')
+                ->with('field_expertise')
+                ->whereIn('id',  $jobApplicant)
+                ->paginate(4);
+            return view('front.job-history', compact('data'));
         }
 
-        $user = Applicant::where('email', $request->email)->first();
-        if (!$user) {
-            return back()->with('failed_login', 'Failed! email is not registered.');
-        }
+        function reset(Request $request)
+        {
+            $rules = array(
+                'email' => 'required|email');
+            $inputs = array(
+                'email' => $request->email
+            );
+            $validator = Validator::make($inputs, $rules);
+            if ($validator->fails()) {
+                return redirect()->back()->with('failed_login', 'You did not enter your email correctly');
+            }
+
+            $user = Applicant::where('email', $request->email)->first();
+            if (!$user) {
+                return back()->with('failed_login', 'Failed! email is not registered.');
+            }
 
 
-        $token = openssl_random_pseudo_bytes(16);
+            $token = openssl_random_pseudo_bytes(16);
 
-        //Convert the binary data into hexadecimal representation.
-        //Cryptographic Token
-        $token = bin2hex($token);
+            //Convert the binary data into hexadecimal representation.
+            //Cryptographic Token
+            $token = bin2hex($token);
 
-        $user->token = $token;
+            $user->token = $token;
 //        $user['is_verified'] = 0;
-        $user->save();
-        $mailData = array(
-            'name' => 'Verification Email Beauty Recruits',
-            'token' => $token
-        );
-
-
-        Mail::send('mail.reset-password', ['user' => $mailData], function ($message) use ($user) {
-            $message->from(config('mail.from_email'), 'Beauty-Recruits');
-            $message->to($user->email, $user->username)->subject('Password Reset Link');
-        });
-
-        if (Mail::failures() != 0) {
-            return redirect()->route('login')->with('failed_login', 'Success! password reset link has been sent to your email');
-        }
-        return back()->with('failed_login', 'Failed! there is some issue with email provider');
-    }
-
-    public function updatePassword(Request $request)
-    {
-        $rules = array(
-            'email' => 'email|required',
-            'password' => 'required|min:6',
-            'confirm_password' => 'required|same:password');
-        $inputs = array(
-            'email' => $request->email,
-            'password' => $request->password,
-            'confirm_password' => $request->confirm_password,
-        );
-        $validator = Validator::make($inputs, $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->with('failed_login', 'Password does not match, or must contains at least one number, one lowercase, one uppercase letter, and six characters');
-        }
-
-        $user = Applicant::where('email', $request->email)->first();
-        if ($user) {
-            $user->fill([
-                'token' => '',
-                'password' => $request->password]);
             $user->save();
-            return redirect()->route('login')->with('failed_login', 'Success! password has been changed');
+            $mailData = array(
+                'name' => 'Verification Email Beauty Recruits',
+                'token' => $token
+            );
+
+
+            Mail::send('mail.reset-password', ['user' => $mailData], function ($message) use ($user) {
+                $message->from(config('mail.from_email'), 'Beauty-Recruits');
+                $message->to($user->email, $user->username)->subject('Password Reset Link');
+            });
+
+            if (Mail::failures() != 0) {
+                return redirect()->route('login')->with('failed_login', 'Success! password reset link has been sent to your email');
+            }
+            return back()->with('failed_login', 'Failed! there is some issue with email provider');
         }
-        return redirect()->back()->with('failed_login', 'Failed! something went wrong');
-    }
 
-    public function downloadResume($id)
-    {
-        $applicant = Applicant::find($id);
-        // dd($applicant->resume_pdf);
-        $path = $applicant->resume_pdf;
+        public
+        function updatePassword(Request $request)
+        {
+            $rules = array(
+                'email' => 'email|required',
+                'password' => 'required|min:6',
+                'confirm_password' => 'required|same:password');
+            $inputs = array(
+                'email' => $request->email,
+                'password' => $request->password,
+                'confirm_password' => $request->confirm_password,
+            );
+            $validator = Validator::make($inputs, $rules);
+            if ($validator->fails()) {
+                return redirect()->back()->with('failed_login', 'Password does not match, or must contains at least one number, one lowercase, one uppercase letter, and six characters');
+            }
 
-        return Storage::download($path);
-    }
+            $user = Applicant::where('email', $request->email)->first();
+            if ($user) {
+                $user->fill([
+                    'token' => '',
+                    'password' => $request->password]);
+                $user->save();
+                return redirect()->route('login')->with('failed_login', 'Success! password has been changed');
+            }
+            return redirect()->back()->with('failed_login', 'Failed! something went wrong');
+        }
+
+        public
+        function downloadResume($id)
+        {
+            $applicant = Applicant::find($id);
+            // dd($applicant->resume_pdf);
+            $path = $applicant->resume_pdf;
+
+            return Storage::download($path);
+        }
 
 
-    public function show()
-    {
+        public
+        function show()
+        {
 
-        $id = auth()->guard('applicant')->id();
+            $id = auth()->guard('applicant')->id();
 
-        $applicant = Applicant::where('id', $id)->with('field_expertise')->first();
+            $applicant = Applicant::where('id', $id)->with('field_expertise')->first();
 
-        return view('front.applicantProfile', compact('applicant'));
-    }
+            return view('front.applicantProfile', compact('applicant'));
+        }
 
-    public function index()
-    {
+        public
+        function index()
+        {
 //
 //        $data = Applicant::orderBy('created_at', 'DESC')
 //            ->with('field_expertise')
 //            ->paginate(10);
-        $data = Applicant::
-        join('fields_expertises', 'fields_expertises.id', '=', 'applicants.expertise_id')
-            ->select(DB::raw('LEFT(applicants.full_name , 3) as full_name'), 'applicants.location', 'applicants.years_of_experience', 'applicants.photo',
-                'fields_expertises.*')
+            $data = Applicant::
+            join('fields_expertises', 'fields_expertises.id', '=', 'applicants.expertise_id')
+                ->select(DB::raw('LEFT(applicants.full_name , 3) as full_name'), 'applicants.location', 'applicants.years_of_experience', 'applicants.photo',
+                    'fields_expertises.*')
 //            ->with('field_expertise')
-            ->orderBy('applicants.created_at', 'DESC')
-            ->paginate(10);
-        $x = 0;
-        return view('front.candidate-listing', compact('data'));
-
-    }
-
-    public function update(Request $request)
-    {
-        $id = auth()->guard('applicant')->id();
-
-        $company = Applicant::find($id);
-        $date = time();
-        if ($request->hasFile('resume_pdf')) {
-            $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
+                ->orderBy('applicants.created_at', 'DESC')
+                ->paginate(10);
+            $x = 0;
+            return view('front.candidate-listing', compact('data'));
 
         }
 
+        public
+        function update(Request $request)
+        {
+            $id = auth()->guard('applicant')->id();
+
+            $company = Applicant::find($id);
+            $date = time();
+            if ($request->hasFile('resume_pdf')) {
+                $path = $request->file('resume_pdf')->storeAs('public/applicant-resumes', 'MyResume-' . $request->username . $date . '.pdf');
+
+            }
 
 
-        if ($company) {
-            $company->update($request->all());
-            $company->resume_pdf = $path;
-            if ($company->save()) {
-                return redirect()->route('applicant-profile');
-            } else {
-                return response()->json([
-                    'success' => false,
-                    'message' => "Operation Failed",
-                ], 404);
+            if ($company) {
+                $company->update($request->all());
+                $company->resume_pdf = $path;
+                if ($company->save()) {
+                    return redirect()->route('applicant-profile');
+                } else {
+                    return response()->json([
+                        'success' => false,
+                        'message' => "Operation Failed",
+                    ], 404);
+                }
             }
         }
+
+
     }
-
-
-}
