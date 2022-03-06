@@ -32,43 +32,8 @@
     <section class="candidates-dashboard-area ptb-100">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="avatar-sidebar">
-                        <h3>Profile</h3>
 
-{{--                        <div class="avatar-img">--}}
-{{--                            <img src="../assets/images/avatar-img.jpg" alt="Image">--}}
-
-{{--                            <div class="avatar-mane">--}}
-{{--                                <h4>Randall Guerrero</h4>--}}
-{{--                                <span>UX/UI Designer</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-                        <ul>
-                            <li>
-                                <a href="dashboard.html">Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="profile.html">Profile</a>
-                            </li>
-                            <li>
-                                <a href="post-job.html">Post a Job</a>
-                            </li>
-                            <li>
-                                <a href="pricing.html" class="active">Subscription</a>
-                            </li>
-                            <li>
-                                <a href="change-password.html">Change Password</a>
-                            </li>
-                            <li>
-                                <a href="../log-in-register.html">Log Out</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="candidates-dashboard-content">
                         <div class="candidates-dashboard">
                             <h3>Subscription</h3>

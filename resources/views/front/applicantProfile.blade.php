@@ -43,6 +43,9 @@
                             <a href="" class="active">Profile</a>
                         </li>
                         <li>
+                            <a href="/job-history">Job History</a>
+                        </li>
+                        <li>
                             <a href="/change-password?token={{auth()->user()->token}}">Change Password</a>
                         </li>
                         <li>
