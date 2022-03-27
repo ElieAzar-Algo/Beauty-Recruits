@@ -6,6 +6,7 @@ use App\Answer;
 use App\Applicant;
 use Illuminate\Http\Request;
 use App\Job;
+use App\Subscription;
 use App\FieldExpertise;
 
 
@@ -16,12 +17,8 @@ class PriceController extends Controller
     public function index()
 
     {
-        $data = Job::where('job_title', 'LIKE', request('search') . '%')
-            ->orderBy('created_at', 'DESC')
-            ->with('company')
-            ->with('field_expertise')
-            ->paginate(4)
-            ->appends('search', request('search'));
+
+        $data = Subscription::get();
         return view('front.price-listing', compact('data'));
     }
 

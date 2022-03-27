@@ -102,7 +102,7 @@
 
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
-                                        <label>Compnay Name</label>
+                                        <label>Company Name</label>
                                         <input value="{{ old( 'name', $company->name) }}" class="form-control"
                                                type="text" name="name">
                                     </div>

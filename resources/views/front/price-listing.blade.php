@@ -39,289 +39,65 @@
                             <h3>Subscription</h3>
 
                             <div class="row">
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single-pricing-box">
-                                        <div class="pricing-title">
-                                            <h1>Basic</h1>
-                                            <h4>Free</h4>
+                                @foreach($data as $subscription)
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="single-pricing-box">
+                                            <div class="pricing-title">
+                                                <h1>{{$subscription->title}}</h1>
+                                                <h4>{{$subscription->price?'$'.$subscription->price :'Free'}}</h4>
+                                            </div>
+
+                                            <ul>
+                                                @foreach($subscription->description as $description )
+                                                    <li>
+                                                        <i class="bx bx-check"></i>
+                                                        {{$description['title']}}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                            @if (Auth::guard('company')->check())
+                                                <a href="log-in.html" class="default-btn">
+                                                    Get Started
+                                                </a>
+                                            @else
+
+                                                <a href="{{url('/login-page?type=employers')}}" class="default-btn">
+                                                    Apply Now
+                                                </a>
+                                               
+                                            @endif
+
+
                                         </div>
-
-                                        <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Job postings
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Unlimited CV searching
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                39 USD for each dowloaded CV
-                                            </li>
-                                        </ul>
-
-                                        <a href="log-in.html" class="default-btn">
-                                            Get Started
-                                        </a>
                                     </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single-pricing-box">
-                                        <div class="pricing-title">
-                                            <h1>Classic</h1>
-                                            <h4>$49</h4>
-                                        </div>
-
-                                        <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Job postings
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Unlimited CV searching
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Up to 2 CV's to download
-                                            </li>
-                                        </ul>
-
-                                        <a href="log-in.html" class="default-btn">
-                                            Get Started
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                                    <div class="single-pricing-box">
-                                        <div class="pricing-title">
-                                            <h1>Silver</h1>
-                                            <h4>$99</h4>
-                                        </div>
-
-                                        <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Job postings
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Unlimited cv searching
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Up to 5 cv's to download
-                                            </li>
-                                        </ul>
-
-                                        <a href="log-in.html" class="default-btn">
-                                            Get Started
-                                        </a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
 
-
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single-pricing-box">
-                                        <div class="pricing-title">
-                                            <h1>Bronze</h1>
-                                            <h4>$149</h4>
-                                        </div>
-
-                                        <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Job postings
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Unlimited CV searching
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Up to 10 cv's to download
-                                            </li>
-                                        </ul>
-
-                                        <a href="log-in.html" class="default-btn">
-                                            Get Started
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single-pricing-box">
-                                        <div class="pricing-title">
-                                            <h1>Gold</h1>
-                                            <h4>$179</h4>
-                                        </div>
-
-                                        <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Job postings
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Unlimited CV searching
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Up to 10 cv's to download
-                                            </li>
-                                        </ul>
-
-                                        <a href="log-in.html" class="default-btn">
-                                            Get Started
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                                    <div class="single-pricing-box">
-                                        <div class="pricing-title">
-                                            <h1>Platinum</h1>
-                                            <h4>$199</h4>
-                                        </div>
-
-                                        <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Job postings
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Unlimited cv searching
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Up to 10 cv's to download
-                                            </li>
-                                        </ul>
-
-                                        <a href="log-in.html" class="default-btn">
-                                            Get Started
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single-pricing-box">
-                                        <div class="pricing-title">
-                                            <h1>CV ACCESS SILVER</h1>
-                                            <h4>$99</h4>
-                                        </div>
-
-                                        <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Job postings
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Unlimited CV searching
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                10 cv's to download over 30 days
-                                            </li>
-                                        </ul>
-
-                                        <a href="log-in.html" class="default-btn">
-                                            Get Started
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single-pricing-box">
-                                        <div class="pricing-title">
-                                            <h1>CV ACCESS  BRONZE</h1>
-                                            <h4>$249</h4>
-                                        </div>
-
-                                        <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Job postings
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Unlimited CV searching
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                35 CV's to download over 90 days
-                                            </li>
-                                        </ul>
-
-                                        <a href="log-in.html" class="default-btn">
-                                            Get Started
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                                    <div class="single-pricing-box">
-                                        <div class="pricing-title">
-                                            <h1>CV ACCESS  GOLD</h1>
-                                            <h4>$499</h4>
-                                        </div>
-
-                                        <ul>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Job postings
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                Unlimited cv searching
-                                            </li>
-                                            <li>
-                                                <i class="bx bx-check"></i>
-                                                100 CV's to download over 6 months
-                                            </li>
-                                        </ul>
-
-                                        <a href="log-in.html" class="default-btn">
-                                            Get Started
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-{{--    <!-- End Job Listing Area -->--}}
-{{--    <script>--}}
-{{--        function searchFunction(e) {--}}
-{{--            e.preventDefault();--}}
-{{--            if (e.target.value) {--}}
-{{--                console.log(e.target.value)--}}
-{{--                var a = document.getElementById('search-route');--}}
-{{--                a.href = `{{url('job-listing/?search=${e.target.value}')}}`;--}}
-{{--            } else {--}}
-{{--                var a = document.getElementById('search-route');--}}
-{{--                a.href = `{{url('job-listing')}}`;--}}
-{{--            }--}}
-{{--        }--}}
+    {{--    <!-- End Job Listing Area -->--}}
+    {{--    <script>--}}
+    {{--        function searchFunction(e) {--}}
+    {{--            e.preventDefault();--}}
+    {{--            if (e.target.value) {--}}
+    {{--                console.log(e.target.value)--}}
+    {{--                var a = document.getElementById('search-route');--}}
+    {{--                a.href = `{{url('job-listing/?search=${e.target.value}')}}`;--}}
+    {{--            } else {--}}
+    {{--                var a = document.getElementById('search-route');--}}
+    {{--                a.href = `{{url('job-listing')}}`;--}}
+    {{--            }--}}
+    {{--        }--}}
 
-{{--        window.onload = function () {--}}
-{{--            var elmnt = document.getElementById("section");--}}
-{{--            elmnt.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});--}}
-{{--        }--}}
-{{--    </script>--}}
+    {{--        window.onload = function () {--}}
+    {{--            var elmnt = document.getElementById("section");--}}
+    {{--            elmnt.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});--}}
+    {{--        }--}}
+    {{--    </script>--}}
 
 
 @endsection
