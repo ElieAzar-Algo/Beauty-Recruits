@@ -44,10 +44,10 @@
                             <a class="active">Post a Job</a>
                         </li>
                         <li>
-                            <a href="pricing.html">Subscription</a>
+                            <a href="{{url('company-subscription')}}">Subscription</a>
                         </li>
                         <li>
-                            <a href="change-password.html">Change Password</a>
+                            <a href='/company-change-password?token={{auth()->user()->token}}'>Change Password</a>
                         </li>
                         <li>
                             <a href="{{url('/logout')}}">Log Out</a>

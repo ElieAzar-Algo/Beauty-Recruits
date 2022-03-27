@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use App\Applicant;
+use App\Subscription;
 use Illuminate\Http\Request;
 use App\Job;
 use App\FieldExpertise;
@@ -82,6 +83,11 @@ class JobController extends Controller
         return view('front.job-details', compact('data', 'indicator'));
     }
 
+    public function showSubscription()
+    {
+        $data = Subscription::get();
+        return view('front.company-subscription', compact('data'));
+    }
     public function create()
     {
         $categories = FieldExpertise::all();

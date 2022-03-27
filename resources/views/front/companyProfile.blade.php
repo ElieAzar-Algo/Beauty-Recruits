@@ -46,7 +46,7 @@
 
                             </li>
                             <li>
-                                <a href="/price-listing">Subscription</a>
+                                <a href="{{url('company-subscription')}}">Subscription</a>
                             </li>
                             <li>
                                 <a href='/company-change-password?token={{auth()->user()->token}}'>Change Password</a>

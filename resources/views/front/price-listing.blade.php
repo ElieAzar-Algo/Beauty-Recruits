@@ -64,7 +64,7 @@
                                                 <a href="{{url('/login-page?type=employers')}}" class="default-btn">
                                                     Apply Now
                                                 </a>
-                                               
+
                                             @endif
 
 

@@ -93,6 +93,7 @@ Route::group(['middleware' => ['auth:company']], function(){
     Route::get('/company-update','CompanyController@update');
     Route::get('/company-post-job','JobController@create');
     Route::post('/company-post-job','JobController@post');
+    Route::get('/company-subscription','JobController@showSubscription')->name('company-subscription');
 });
 
 
