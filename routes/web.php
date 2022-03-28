@@ -70,6 +70,7 @@ Route::get('/not-verified', function(){
 Route::get('/price-listing','PriceController@index')->name('price-listing');
 
 
+
 Route::get('/job-listing','JobController@index')->name('job-listing');
 Route::get('/job-details/{id}','JobController@show')->name('job-details');
 Route::get('/job-delete/{id}','JobController@jobDelete')->name('job-delete');
@@ -94,6 +95,7 @@ Route::group(['middleware' => ['auth:company']], function(){
     Route::get('/company-post-job','JobController@create');
     Route::post('/company-post-job','JobController@post');
     Route::get('/company-subscription','JobController@showSubscription')->name('company-subscription');
+    Route::post('/company-subscription','PriceController@subscriptionRequest');
 });
 
 

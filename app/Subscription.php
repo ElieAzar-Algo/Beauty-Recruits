@@ -10,7 +10,7 @@ class Subscription extends Model
         'description' => 'array'
     ];
     protected $table = 'subscription';
-    protected $fillable = ['title','price','description'];
+    protected $fillable = ['id','title','price','description'];
     public function setDescriptionAttribute($value)
     {
         $properties = [];

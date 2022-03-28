@@ -56,12 +56,17 @@
                                                 @endforeach
                                             </ul>
                                             @if (Auth::guard('company')->check())
-                                                <a href="log-in.html" class="default-btn">
-                                                    Get Started
-                                                </a>
+                                                <form
+                                                    action="{{url(env('APP_URL').'company-subscription?subscription')}}"
+                                                      method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input name="subscription" type="hidden" value={{$subscription->id}}>
+                                                    <input type="submit" class="default-btn" value="Get Started">
+                                                </form>
                                             @else
 
-                                                <a href="{{url('/login-page?type=employers')}}" class="default-btn">
+                                                <a href="{{url('/login-page?type=employers')}}"
+                                                   class="default-btn">
                                                     Apply Now
                                                 </a>
 

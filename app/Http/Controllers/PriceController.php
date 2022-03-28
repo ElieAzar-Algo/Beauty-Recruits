@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Job;
 use App\Subscription;
 use App\FieldExpertise;
-
+use App\SubscriptionUser;
+use Carbon\Carbon;
 
 class PriceController extends Controller
 {
@@ -20,6 +21,33 @@ class PriceController extends Controller
 
         $data = Subscription::get();
         return view('front.price-listing', compact('data'));
+    }
+
+
+    public function subscriptionRequest(Request $request)
+    {
+        $date = Carbon::now();
+        $result = 'Your subscription Not finished';
+
+        $subscription = Subscription::findOrFail($request->subscription);
+        $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)->get();
+
+        if (count($subscriptionUser) == 0) {
+
+            $subscriptionUserInsert = new SubscriptionUser();
+            $subscriptionUserInsert->fill([
+                'user_id' => auth()->user()->id,
+                'subscription_id' => $subscription->id,
+                'end_date' => $date->addDays($subscription->days),
+            ]);
+
+            $subscriptionUserInsert->save();
+            $result = 'Subscription Done';
+
+        }
+        return view('front.subscription-result',compact('result'));
+
+
     }
 
     public function getCandidate($id, $job_id)
