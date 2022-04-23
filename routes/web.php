@@ -58,59 +58,59 @@ Route::get('/change-password', 'AuthController@forgotPasswordValidate')->name('c
 Route::get('/company-reset-password', 'AuthController@indexCompanyResetPassword')->name('company-reset');
 Route::get('/company-change-password', 'AuthController@forgotCompanyPasswordValidate')->name('company-change-password');
 
-Route::get('/waiting-verification', function(){
+Route::get('/waiting-verification', function () {
     return view('front.waiting-verification');
 })->name('waiting-verification');
 
-Route::get('/not-verified', function(){
+Route::get('/not-verified', function () {
     return view('front.not-verified');
 })->name('not-verified');
 
 
-Route::get('/price-listing','PriceController@index')->name('price-listing');
+Route::get('/price-listing', 'PriceController@index')->name('price-listing');
 
 
+Route::get('/job-listing', 'JobController@index')->name('job-listing');
+Route::get('/job-details/{id}', 'JobController@show')->name('job-details');
+Route::get('/job-delete/{id}', 'JobController@jobDelete')->name('job-delete');
+Route::post('/job-update/{id}', 'JobController@jobUpdate')->name('job-update');
+Route::get('/job-update/{id}', 'JobController@jobEdit')->name('job-edit');
+Route::get('/view-candidate/{id}/job/{job_id}', 'JobController@getCandidate')->name('view-candidate');
 
-Route::get('/job-listing','JobController@index')->name('job-listing');
-Route::get('/job-details/{id}','JobController@show')->name('job-details');
-Route::get('/job-delete/{id}','JobController@jobDelete')->name('job-delete');
-Route::post('/job-update/{id}','JobController@jobUpdate')->name('job-update');
-Route::get('/job-update/{id}','JobController@jobEdit')->name('job-edit');
-Route::get('/view-candidate/{id}/job/{job_id}','JobController@getCandidate')->name('view-candidate');
+Route::get('/applicant-listing', 'ApplicantController@index')->name('applicant-listing');
 
-Route::get('/applicant-listing','ApplicantController@index')->name('applicant-listing');
-
-Route::get('/company-listing','CompanyController@index')->name('company-listing');
-Route::get('/company-details/{id}','CompanyController@showDetails')->name('company-details');
+Route::get('/company-listing', 'CompanyController@index')->name('company-listing');
+Route::get('/company-details/{id}', 'CompanyController@showDetails')->name('company-details');
 
 Route::get('/download-resume/{id}', 'ApplicantController@downloadResume');
 
 
 //Companies auth Group
-Route::group(['middleware' => ['auth:company']], function(){
+Route::group(['middleware' => ['auth:company']], function () {
 
-    Route::get('/company-profile','CompanyController@show')->name('company-profile');
-    Route::post('/company-update','CompanyController@update');
-    Route::get('/company-update','CompanyController@update');
-    Route::get('/company-post-job','JobController@create');
-    Route::post('/company-post-job','JobController@post');
-    Route::get('/company-subscription','JobController@showSubscription')->name('company-subscription');
-    Route::post('/company-subscription','PriceController@subscriptionRequest');
+    Route::get('/company-profile', 'CompanyController@show')->name('company-profile');
+    Route::post('/company-update', 'CompanyController@update');
+    Route::get('/company-update', 'CompanyController@update');
+    Route::get('/company-post-job', 'JobController@create');
+    Route::post('/company-post-job', 'JobController@post');
+    Route::get('/company-subscription', 'JobController@showSubscription')->name('company-subscription');
+    Route::post('/company-subscription', 'PriceController@subscriptionRequest');
+    Route::get('/stripe', 'StripeController@stripe')->name('stripe.get');;
+    Route::post('/stripe', 'StripeController@stripePost')->name('stripe.post');
 });
 
 
 // Applicants auth Group
-Route::group(['middleware' => ['auth:applicant']], function(){
+Route::group(['middleware' => ['auth:applicant']], function () {
 
-    Route::get('/applicant-profile','ApplicantController@show')->name('applicant-profile');
+    Route::get('/applicant-profile', 'ApplicantController@show')->name('applicant-profile');
     Route::post('/applicant-answer', 'AnswerController@store');
     Route::get('/applicant-answer', 'AnswerController@store');
 
-    Route::post('/applicant-update','ApplicantController@update');
-    Route::get('/applicant-update','ApplicantController@update');
-    Route::get('/job-history','ApplicantController@history')->name('job-history');
+    Route::post('/applicant-update', 'ApplicantController@update');
+    Route::get('/applicant-update', 'ApplicantController@update');
+    Route::get('/job-history', 'ApplicantController@history')->name('job-history');
 });
-
 
 
 Route::group(['prefix' => 'admin'], function () {
