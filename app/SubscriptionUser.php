@@ -8,5 +8,5 @@ class SubscriptionUser extends Model
 {
     //
     protected $table = 'user_subscription';
-    protected $fillable = ['id','user_id','subscription_id','end_date'];
+    protected $fillable = ['id','user_id','subscription_id','end_date','success'];
 }

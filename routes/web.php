@@ -89,6 +89,7 @@ Route::get('/download-resume/{id}', 'ApplicantController@downloadResume');
 Route::group(['middleware' => ['auth:company']], function () {
 
     Route::get('/company-profile', 'CompanyController@show')->name('company-profile');
+    Route::get('/company-dashboard', 'CompanyController@dashboard')->name('company-dashboard');
     Route::post('/company-update', 'CompanyController@update');
     Route::get('/company-update', 'CompanyController@update');
     Route::get('/company-post-job', 'JobController@create');
@@ -104,6 +105,7 @@ Route::group(['middleware' => ['auth:company']], function () {
 Route::group(['middleware' => ['auth:applicant']], function () {
 
     Route::get('/applicant-profile', 'ApplicantController@show')->name('applicant-profile');
+    Route::get('/applicant-dashboard', 'ApplicantController@dashboard')->name('applicant-dashboard');
     Route::post('/applicant-answer', 'AnswerController@store');
     Route::get('/applicant-answer', 'AnswerController@store');
 

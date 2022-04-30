@@ -41,6 +41,9 @@
                             <a href="{{url('/company-profile')}}">Profile</a>
                         </li>
                         <li>
+                            <a  href="{{url('company-dashboard')}}">Dashboard</a>
+                        </li>
+                        <li>
                             <a class="active">Post a Job</a>
                         </li>
                         <li>

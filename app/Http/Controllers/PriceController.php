@@ -30,6 +30,7 @@ class PriceController extends Controller
         $result = 'Your subscription Not finished';
 
         $subscription = Subscription::findOrFail($request->subscription);
+        SubscriptionUser::where('success', '=', 0)->delete();
         $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)->get();
 
         if (count($subscriptionUser) == 0) {
@@ -42,10 +43,10 @@ class PriceController extends Controller
             ]);
 
             $subscriptionUserInsert->save();
-            $result = 'Subscription Done';
+            return view('front.stripe');
 
         }
-        return view('front.subscription-result',compact('result'));
+        return view('front.subscription-result', compact('result'));
 
 
     }

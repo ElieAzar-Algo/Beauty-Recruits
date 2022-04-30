@@ -31,7 +31,6 @@
 </head>
 <body>
 <div class="container">
-    {{$x}}
     <h1>Stripe Payment Page</h1>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -100,7 +99,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ($100)</button>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
                             </div>
                         </div>
                     </form>

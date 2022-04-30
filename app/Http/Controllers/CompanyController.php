@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Applicant;
+use App\ApplicantJob;
+use App\Subscription;
+use App\SubscriptionUser;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Job;
@@ -110,6 +114,39 @@ class CompanyController extends Controller
         $myJobs = Job::where('company_id', $id)->get();
 
         return view('front.companyProfile', compact('company', 'myJobs'));
+    }
+
+    public function dashboard()
+    {
+
+        $id = auth()->guard('company')->id();
+
+        $company = Company::where('id', $id)->with('field_expertise')->first();
+        $myJobs = Job::where('company_id', $id)->get();
+        $remaining_cv = 0;
+        $days_to_recharge = 0;
+
+        $date = Carbon::now();
+
+        $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)
+            ->where('success', '=', 1)->first();
+        if ($subscriptionUser) {
+            $subscription = Subscription::findOrFail($subscriptionUser->subscription_id);
+            $remaining_cv = $subscription->download_cv - $subscriptionUser->viewed_cv;
+            $subscriptionUserDate = Carbon::parse($subscriptionUser->end_date);
+            $days_to_recharge = $date->diffInDays($subscriptionUserDate);
+        }
+
+        $applicants = ApplicantJob::whereIn('job_id', $myJobs->pluck('id'))->get();
+        $applicantsNumber = count($applicants);
+        $job_posted = count($myJobs);
+
+        return view('front.companyDashboard', compact(
+            'company', 'myJobs',
+            'remaining_cv',
+            'days_to_recharge',
+            'applicants', 'job_posted', 'applicantsNumber'
+        ));
     }
 
     public function update(Request $request)

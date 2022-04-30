@@ -32,15 +32,14 @@ height:750px;">
 
                     @foreach ($data as $item)
 
-
                         <div class="candidates-single-listing">
                             <div class="row align-items-center">
-{{--                                <div class="col-lg-2">--}}
-{{--                                    <div class="hot-jobs-img">--}}
-{{--                                        <img src="{{'https://beauty-recruits.com/public/storage/'.$item->photo}}"--}}
-{{--                                             alt="Image">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                {{--                                <div class="col-lg-2">--}}
+                                {{--                                    <div class="hot-jobs-img">--}}
+                                {{--                                        <img src="{{'https://beauty-recruits.com/public/storage/'.$item->photo}}"--}}
+                                {{--                                             alt="Image">--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
 
                                 <div class="col-lg-6">
                                     <div class="candidates-cv-content">
@@ -56,42 +55,42 @@ height:750px;">
                                 <div class="col-lg-4">
                                     <a class="default-btn"
                                        @if($item->userId)
-                                       href="{{url('/download-resume/'.$item->userId)}}"
+                                           href="{{url('/download-resume/'.$item->userId)}}"
                                        @endif
                                        @if(!$item->userId)
-                                       style="color: currentColor;
+                                           style="color: currentColor;
                                            cursor: not-allowed;
                                            opacity: 0.5;
                                            text-decoration: none;"
-                                       @endif
+                                        @endif
 
-                                           >View Resume
-                                           </a>
-                                           </div>
-                                           </div>
-                                           </div>
+                                    >View Resume
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-                                       @endforeach
+                    @endforeach
 
-                                           <div>{{$data->links()}}</div>
+                    <div>{{$data->links()}}</div>
 
 
-                                       {{-- <div class="row">
-                                           <div class="col-lg-12 col-md-12">
-                                               <div class="pagination-area">
-                                                   <span class="page-numbers current" aria-current="page">1</span>
-                                                   <a href="#" class="page-numbers">2</a>
-                                                   <a href="#" class="page-numbers">3</a>
+                    {{-- <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="pagination-area">
+                                <span class="page-numbers current" aria-current="page">1</span>
+                                <a href="#" class="page-numbers">2</a>
+                                <a href="#" class="page-numbers">3</a>
 
-                                                   <a href="#" class="next page-numbers">
-                                                       <i class="flaticon-right-arrow"></i>
-                                                   </a>
-                                               </div>
-                                           </div>
-                                       </div> --}}
-                                           </div>
-                                           </div>
-                                           </div>
-                                           </section>
-                                           <!-- End Candidates Listing Area -->
+                                <a href="#" class="next page-numbers">
+                                    <i class="flaticon-right-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Candidates Listing Area -->
 @endsection

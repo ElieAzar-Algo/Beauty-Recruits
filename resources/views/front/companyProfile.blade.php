@@ -42,6 +42,9 @@
                                 <a class="active">Profile</a>
                             </li>
                             <li>
+                                <a  href="{{url('company-dashboard')}}">Dashboard</a>
+                            </li>
+                            <li>
                                 <a href="{{url('/company-post-job')}}">Post a Job</a>
 
                             </li>
