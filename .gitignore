@@ -5,6 +5,7 @@
 /vendor
 .env
 .env.backup
+.env.example
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
@@ -13,3 +14,4 @@ yarn-error.log
 
 *.example
 .idea
+# test
