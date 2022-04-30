@@ -43,6 +43,9 @@
                             <a href="" class="active">Profile</a>
                         </li>
                         <li>
+                            <a href="/applicant-dashboard">Dashboard</a>
+                        </li>
+                        <li>
                             <a href="/job-history">Job History</a>
                         </li>
                         <li>

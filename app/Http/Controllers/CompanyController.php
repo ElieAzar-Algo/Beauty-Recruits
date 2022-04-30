@@ -137,7 +137,7 @@ class CompanyController extends Controller
             $days_to_recharge = $date->diffInDays($subscriptionUserDate);
         }
 
-        $applicants = ApplicantJob::whereIn('job_id', $myJobs->pluck('id'))->get();
+        $applicants = ApplicantJob::whereIn('job_id', $myJobs->pluck('id'))->orderBy('created_at', 'DESC')->get();
         $applicantsNumber = count($applicants);
         $job_posted = count($myJobs);
 
