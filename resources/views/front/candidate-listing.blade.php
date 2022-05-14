@@ -43,7 +43,11 @@ height:750px;">
 
                                 <div class="col-lg-6">
                                     <div class="candidates-cv-content">
-                                        <h3>{{$item->full_name}}</h3>
+                                        @if($showLink)
+                                            <h3>{{$item->full_text_name}}</h3>
+                                        @else
+                                            <h3>{{$item->full_name}}</h3>
+                                        @endif
                                         <span class="sub-title">{{$item->expertise_name}}</span>
                                         <ul>
                                             <li><span>Location: </span>{{$item->location}}</li>
@@ -54,17 +58,22 @@ height:750px;">
 
                                 <div class="col-lg-4">
                                     <a class="default-btn"
-                                       @if($item->userId)
-                                           href="{{url('/download-resume/'.$item->userId)}}"
-                                       @endif
-                                       @if(!$item->userId)
+                                       {{--                                    /storage/applicant-resumes/MyResume-admin2021-11-11-07-12-52pm.pdf--}}
+                                       {{--@if(!$item->userId)--}}
+                                       @if($showLink)
+                                           @if($item->resume_pdf )
+                                               href="{{route('applicant-listing-pdf',['id'=>$item->applicant_id])}}"
+{{--                                               href="{{url('/storage/'.$item->resume_pdf)}}"--}}
+                                           @endif
+                                       @else
                                            style="color: currentColor;
                                            cursor: not-allowed;
                                            opacity: 0.5;
                                            text-decoration: none;"
                                         @endif
 
-                                    >View Resume
+                                    >
+                                        View Resume
                                     </a>
                                 </div>
                             </div>

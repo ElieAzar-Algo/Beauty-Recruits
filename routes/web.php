@@ -78,6 +78,7 @@ Route::get('/job-update/{id}', 'JobController@jobEdit')->name('job-edit');
 Route::get('/view-candidate/{id}/job/{job_id}', 'JobController@getCandidate')->name('view-candidate');
 
 Route::get('/applicant-listing', 'ApplicantController@index')->name('applicant-listing');
+Route::get('/applicant-listing/{id}', 'ApplicantController@getPdf')->name('applicant-listing-pdf');
 
 Route::get('/company-listing', 'CompanyController@index')->name('company-listing');
 Route::get('/company-details/{id}', 'CompanyController@showDetails')->name('company-details');
