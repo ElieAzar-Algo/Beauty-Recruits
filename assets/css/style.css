@@ -3029,11 +3029,11 @@ Pricing Package Area Style
 }
 
 .single-pricing-box:hover {
-  -webkit-transform: translateY(-5px);
-  transform: translateY(-5px);
-  background-color: #336161;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  /*-webkit-transform: translateY(-5px);*/
+  /*transform: translateY(-5px);*/
+  /*!*background-color: #336161;*!*/
+  /*-webkit-box-shadow: none;*/
+  /*box-shadow: none;*/
 }
 
 /*

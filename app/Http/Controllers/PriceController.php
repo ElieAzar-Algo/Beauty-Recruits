@@ -27,7 +27,7 @@ class PriceController extends Controller
     public function subscriptionRequest(Request $request)
     {
         $date = Carbon::now();
-        $result = 'Your subscription Not finished';
+        $result = 'You are already subscribed ! You can register in new plans when your current plan expires!';
 
         $subscription = Subscription::findOrFail($request->subscription);
         SubscriptionUser::where('success', '=', 0)->delete();
@@ -46,7 +46,7 @@ class PriceController extends Controller
             return view('front.stripe');
 
         }
-        return view('front.subscription-result', compact('result'));
+        return view('front.companyDashboard', compact('result'));
 
 
     }

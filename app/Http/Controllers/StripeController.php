@@ -38,8 +38,8 @@ class StripeController extends Controller
             "source" => $request->stripeToken,
             "description" => "This payment is tested"
         ]);
-        $subscription->success = 1;
-        $subscription->save();
+        $subscriptionUser->success = 1;
+        $subscriptionUser->save();
         Session::flash('success', 'Payment successful!');
 
         return back();

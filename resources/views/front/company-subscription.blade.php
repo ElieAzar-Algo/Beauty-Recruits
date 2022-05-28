@@ -31,6 +31,9 @@
                                 <a href="{{url('/company-profile')}}">Profile</a>
                             </li>
                             <li>
+                                <a  href="{{url('company-dashboard')}}">Dashboard</a>
+                            </li>
+                            <li>
                                 <a href="{{url('/company-post-job')}}">Post a Job</a>
                             </li>
                             <li>
@@ -68,9 +71,13 @@
                                                     </li>
                                                 @endforeach
                                             </ul>
-                                            <a href="log-in.html" class="default-btn">
-                                                Get Started
-                                            </a>
+                                            <form
+                                                action="{{url(env('APP_URL').'company-subscription?subscription')}}"
+                                                method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <input name="subscription" type="hidden" value={{$subscription->id}}>
+                                                <input type="submit" class="default-btn" value="Get Started">
+                                            </form>
                                         </div>
                                     </div>
                                 @endforeach

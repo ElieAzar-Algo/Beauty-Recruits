@@ -131,7 +131,7 @@
                                 <ul class="activities">
                                     @foreach($applicants as $applicant )
                                         <li>
-                                            {{$applicant->applicant->full_name}} Just Applied!
+                                            {{$applicant->applicant->full_name}} Just Applied in {{$applicant->job->job_title}}!
                                         </li>
                                     @endforeach
                                 </ul>
