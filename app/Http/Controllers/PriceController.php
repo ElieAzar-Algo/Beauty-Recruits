@@ -31,9 +31,14 @@ class PriceController extends Controller
 
         $subscription = Subscription::findOrFail($request->subscription);
         SubscriptionUser::where('success', '=', 0)->delete();
-        $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)->get();
+        $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)->first();
 
-        if (count($subscriptionUser) == 0) {
+        $isUserFinishViewCvs = $subscription->download_cv == $subscriptionUser->viewed_cv;
+        if ($isUserFinishViewCvs) {
+            $subscriptionUser->end_date = $date;
+            $subscriptionUser->save();
+        }
+        if ($subscriptionUser || $isUserFinishViewCvs) {
 
             $subscriptionUserInsert = new SubscriptionUser();
             $subscriptionUserInsert->fill([

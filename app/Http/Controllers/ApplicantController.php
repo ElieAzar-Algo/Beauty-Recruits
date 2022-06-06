@@ -266,7 +266,8 @@ class ApplicantController extends Controller
             $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->guard('company')->id())->whereDate('end_date', '>', $date)->where('success', '=', 1)->first();
             if ($subscriptionUser) {
                 $subscription = Subscription::findOrFail($subscriptionUser->subscription_id);
-                $download_cv = $subscription->download_cv - $subscriptionUser->download_cv;
+
+                $download_cv = $subscription->download_cv - $subscriptionUser->viewed_cv;
                 if ($subscriptionUser && $download_cv > 0) {
                     $showLink = $subscriptionUser->id;
                 }

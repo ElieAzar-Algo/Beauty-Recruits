@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Applicant;
 use App\Subscription;
+use App\SubscriptionUser;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Job;
 use App\FieldExpertise;
@@ -85,7 +87,10 @@ class JobController extends Controller
 
     public function showSubscription()
     {
-        $data = Subscription::get();
+
+        $date = Carbon::now();
+        $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->guard('company')->id())->whereDate('end_date', '<', $date)->where('success', '=', 1)->first();
+        $data =  Subscription::where('id','=',$subscriptionUser->subscription_id)->get();
         return view('front.company-subscription', compact('data'));
     }
     public function create()
