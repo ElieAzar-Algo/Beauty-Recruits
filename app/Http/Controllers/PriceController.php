@@ -28,29 +28,39 @@ class PriceController extends Controller
     {
         $date = Carbon::now();
         $result = 'You are already subscribed ! You can register in new plans when your current plan expires!';
-
+// get the user which subscription want
         $subscription = Subscription::findOrFail($request->subscription);
         SubscriptionUser::where('success', '=', 0)->delete();
-        $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)->first();
 
-        $isUserFinishViewCvs = $subscription->download_cv == $subscriptionUser->viewed_cv;
+        // get the current subscription valid if he has depending if end date or unlimited
+
+        $subscriptionUserDate = SubscriptionUser::with('subscription')->where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)->first();
+        $subscriptionUserNullDate = SubscriptionUser::with('subscription')->where('user_id', '=', auth()->user()->id)->whereNull('end_date')->first();
+
+        $subscriptionUser = $subscriptionUserDate ? $subscriptionUserDate : $subscriptionUserNullDate;
+
+
+        $isUserFinishViewCvs = $subscriptionUser == null ? false : $subscriptionUser->subscription->download_cv == $subscriptionUser->viewed_cv;
+
         if ($isUserFinishViewCvs) {
             $subscriptionUser->end_date = $date;
             $subscriptionUser->save();
         }
-        if ($subscriptionUser || $isUserFinishViewCvs) {
+
+        if ($subscriptionUser == null || $isUserFinishViewCvs==true) {
 
             $subscriptionUserInsert = new SubscriptionUser();
             $subscriptionUserInsert->fill([
                 'user_id' => auth()->user()->id,
                 'subscription_id' => $subscription->id,
-                'end_date' => $date->addDays($subscription->days),
+                'end_date' => $subscription->days > 0 ? $date->addDays($subscription->days) : null,
             ]);
 
             $subscriptionUserInsert->save();
             return view('front.stripe');
 
         }
+
         return view('front.companyDashboard', compact('result'));
 
 

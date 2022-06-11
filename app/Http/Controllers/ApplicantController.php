@@ -263,7 +263,10 @@ class ApplicantController extends Controller
         $showLink = -1;
         if (auth()->guard('company')->id()) {
             $date = Carbon::now();
-            $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->guard('company')->id())->whereDate('end_date', '>', $date)->where('success', '=', 1)->first();
+            $subscriptionUserDate = SubscriptionUser::where('user_id', '=', auth()->guard('company')->id())->whereDate('end_date', '>', $date)->where('success', '=', 1)->first();
+            $subscriptionUserNullDate = SubscriptionUser::with('subscription')->where('user_id', '=', auth()->user()->id)->whereNull('end_date')->first();
+            $subscriptionUser = $subscriptionUserDate ? $subscriptionUserDate : $subscriptionUserNullDate;
+
             if ($subscriptionUser) {
                 $subscription = Subscription::findOrFail($subscriptionUser->subscription_id);
 
