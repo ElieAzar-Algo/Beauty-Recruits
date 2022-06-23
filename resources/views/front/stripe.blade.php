@@ -29,20 +29,25 @@
         }
     </style>
 </head>
+<title>Payment Page</title>
 <body>
 <div class="container">
-    <h1>Stripe Payment Page</h1>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+    <div class="container">
+        <div class="py-5 text-center">
+            <img
+                class="mb-4 d-block mx-auto"
+                src="https://v5.getbootstrap.com/docs/5.0/assets/brand/bootstrap-solid.svg"
+                alt="Bootstrap Logo"
+                width="72"
+                height="72"
+            />
+            <h2>Checkout form</h2>
+        </div>
+    </div>
+    <h1>Card Information</h1>
+    <div class="container">
+        <div class="col-md-12 col-md-offset-3">
             <div class="panel panel-default credit-card-box">
-                <div class="panel-heading display-table">
-                    <div class="row display-tr">
-                        <h3 class="panel-title display-td">Payment Details</h3>
-                        <div class="display-td">
-                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
-                        </div>
-                    </div>
-                </div>
                 <div class="panel-body">
                     @if (Session::has('success'))
                         <div class="alert alert-success text-center">
@@ -59,48 +64,52 @@
                         data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                         id="payment-form">
                         @csrf
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Name on Card</label> <input
+                        <div class="row my-3 gy-3">
+                            <div class='col-md-6 mb-4 form-group required'>
+                                <label class='control-label form-label'>Name on Card</label>
+                                <input
                                     class='form-control' size='4' type='text'>
+                                <small class="text-muted">
+                                    Full name as displayed on the card.
+                                </small>
                             </div>
-                        </div>
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group card required'>
-                                <label class='control-label'>Card Number</label> <input
+
+
+                            <div class='col-md-6 mb-4 form-group  required'>
+                                <label class='control-label'>Card Number</label>
+                                <input
                                     autocomplete='off' class='form-control card-number' size='20'
                                     type='text'>
                             </div>
-                        </div>
-                        <div class='form-row row'>
-                            <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                <label class='control-label'>CVC</label> <input autocomplete='off'
-                                                                                class='form-control card-cvc'
-                                                                                placeholder='ex. 311' size='4'
-                                                                                type='text'>
+
+                            <div class='col-md-6 mb-4 form-group cvc required'>
+                                <label class='control-label form-label'>CVV/CVC</label>
+                                <input autocomplete='off'
+                                       class='form-control card-cvc'
+                                       placeholder='ex. 311' size='4'
+                                       type='text'>
                             </div>
-                            <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Month</label> <input
+                            <div class='col-md-6 mb-4 form-group expiration required'>
+                                <label class='control-label form-label'>Expiration Month</label>
+                                <input
                                     class='form-control card-expiry-month' placeholder='MM' size='2'
                                     type='text'>
                             </div>
-                            <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Year</label> <input
+                            <div class='col-md-6 mb-4 form-group expiration required'>
+                                <label class='control-label form-label'>Expiration Year</label>
+                                <input
                                     class='form-control card-expiry-year' placeholder='YYYY' size='4'
                                     type='text'>
                             </div>
-                        </div>
-                        <div class='form-row row'>
-                            <div class='col-md-12 error form-group hide'>
+
+
+                            <div class='col-md-6 mb-4 error form-group hide'>
                                 <div class='alert-danger alert '>Please correct the errors and try
                                     again.
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
-                            </div>
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Proceed to Checkout</button>
                         </div>
                     </form>
                 </div>
