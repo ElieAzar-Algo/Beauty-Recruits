@@ -10,13 +10,32 @@
                  background-color:#336161;
                  width:100%;
                  height:750px;">
+        @if (\Session::has('subscription_failed'))
+            <div id="company-change-password-alert"
+                 class="alert alert-danger"
+                 {{--            class="alert fade alert-simple alert-warning alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show"--}}
+                 role="alert" data-brk-library="component__alert">
+
+                <i class="start-icon fa fa-exclamation-triangle faa-flash animated"></i>
+                {!! \Session::get('subscription_failed') !!}
+
+                <button onclick="closeFuctionCompanyChangePassword()" style="float:right;background-color:#faebd6;"
+                        type="button"
+                        class="close font__size-18" data-dismiss="alert">
+            <span aria-hidden="true">
+              <i class="fa fa-times warning"></i>
+            </span>
+
+                </button>
+            </div>
+        @endif
 
         <div class="container" style="text-align:center;margin-top:200px">
             <div id="banner" class="page-title-content">
                 <h1 style="color:#ffffff; font-size:50px">Companies Subscription</h1>
                 <p style="color:#F78154;">
-                    <a href={{route('home')}} style="color: #ffffff;">
-                    Home /
+                    <a href="{{route('home')}}" style="color: #ffffff">
+                        Home /
                     </a>
 
                     Company Dashboard
@@ -25,9 +44,7 @@
         </div>
 
     </section>
-    <div id="section">
 
-    </div>
     <!-- Start Job Listing Area -->
     <section class="candidates-dashboard-area ptb-100">
         <div class="container">
@@ -58,9 +75,10 @@
                                             @if (Auth::guard('company')->check())
                                                 <form
                                                     action="{{url(env('APP_URL').'company-subscription?subscription')}}"
-                                                      method="POST" enctype="multipart/form-data">
+                                                    method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    <input name="subscription" type="hidden" value={{$subscription->id}}>
+                                                    <input name="subscription" type="hidden"
+                                                           value={{$subscription->id}}>
                                                     <input type="submit" class="default-btn" value="Get Started">
                                                 </form>
                                             @else
@@ -103,6 +121,5 @@
     {{--            elmnt.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});--}}
     {{--        }--}}
     {{--    </script>--}}
-
 
 @endsection

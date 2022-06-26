@@ -29,19 +29,21 @@ class StripeController extends Controller
     {
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->user()->id)->where('success', '=', 0)->first();
+        if ($subscriptionUser) {
+            $subscription = Subscription::findOrFail($subscriptionUser->subscription_id);
 
-        $subscription = Subscription::findOrFail($subscriptionUser->subscription_id);
+            Stripe\Charge::create([
+                "amount" => (int)($subscription->price) * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "This payment is tested"
+            ]);
+            $subscriptionUser->success = 1;
+            $subscriptionUser->save();
+            Session::flash('success', 'Payment successful!');
 
-        Stripe\Charge::create([
-            "amount" => (int)($subscription->price) * 100,
-            "currency" => "usd",
-            "source" => $request->stripeToken,
-            "description" => "This payment is tested"
-        ]);
-        $subscriptionUser->success = 1;
-        $subscriptionUser->save();
-        Session::flash('success', 'Payment successful!');
-
-        return back();
+            return back();
+        }
+        return redirect()->route('home');
     }
 }

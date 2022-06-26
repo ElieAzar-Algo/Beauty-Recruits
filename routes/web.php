@@ -95,6 +95,10 @@ Route::group(['middleware' => ['auth:company']], function () {
     Route::get('/company-update', 'CompanyController@update');
     Route::get('/company-post-job', 'JobController@create');
     Route::post('/company-post-job', 'JobController@post');
+
+//    Route::get('/billing-information', 'JobController@showBillingInformation')->name('billing-information');
+    Route::post('/billing-information', 'JobController@billingInformationRequest');
+
     Route::get('/company-subscription', 'JobController@showSubscription')->name('company-subscription');
     Route::post('/company-subscription', 'PriceController@subscriptionRequest');
     Route::get('/stripe', 'StripeController@stripe')->name('stripe.get');;

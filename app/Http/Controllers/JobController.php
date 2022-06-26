@@ -9,6 +9,7 @@ use App\SubscriptionUser;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Job;
+use App\BillingInformation;
 use App\FieldExpertise;
 
 
@@ -85,14 +86,40 @@ class JobController extends Controller
         return view('front.job-details', compact('data', 'indicator'));
     }
 
-    public function showSubscription()
+//    public function showBillingInformation()
+//    {
+//        return view('front.billing-information');
+//    }
+
+    public function billingInformationRequest(Request $request)
     {
 
+
+        $job = new BillingInformation();
+
+        $job->firstName = $request->firstName;
+        $job->user_subscription_id = $request->user_subscription_id;
+        $job->lastName = $request->lastName;
+        $job->username = $request->username;
+        $job->country = $request->country;
+        $job->state = $request->state;
+        $job->zip = $request->zip;
+
+        if ($job->save()) {
+              return redirect()->route('stripe.get');
+        }
+    }
+
+    public function showSubscription()
+    {
         $date = Carbon::now();
         $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->guard('company')->id())->whereDate('end_date', '<', $date)->where('success', '=', 1)->first();
         $data =  Subscription::where('id','=',$subscriptionUser->subscription_id)->get();
         return view('front.company-subscription', compact('data'));
     }
+
+
+
     public function create()
     {
         $categories = FieldExpertise::all();

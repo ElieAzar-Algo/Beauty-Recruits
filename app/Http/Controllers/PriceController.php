@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Answer;
 use App\Applicant;
+use App\BillingInformation;
 use Illuminate\Http\Request;
 use App\Job;
 use App\Subscription;
@@ -30,7 +31,11 @@ class PriceController extends Controller
         $result = 'You are already subscribed ! You can register in new plans when your current plan expires!';
 // get the user which subscription want
         $subscription = Subscription::findOrFail($request->subscription);
-        SubscriptionUser::where('success', '=', 0)->delete();
+        $subscribtionUnsuccess = SubscriptionUser::where('success', '=', 0)->first();
+        if ($subscribtionUnsuccess) {
+            BillingInformation::where('user_subscription_id', '=', $subscribtionUnsuccess->id)->delete();
+            $subscribtionUnsuccess->delete();
+        }
 
         // get the current subscription valid if he has depending if end date or unlimited
 
@@ -47,7 +52,7 @@ class PriceController extends Controller
             $subscriptionUser->save();
         }
 
-        if ($subscriptionUser == null || $isUserFinishViewCvs==true) {
+        if ($subscriptionUser == null || $isUserFinishViewCvs == true) {
 
             $subscriptionUserInsert = new SubscriptionUser();
             $subscriptionUserInsert->fill([
@@ -57,11 +62,14 @@ class PriceController extends Controller
             ]);
 
             $subscriptionUserInsert->save();
-            return view('front.stripe');
+            $id = $subscriptionUserInsert->id;
+//            return view('front.stripe');
+            return view('front.billing-information', compact('id'));
 
         }
 
-        return view('front.companyDashboard', compact('result'));
+//        return view('front.price-listing', compact('result'));
+        return redirect()->route('price-listing')->with('subscription_failed', $result);
 
 
     }

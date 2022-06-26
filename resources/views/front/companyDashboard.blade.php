@@ -32,8 +32,8 @@
                             {{--                        <img src="../assets/images/avatar-img.jpg" alt="Image">--}}
 
                             <div class="avatar-mane">
-                                <h4>{{$company->username}}</h4>
-                                <span>{{$company->field_expertise->expertise_name}}</span>
+                                <h4>{{$company ->username}}</h4>
+                                <span>{{$company ->field_expertise->expertise_name}}</span>
                             </div>
                         </div>
 
