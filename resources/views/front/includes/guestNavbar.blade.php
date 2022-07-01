@@ -125,6 +125,25 @@
                 @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())
                     <div class="container">
                         <div class="option-inner">
+                            @if (Auth::guard('applicant')->check())
+                                <div class="others-option justify-content-center d-flex align-items-center">
+                                    <div class="get-quote">
+                                        <a href="/applicant-profile"  class="default-btn" style="background-color:  #336161;
+                                    ">
+                                            My Profile
+                                        </a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="others-option justify-content-center d-flex align-items-center">
+                                    <div class="get-quote">
+                                        <a href="{{url('/company-profile')}}"  class="default-btn" style="background-color:  #336161;
+                                    ">
+                                            My Profile
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="others-option justify-content-center d-flex align-items-center">
                                 <div class="get-quote">
                                     <a href="{{url('/logout')}}" class="default-btn"
