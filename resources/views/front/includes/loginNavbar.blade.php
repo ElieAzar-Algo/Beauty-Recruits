@@ -53,46 +53,30 @@
                             </li>
                             <li class="nav-item">
                                 <a href={{route('price-listing')}} class="nav-link {{ request()->is('price-listing') ? 'a_actv' : ''}}">
-                                    Pricing
+                                Pricing
                                 </a>
                             </li>
-                            @if (Auth::guard('applicant')->check())
-                                <li class="nav-item">
-                                    <a href="/applicant-profile" class="nav-link {{ request()->is('price-listing') ? 'a_actv' : ''}}
-                                    ">
-                                        Profile
-                                    </a>
-                                </li>
-                            @else
-                                <li class="nav-item">
-                                    <a href="{{url('/company-profile')}}" class="nav-link {{ request()->is('price-listing') ? 'a_actv' : ''}}
-                                    ">
-                                        Profile
-                                    </a>
-                                </li>
-                            @endif
 
                         </ul>
 
                         <div class="others-option">
                             @if (Auth::guard('applicant')->check() || Auth::guard('company')->check())
-                            <div class="get-quote">
-                                <a href="{{url('/logout')}}" class="default-btn" style="background-color:  #F78154;">
-                                    Logout
-                                </a>
-                            </div>
-                        </div>
-                        @else
-                        <div class="others-option">
-                            <div class="get-quote">
-                                <a href="{{url('/register-page')}}" class="default-btn" style="background-color: #336161;">
-                                    Register
-                                </a>
-                            </div>
+                                <div class="get-quote">
+                                    <a href="{{url('/logout')}}" class="default-btn" style="background-color:  #F78154;">
+                                        Logout
+                                    </a>
+                                </div>
+                            @else
+                                <div class="others-option">
+                                    <div class="get-quote">
+                                        <a href="{{url('/register-page')}}" class="default-btn" style="background-color: #336161;">
+                                            Register
+                                        </a>
+                                    </div>
 
+                                </div>
+                            @endif
                         </div>
-                        @endif
-                    </div>
                 </nav>
             </div>
         </div>
@@ -111,34 +95,28 @@
                         <div class="option-inner">
                             <div class="others-option justify-content-center d-flex align-items-center">
                                 <div class="get-quote">
-                                    <a href="{{url('/logout')}}" class="default-btn" style="background-color:  #F78154;">
+                                    <a href="{{url('/logout')}}" class="default-btn"
+                                       style="background-color:  #F78154;">
                                         Logout
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        @else
-                            <div class="container">
-                                <div class="option-inner">
-                                    <div class="others-option justify-content-center d-flex align-items-center">
-                                        <div class="get-quote">
-                                            <a href="{{url('/register-page')}}" class="default-btn"
-                                               style="background-color: #336161;">
-                                                Register
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="others-option justify-content-center d-flex align-items-center">
-                                        <div class="get-quote">
-                                            <a href="{{url('/login-page')}}" class="default-btn">
-                                                Login
-                                            </a>
-                                        </div>
-                                    </div>
+                    </div>
+                @else
+                    <div class="container">
+                        <div class="option-inner">
+                            <div class="others-option justify-content-center d-flex align-items-center">
+                                <div class="get-quote">
+                                    <a href="{{url('/register-page')}}" class="default-btn" style="background-color: #336161;">
+                                        Register
+                                    </a>
                                 </div>
                             </div>
-                        @endif
+
+                        </div>
                     </div>
+                @endif
             </div>
         </div>
     </div>
