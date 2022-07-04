@@ -128,13 +128,18 @@ class CompanyController extends Controller
 
         $date = Carbon::now();
 
-        $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)
+        $subscriptionUserDate = SubscriptionUser::where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)
             ->where('success', '=', 1)->first();
+        $subscriptionUserNullDate = SubscriptionUser::with('subscription')->where('user_id', '=', auth()->guard('company')->id())->whereNull('end_date')->first();
+
+        $subscriptionUser = $subscriptionUserDate ? $subscriptionUserDate : $subscriptionUserNullDate;
+
         if ($subscriptionUser) {
+
             $subscription = Subscription::findOrFail($subscriptionUser->subscription_id);
             $remaining_cv = $subscription->download_cv - $subscriptionUser->viewed_cv;
             $subscriptionUserDate = Carbon::parse($subscriptionUser->end_date);
-            $days_to_recharge = $date->diffInDays($subscriptionUserDate);
+            $days_to_recharge = $subscriptionUserNullDate ? 'Ꝏ' : $date->diffInDays($subscriptionUserDate);
         }
 
         $applicants = ApplicantJob::whereIn('job_id', $myJobs->pluck('id'))->orderBy('created_at', 'DESC')->get();
