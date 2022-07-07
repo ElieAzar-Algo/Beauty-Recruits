@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Stripe Payment Page - HackTheStuff</title>
+    <title>Stripe Payment Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <style type="text/css">
@@ -34,13 +34,9 @@
 <div class="container">
     <div class="container">
         <div class="py-5 text-center">
-            <img
-                class="mb-4 d-block mx-auto"
-                src="https://v5.getbootstrap.com/docs/5.0/assets/brand/bootstrap-solid.svg"
-                alt="Bootstrap Logo"
-                width="72"
-                height="72"
-            />
+            <a class="navbar-brand" href="https://beauty-recruits.com/">
+                <img src="https://beauty-recruits.com/public/assets/images/logo-header.png" alt="logo">
+            </a>
             <h2>Checkout form</h2>
         </div>
     </div>
@@ -120,6 +116,14 @@
 </body>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
+    let success = '{{Session::has('success')}}'
+    if (success != "") {
+        setTimeout(
+            function () {
+                window.location.href = "https://beauty-recruits.com/company-dashboard"
+                // http://127.0.0.1:8000/company-dashboard";
+            }, 2000);
+    }
     $(function () {
         var $form = $(".require-validation");
         $('form.require-validation').bind('submit', function (e) {
@@ -165,6 +169,7 @@
                 $form.find('input[type=text]').empty();
                 $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
                 $form.get(0).submit();
+
             }
         }
     });
