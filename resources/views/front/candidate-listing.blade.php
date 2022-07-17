@@ -62,9 +62,9 @@ height:750px;">
                                        {{--@if(!$item->userId)--}}
                                        @if($showLink)
                                            @if($item->resume_pdf )
-                                               href="{{route('applicant-listing-pdf',['id'=>$item->applicant_id])}}"
-{{--                                               href="{{url('/storage/'.$item->resume_pdf)}}"--}}
-                                           @endif
+                                               href="{{route('applicant-details-profile',['id'=>$item->applicant_id])}}"
+                                       {{--                                               href="{{url('/storage/'.$item->resume_pdf)}}"--}}
+                                       @endif
                                        @else
                                            style="color: currentColor;
                                            cursor: not-allowed;
@@ -73,7 +73,7 @@ height:750px;">
                                         @endif
 
                                     >
-                                        View Resume
+                                        Show Profile
                                     </a>
                                 </div>
                             </div>

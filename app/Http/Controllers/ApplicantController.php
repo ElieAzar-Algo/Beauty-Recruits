@@ -243,21 +243,16 @@ class ApplicantController extends Controller
 
         return view('front.applicantProfile', compact('applicant'));
     }
-
     public
-    function dashboard()
+    function applicantDetailes(Request $request)
     {
+        $company = Applicant::where('id', $request->id)->with('field_expertise')->first();
+        $showLink = $this->isSubscriptionWorking() == -1 ? false : true;
+        if ($company) {
+            return view('front.job-seekers-details', compact('company','showLink'));
+        }
 
-        $id = auth()->guard('applicant')->id();
-
-        $applicant = Applicant::where('id', $id)->with('field_expertise')->first();
-        $applicants = ApplicantJob::where('applicant_id', '=', $id)->orderBy('created_at', 'DESC')->get();
-
-        $applicantsNumber = count($applicants);
-
-        return view('front.applicantDashboard', compact('applicant', 'applicants', 'applicantsNumber'));
     }
-
     private function isSubscriptionWorking()
     {
         $showLink = -1;
@@ -282,6 +277,21 @@ class ApplicantController extends Controller
         return $showLink;
 
     }
+
+    public
+    function dashboard()
+    {
+
+        $id = auth()->guard('applicant')->id();
+
+        $applicant = Applicant::where('id', $id)->with('field_expertise')->first();
+        $applicants = ApplicantJob::where('applicant_id', '=', $id)->orderBy('created_at', 'DESC')->get();
+
+        $applicantsNumber = count($applicants);
+
+        return view('front.applicantDashboard', compact('applicant', 'applicants', 'applicantsNumber'));
+    }
+
 
     public
     function index()
