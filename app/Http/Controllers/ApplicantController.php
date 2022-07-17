@@ -115,10 +115,10 @@ class ApplicantController extends Controller
                             'email' => $applicant->email
                         );
 
-//                        Mail::send('mail.applicant-verificationEmail', ["data" => $mailData], function ($message) use ($request) {
-//                            $message->from(config('mail.from_email'), 'Beauty-Recruits');
-//                            $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
-//                        });
+                        Mail::send('mail.applicant-verificationEmail', ["data" => $mailData], function ($message) use ($request) {
+                            $message->from(config('mail.from_email'), 'Beauty-Recruits');
+                            $message->to($request->email, $request->full_name)->subject('Beauty Recruits Verification Email');
+                        });
 
 
                         return redirect()->route('not-verified');
