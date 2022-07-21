@@ -106,18 +106,20 @@ class JobController extends Controller
         $job->zip = $request->zip;
 
         if ($job->save()) {
-              return redirect()->route('stripe.get');
+            return redirect()->route('stripe.get');
         }
     }
 
     public function showSubscription()
     {
+        $data = null;
         $date = Carbon::now();
         $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->guard('company')->id())->whereDate('end_date', '<', $date)->where('success', '=', 1)->first();
-        $data =  Subscription::where('id','=',$subscriptionUser->subscription_id)->get();
+        if ($subscriptionUser) {
+            $data = Subscription::where('id', '=', $subscriptionUser->subscription_id)->get();
+        }
         return view('front.company-subscription', compact('data'));
     }
-
 
 
     public function create()
@@ -163,7 +165,7 @@ class JobController extends Controller
         $job->job_description = $request->job_description;
         $job->years_of_experience = $request->years_of_experience;
         $job->expertise_id = $request->expertise_id;
-        $job->question= $request->question;
+        $job->question = $request->question;
         $job->job_type = $request->job_type;
         $job->time_frame = $time_frame;
 //'date_posted' => $date_posted,

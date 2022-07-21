@@ -31,7 +31,7 @@
                                 <a href="{{url('/company-profile')}}">Profile</a>
                             </li>
                             <li>
-                                <a  href="{{url('company-dashboard')}}">Dashboard</a>
+                                <a href="{{url('company-dashboard')}}">Dashboard</a>
                             </li>
                             <li>
                                 <a href="{{url('/company-post-job')}}">Post a Job</a>
@@ -55,32 +55,37 @@
                             <h3>Subscription</h3>
 
                             <div class="row">
-                                @foreach($data as $subscription)
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="single-pricing-box">
-                                            <div class="pricing-title">
-                                                <h1>{{$subscription->title}}</h1>
-                                                <h4>{{$subscription->price?'$'.$subscription->price :'Free'}}</h4>
-                                            </div>
+                                @if($data)
+                                    @foreach($data as $subscription)
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="single-pricing-box">
+                                                <div class="pricing-title">
+                                                    <h1>{{$subscription->title}}</h1>
+                                                    <h4>{{$subscription->price?'$'.$subscription->price :'Free'}}</h4>
+                                                </div>
 
-                                            <ul>
-                                                @foreach($subscription->description as $description )
-                                                    <li>
-                                                        <i class="bx bx-check"></i>
-                                                        {{$description['title']}}
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                            <form
-                                                action="{{url(env('APP_URL').'company-subscription?subscription')}}"
-                                                method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <input name="subscription" type="hidden" value={{$subscription->id}}>
-                                                <input type="submit" class="default-btn" value="Get Started">
-                                            </form>
+                                                <ul>
+                                                    @foreach($subscription->description as $description )
+                                                        <li>
+                                                            <i class="bx bx-check"></i>
+                                                            {{$description['title']}}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                                <form
+                                                    action="{{url(env('APP_URL').'company-subscription?subscription')}}"
+                                                    method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input name="subscription" type="hidden"
+                                                           value={{$subscription->id}}>
+                                                    <input type="submit" class="default-btn" value="Get Started">
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                @else
+                                    There is no subscription
+                                @endif
                             </div>
 
                         </div>
