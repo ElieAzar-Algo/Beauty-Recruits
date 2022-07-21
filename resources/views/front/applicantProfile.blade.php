@@ -174,7 +174,7 @@
 
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
-                                    <label>Update Resume in PDF   <a href="{{url('/storage/'.$applicant->resume_pdf)}}" style="color: #0bd2ff">(View Resume)</a>
+                                    <label>Update Resume in PDF   <a href="{{url('/storage/app/'.$applicant->resume_pdf)}}" style="color: #0bd2ff">(View Resume)</a>
                                     </label>
                                     <input required class="form-control" type="file" name="resume_pdf"
                                            accept="application/pdf" >

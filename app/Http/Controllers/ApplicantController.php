@@ -317,7 +317,7 @@ class ApplicantController extends Controller
             $subscriptionUser = SubscriptionUser::where('id', '=', $subscriptionId)->first();
             $subscriptionUser->viewed_cv = $subscriptionUser->viewed_cv + 1;
             $subscriptionUser->save();
-            return redirect('/storage/' . $applicantPdf->resume_pdf);
+            return redirect('/storage/app/' . $applicantPdf->resume_pdf);
         }
         abort(404);
 
