@@ -114,10 +114,19 @@ class JobController extends Controller
     {
         $data = null;
         $date = Carbon::now();
-        $subscriptionUser = SubscriptionUser::where('user_id', '=', auth()->guard('company')->id())->whereDate('end_date', '<', $date)->where('success', '=', 1)->first();
-        if ($subscriptionUser) {
+   // get the current subscription valid if he has depending if end date or unlimited
+
+        $subscriptionUserDate = SubscriptionUser::with('subscription')->where('user_id', '=', auth()->user()->id)->whereDate('end_date', '>', $date)->where('success', '=', 1)->first();
+        $subscriptionUserNullDate = SubscriptionUser::with('subscription')->where('user_id', '=', auth()->user()->id)->whereNull('end_date')->where('success', '=', 1)->first();
+
+        $subscriptionUser = $subscriptionUserDate ? $subscriptionUserDate : $subscriptionUserNullDate;
+
+        $isUserFinishViewCvs = $subscriptionUser == null ? false : $subscriptionUser->subscription->download_cv == $subscriptionUser->viewed_cv;
+//
+        if(!($subscriptionUser == null || $isUserFinishViewCvs == true)) {
             $data = Subscription::where('id', '=', $subscriptionUser->subscription_id)->get();
         }
+
         return view('front.company-subscription', compact('data'));
     }
 

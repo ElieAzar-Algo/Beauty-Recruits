@@ -31,7 +31,7 @@
 
     </div>
     <!-- Start Job Listing Area -->
-    {{--    <section class="candidates-dashboard-area ptb-100">--}}
+    {{--    <section class="candidates-dashboardcandidates-dashboard-area ptb-100">--}}
     {{--        <div class="container">--}}
     {{--            <div class="row">--}}
 
