@@ -85,7 +85,8 @@ class ApplicantController extends Controller
                         'title' => $request->title,
                         'description' => $request->description,
                         'location' => $request->location,
-
+                        'verified'=>0,
+                        'email_verification'=>0,
                         'phone' => $request->phone,
                         'years_of_experience' => $request->years_of_experience,
                         'expertise_id' => $request->expertise_id,
