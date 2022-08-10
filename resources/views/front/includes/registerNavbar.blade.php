@@ -53,11 +53,14 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a href={{route('price-listing')}} class="nav-link {{ request()->is('price-listing') ? 'a_actv' : ''}}">
-                                Pricing
-                                </a>
-                            </li>
+                            @if (!Auth::guard('applicant')->check())
+                                <li class="nav-item">
+                                    <a href={{route('price-listing')}} class="nav-link {{ request()->is('price-listing') ? 'a_actv' : ''}}
+                                    ">
+                                    Pricing
+                                    </a>
+                                </li>
+                            @endif
 
                         </ul>
 
